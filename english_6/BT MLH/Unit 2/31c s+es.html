@@ -310,7 +310,7 @@ const AC=window.AudioContext||window.webkitAudioContext;let actx=null;
 function gAC(){if(!actx)actx=new AC();return actx;}
 
 // Motivational Intro Audio
-$1'https://msnene-english.github.io/homework/%E1%BA%A2nh_File%20nghe/Sound/super_mario_bros.mp3');//hoctienganhcungcoMs. Chí Nên.github.io/homework/%E1%BA%A2nh_File%20nghe/File%20nghe%20Ket%20A2/ti%E1%BA%BFng%20%C4%91%E1%BB%8Dc%20kh%C3%ADch%20l%E1%BB%87%20p1.mp3');
+const introAudio = new Audio('https://hoctienganhcungcomaianulis.github.io/homework/%E1%BA%A2nh_File%20nghe/File%20nghe%20Ket%20A2/ti%E1%BA%BFng%20%C4%91%E1%BB%8Dc%20kh%C3%ADch%20l%E1%BB%87%20p1.mp3');//hoctienganhcungcoMs. Chí Nên.github.io/homework/%E1%BA%A2nh_File%20nghe/File%20nghe%20Ket%20A2/ti%E1%BA%BFng%20%C4%91%E1%BB%8Dc%20kh%C3%ADch%20l%E1%BB%87%20p1.mp3');
 let introPlayed = false;
 document.addEventListener('click', () => {
     if(!introPlayed) {
