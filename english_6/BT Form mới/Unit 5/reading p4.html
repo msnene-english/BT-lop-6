@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🐻 Exercise 14 · Phu Quoc &amp; Fansipan — English 6 Unit 5 | Ms. Chí Nên</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+ --sky1:#FFE9C4;--sky2:#FFCE8A;--sky3:#D9B26A;--ground1:#C9995C;--ground2:#8C6A3E;--river:#5FA0B8;
+ --capy:#9C7A4E;--capy-d:#6B4E2E;--bear:#6B4423;--bear-d:#4A2E15;
+ --cream:#FFFBF0;--ink:#2E2410;--dim:#6E6248;
+ --good:#1B9C6E;--good-bg:#DFF6E9;--bad:#D8334A;--bad-bg:#FFE3E6;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Nunito',sans-serif;color:var(--ink);min-height:100vh;overflow-x:hidden;
+ background:linear-gradient(180deg,var(--sky1) 0%,var(--sky2) 45%,var(--sky3) 75%,var(--ground1) 100%);background-size:100% 210%;animation:dayshift 34s ease-in-out infinite alternate}
+@keyframes dayshift{0%{background-position:0 0}100%{background-position:0 18%}}
+.fl{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.leaf{position:absolute;font-size:1.4rem;opacity:.7;animation:leafFall linear infinite}
+@keyframes leafFall{0%{transform:translate(0,-8vh) rotate(0);opacity:0}10%{opacity:.8}90%{opacity:.8}100%{transform:translate(40px,112vh) rotate(300deg);opacity:0}}
+#bank{position:fixed;left:0;right:0;bottom:0;height:150px;z-index:1;pointer-events:none;overflow:hidden}
+#bank .hill{position:absolute;left:0;right:0;bottom:64px;height:100px;background:var(--ground1);border-radius:50% 50% 0 0/60px 60px 0 0}
+#bank .hill::before{content:'';position:absolute;inset:0;background:var(--ground2);opacity:.2;border-radius:50% 50% 0 0/60px 60px 0 0;transform:translateY(6px)}
+#bank .grass{position:absolute;left:0;right:0;bottom:44px;height:24px;background-image:repeating-linear-gradient(78deg,var(--ground2) 0 3px,transparent 3px 14px);opacity:.5}
+#bank .river{position:absolute;left:0;right:0;bottom:0;height:48px;background:linear-gradient(180deg,var(--river),#3E7F96)}
+#bank .shimmer{position:absolute;inset:0;background:repeating-linear-gradient(100deg,rgba(255,255,255,.18) 0 3px,transparent 3px 26px);animation:shimmer 5s linear infinite}
+@keyframes shimmer{0%{transform:translateX(0)}100%{transform:translateX(26px)}}
+@media(max-width:820px){#bank{height:110px}}
+.capy{position:absolute;bottom:48px;width:64px;height:38px;animation:critterWalk linear infinite}
+.capy .body{position:absolute;left:8px;top:10px;width:48px;height:20px;border-radius:50% 50% 45% 45%/60% 60% 40% 40%;background:var(--capy);border:1.5px solid var(--capy-d)}
+.capy .head{position:absolute;left:0;top:8px;width:19px;height:15px;border-radius:40% 50% 50% 45%;background:var(--capy);border:1.5px solid var(--capy-d)}
+.capy .ear{position:absolute;width:5px;height:5px;border-radius:50%;background:var(--capy-d)}
+.capy .ear.l{left:3px;top:4px}.capy .ear.r{left:11px;top:3px}
+.capy .nose{position:absolute;left:-2px;top:14px;width:6px;height:4px;border-radius:50%;background:var(--capy-d)}
+.capy .bird{position:absolute;left:20px;top:-9px;font-size:11px}
+.capy .leg{position:absolute;width:4px;height:10px;background:var(--capy-d);bottom:-7px;border-radius:2px;transform-origin:top center}
+.capy .leg.fl{left:14px;animation:legA .62s ease-in-out infinite}
+.capy .leg.fr{left:21px;animation:legB .62s ease-in-out infinite}
+.capy .leg.bl{left:36px;animation:legB .62s ease-in-out infinite}
+.capy .leg.br{left:43px;animation:legA .62s ease-in-out infinite}
+@keyframes legA{0%,100%{transform:rotate(18deg)}50%{transform:rotate(-18deg)}}
+@keyframes legB{0%,100%{transform:rotate(-18deg)}50%{transform:rotate(18deg)}}
+.bear{position:absolute;bottom:48px;width:56px;height:40px;animation:critterWalk linear infinite}
+.bear .body{position:absolute;left:9px;top:12px;width:38px;height:22px;border-radius:50%;background:var(--bear);border:1.5px solid var(--bear-d)}
+.bear .head{position:absolute;left:0;top:5px;width:22px;height:19px;border-radius:50%;background:var(--bear);border:1.5px solid var(--bear-d)}
+.bear .ear{position:absolute;width:7px;height:7px;border-radius:50%;background:var(--bear)}
+.bear .ear.l{left:-1px;top:0}.bear .ear.r{left:14px;top:-1px}
+.bear .muzzle{position:absolute;left:2px;top:12px;width:13px;height:9px;border-radius:50%;background:#C89A64}
+.bear .nose{position:absolute;left:6px;top:14px;width:4px;height:3px;border-radius:50%;background:#2E1B0C}
+.bear .leg{position:absolute;width:5px;height:11px;background:var(--bear-d);bottom:-8px;border-radius:2px;transform-origin:top center}
+.bear .leg.fl{left:13px;animation:legA .7s ease-in-out infinite}
+.bear .leg.fr{left:21px;animation:legB .7s ease-in-out infinite}
+.bear .leg.bl{left:30px;animation:legB .7s ease-in-out infinite}
+.bear .leg.br{left:38px;animation:legA .7s ease-in-out infinite}
+@keyframes critterWalk{
+ 0%{transform:translateX(122vw) translateY(0)}
+ 25%{transform:translateX(85vw) translateY(-4px)}
+ 50%{transform:translateX(48vw) translateY(0)}
+ 75%{transform:translateX(14vw) translateY(-4px)}
+ 100%{transform:translateX(-26vw) translateY(0)}
+}
+.wrap{position:relative;z-index:2;max-width:1500px;margin:0 auto;padding:6px 16px 42px}
+.note{position:sticky;top:0;z-index:50;margin:0;padding:8px 16px;text-align:center;
+ background:linear-gradient(90deg,var(--ground2),var(--capy),var(--bear));box-shadow:0 4px 14px rgba(0,0,0,.3)}
+.note .in{display:flex;align-items:center;gap:10px;max-width:1400px;margin:0 auto;justify-content:center}
+.note .tg{flex:none;background:#2E2410;color:#FFE0A8;font-weight:900;font-size:.78rem;padding:3px 13px;border-radius:999px;white-space:nowrap}
+.note .tx{color:#fff;font-weight:800;font-size:.96rem;line-height:1.5;text-shadow:0 1px 3px rgba(0,0,0,.4);transition:opacity .25s}
+header{position:relative;z-index:10;max-width:1500px;margin:14px auto 10px;background:var(--cream);
+ border:3px solid var(--ink);border-radius:20px;box-shadow:7px 7px 0 var(--capy);
+ padding:16px 26px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
+header h1{font-family:'Baloo 2',cursive;font-size:clamp(1.0rem,2.5vw,1.35rem);font-weight:800;color:var(--ground2);line-height:1.35}
+header .by{display:inline-block;margin-top:6px;background:linear-gradient(135deg,var(--bear),var(--bear-d));color:#fff;
+ font-weight:900;font-size:.82rem;padding:5px 14px;border-radius:999px}
+header .sub{font-size:.85rem;color:var(--dim);margin-top:6px;font-weight:700}
+.gauge{position:relative;background:#fff;border:3px solid var(--ink);border-radius:50%;width:80px;height:80px;
+ display:flex;align-items:center;justify-content:center;box-shadow:4px 4px 0 var(--river);flex:none}
+.gauge .num{font-family:'Baloo 2';font-size:1rem;color:var(--ground2);font-weight:800}
+.gauge .lbl{font-size:.4rem;font-weight:800;color:#4A6B2A;letter-spacing:.05em;text-transform:uppercase}
+.main{position:relative;z-index:5;max-width:1500px;margin:0 auto;display:flex;gap:20px;padding:6px 16px 200px;align-items:flex-start}
+.lp,.rp{max-height:calc(100vh - 150px);overflow-y:auto}
+.lp{flex:0 0 48%}
+.rp{flex:1;min-width:0}
+.lp::-webkit-scrollbar,.rp::-webkit-scrollbar{width:9px}
+.lp::-webkit-scrollbar-thumb,.rp::-webkit-scrollbar-thumb{background:var(--ground2);border-radius:9px}
+.slbl{font-family:'Baloo 2';font-size:1.02rem;font-weight:800;color:#2E2410;margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.slbl::after{content:'';flex:1;border-top:3px dashed rgba(46,36,16,.25)}
+@media(max-width:940px){.main{flex-direction:column}.lp{flex:1 1 auto;width:100%}.lp,.rp{max-height:none}}
+.pc{position:relative;background:var(--cream);border-radius:18px;
+ padding:20px 20px 16px;margin-bottom:18px;box-shadow:4px 6px 0 rgba(46,36,16,.25);border:2.5px solid #ECE0C4}
+.pc::before{content:'🐻';position:absolute;top:-16px;left:20px;font-size:26px;filter:drop-shadow(1px 2px 2px rgba(0,0,0,.4))}
+.ptitle{font-family:'Baloo 2';font-size:1.2rem;font-weight:800;color:var(--ground2);margin-bottom:12px;margin-top:6px}
+.paragraph{font-size:1.02rem;line-height:1.9;margin-bottom:13px;text-align:justify}
+.blk{color:var(--ground2);font-weight:900;background:#F1E2C2;padding:0 5px;border-radius:5px}
+.btr{font-family:'Baloo 2';font-size:.74rem;background:linear-gradient(135deg,var(--capy),var(--capy-d));border:2px solid var(--ink);color:#fff;
+ padding:6px 15px;border-radius:16px;cursor:pointer;transition:.15s;font-weight:700;display:block;margin:8px 0 16px}
+.btr:hover{transform:translateY(-2px);box-shadow:0 4px 10px rgba(0,0,0,.2)}
+.tv{display:none;margin-bottom:16px;font-size:.97rem;line-height:1.8;color:#2e2712;background:#FFF3D9;border-left:4px solid var(--bear);border-radius:0 12px 12px 0;padding:11px 14px}
+.tv.open{display:block;animation:fd .25s ease}
+@keyframes fd{from{opacity:0}to{opacity:1}}
+.gl{margin-top:12px;background:#fff;border:2px solid #ECE0C4;border-radius:14px;overflow:hidden}
+.gl h3{font-family:'Baloo 2';font-size:1rem;font-weight:700;color:#fff;background:linear-gradient(90deg,var(--ground2),var(--ground1));margin:0;padding:9px 14px}
+table.gtb{width:100%;border-collapse:collapse;table-layout:fixed;font-size:.9rem}
+.gtb tr{border-top:1px dotted #ECE0C4}
+.gtb tr:nth-child(even){background:#FBF3E4}
+.gtb td,.gtb th{padding:8px 10px;text-align:left;vertical-align:top}
+.gtb th{background:rgba(0,0,0,.04);font-weight:800;font-size:.8rem;color:var(--dim)}
+.gtb .gw{color:var(--ground2);font-weight:900}
+.gtb .gp{color:var(--bear);font-weight:700;font-size:.84rem}
+.gtb .gi{color:#7A3FC8;font-size:.84rem}
+.sec{background:var(--cream);border-radius:18px;padding:16px;margin-bottom:14px;box-shadow:4px 5px 0 rgba(46,36,16,.25);border:2px solid #ECE0C4}
+.q{background:#FFFEF7;border:2px solid #F0E6C4;border-left:6px solid var(--capy);border-radius:14px;padding:14px;margin-bottom:14px}
+.q .qt{font-weight:800;font-size:1.0rem;line-height:1.7}
+.qn{display:inline-block;background:linear-gradient(135deg,var(--ground2),var(--ground1));color:#fff;min-width:30px;
+ text-align:center;border-radius:8px;padding:2px 9px;margin-right:8px;font-weight:900;font-size:.85rem}
+.og{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:11px}
+@media(max-width:600px){.og{grid-template-columns:1fr}}
+.ob{background:#fff;color:var(--ink);border:2px solid #E4D9BC;border-radius:12px;padding:11px 13px;
+ font-family:'Nunito';font-weight:800;font-size:.94rem;cursor:pointer;text-align:left;line-height:1.5;
+ transition:.14s;box-shadow:0 3px 0 #E4D9BC}
+.ob:hover:not(.dn){transform:translateY(-2px);border-color:var(--capy)}
+.ob.dn{cursor:default}
+.ob.ok{background:var(--good-bg);border-color:var(--good);color:#0b6b47;box-shadow:0 3px 0 #9fe3c6}
+.ob.no{background:var(--bad-bg);border-color:var(--bad);color:#a31832;box-shadow:0 3px 0 #f7bac5}
+.ex{display:none;margin-top:12px;background:#fff;border:2px solid #F0E6C4;border-radius:14px;padding:14px;
+ font-size:.97rem;line-height:1.85}
+.ex.on{display:block;animation:pop .3s}
+@keyframes pop{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+.shk{animation:shk .42s}
+@keyframes shk{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+.vnt{margin-bottom:10px;padding:9px 13px;border-radius:12px;background:#FCF0DA;border-left:5px solid var(--ground2);font-weight:600;line-height:1.7}
+.grid2{display:block;margin-top:8px}
+.grid2>div{padding:7px 2px;line-height:1.8;font-size:1.0rem;border-bottom:1px dashed #ECE0C4}
+.grid2>div:last-child{border-bottom:none}
+.p-word{color:#1E6FD9;font-weight:800}
+.hl-green{color:#11924E;font-weight:900}
+.hl-red{color:#D8334A;font-weight:900}
+.wt{display:inline-block;margin:0 3px;padding:0 7px;border-radius:6px;font-size:.78em;font-weight:700;background:rgba(140,106,62,.16);color:#5A4322}
+.p-phonetic{padding:0 6px;border-radius:6px;background:#F1E8FF;color:#7A3FC8;font-weight:700}
+.p-mean{color:#B5532E;font-weight:700}
+.p-grammar{display:inline;line-height:1.95;padding:3px 8px 3px 2px;border-radius:8px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.hx0{background:#FFF3B0}.hx1{background:#D6ECFF}.hx2{background:#FFDDEE}
+.hx3{background:#DDF7D0}.hx4{background:#EBDFFF}.hx5{background:#FFE4CC}
+.qe{font-weight:800}
+.qe0{color:#1D4ED8}.qe1{color:#C2185B}.qe2{color:#0F8A5F}.qe3{color:#7C3AED}.qe4{color:#D9480F}.qe5{color:#0E7490}
+.frame{margin-top:10px;padding:10px 13px;border-radius:14px;background:#fff;border:2px dashed #ECE0C4;line-height:1.75}
+.frame i{color:var(--dim)}
+.dk{margin-top:12px;padding:11px 13px;border-radius:14px;background:#FFFBEF;border-left:5px solid var(--capy)}
+.dict{margin-top:7px;display:flex;flex-wrap:wrap;gap:9px}
+.dict a{display:inline-flex;align-items:center;gap:5px;padding:6px 15px;border-radius:999px;font-size:.9rem;font-weight:800;
+ text-decoration:none;color:#fff;transition:transform .15s,box-shadow .15s;border:2px solid rgba(255,255,255,.5);
+ animation:dkpulse 2.4s ease-in-out infinite}
+.dict a:nth-child(4n+1){background:linear-gradient(135deg,#FF7676,#D8334A)}
+.dict a:nth-child(4n+2){background:linear-gradient(135deg,#4ECDC4,#0E7A6D)}
+.dict a:nth-child(4n+3){background:linear-gradient(135deg,#A78BFA,#6D28D9)}
+.dict a:nth-child(4n+4){background:linear-gradient(135deg,#FFB86B,#E07A1F)}
+.dict a:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 6px 14px rgba(0,0,0,.3);animation-play-state:paused}
+@keyframes dkpulse{0%,100%{box-shadow:0 0 0 0 rgba(255,255,255,.25)}50%{box-shadow:0 0 0 5px rgba(255,255,255,0)}}
+.say{margin-top:7px;font-size:.9rem;color:var(--dim)}
+.sw{text-align:center;padding:20px 0 8px}
+.sbtn{font-family:'Baloo 2';font-size:1.02rem;font-weight:700;color:#fff;background:linear-gradient(135deg,var(--ground2),var(--capy-d));border:3px solid var(--ink);
+ padding:13px 34px;border-radius:26px;cursor:pointer;transition:.15s;box-shadow:5px 5px 0 var(--ink)}
+.sbtn:hover{transform:translate(2px,2px);box-shadow:3px 3px 0 var(--ink)}
+.ov{display:none;position:fixed;inset:0;z-index:100;background:rgba(46,36,16,.68);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:16px}
+.ov.on{display:flex}
+.mb{position:relative;background:var(--cream);border:3px solid var(--ink);border-radius:24px;padding:26px 28px;max-width:460px;width:100%;
+ text-align:center;box-shadow:7px 7px 0 var(--capy);animation:popin .3s ease}
+@keyframes popin{from{transform:scale(.92);opacity:0}to{transform:scale(1);opacity:1}}
+.mb h2{font-family:'Baloo 2';font-size:1.18rem;font-weight:700;color:var(--ground2);margin-bottom:14px}
+.mb input{width:100%;font-family:'Nunito';font-size:1rem;font-weight:700;padding:12px 14px;background:#fff;
+ border:2.5px solid #ECE0C4;border-radius:14px;color:var(--ink);text-align:center;outline:none;margin-bottom:10px}
+.mb input:focus{border-color:var(--capy)}
+.err{color:var(--bad);font-size:.8rem;font-weight:800;margin-bottom:8px;display:none}
+.err.show{display:block}
+.rscore{font-family:'Baloo 2';font-size:2.3rem;color:var(--ground2);line-height:1;margin:6px 0}
+.rs10{font-size:1rem;font-weight:800;color:var(--ink);margin-bottom:9px}
+.rgif{width:190px;margin:10px auto;display:block;border:3px solid var(--ink);box-shadow:4px 4px 0 var(--river);border-radius:12px;min-height:120px;background:var(--sky2);overflow:hidden}
+.rcmt{font-size:.95rem;line-height:1.75;background:#FFF6DC;border:2.5px dashed #ECE0C4;border-radius:14px;padding:12px 14px;margin:12px 0}
+.bcl{font-family:'Nunito';font-size:.85rem;font-weight:800;background:transparent;border:2.5px solid #ECE0C4;color:var(--ink);padding:10px 24px;border-radius:14px;cursor:pointer}
+.cn{position:fixed;top:-16px;z-index:200;pointer-events:none;animation:cf 2.4s forwards}
+@keyframes cf{0%{transform:translateY(0) rotate(0);opacity:1}100%{transform:translateY(108vh) rotate(700deg);opacity:0}}
+.foot{text-align:center;margin:26px auto 12px;font-size:.9rem;color:#2E2410;font-weight:800;line-height:1.7}
+</style>
+</head>
+<body>
+<div class="fl" id="fl"></div>
+<div id="bank">
+ <div class="hill"></div>
+ <div class="grass"></div>
+ <div class="river"><div class="shimmer"></div></div>
+ <div id="critterbox"></div>
+</div>
+<div class="note"><div class="in">
+ <span class="tg">🐻 MS NHẮN</span>
+ <span class="tx" id="msTx">Chào con lớp 6 của cô! Đọc kỹ bài trước khi làm câu hỏi nhé.</span>
+</div></div>
+<header>
+ <div>
+  <h1>🐻 Exercise 14: Phu Quoc &amp; Fansipan — Unit 5</h1>
+  <div class="by">👩‍🏫 Giáo viên tạo: Ms. Chí Nên &nbsp;·&nbsp; ☎️ 0852639652</div>
+  <div class="sub">8 câu sắp xếp câu vào đúng chỗ trống · Có nút mở dịch từng đoạn và giải thích chi tiết từng câu</div>
+ </div>
+ <div class="gauge"><div class="num" id="lv">0/8</div><div class="lbl">Điểm</div></div>
+</header>
+<div class="main">
+<div class="lp">
+ <div class="slbl">📖 Bài đọc</div>
+
+ <div class="pc">
+  <div class="ptitle">🥥 Part 1 — Phu Quoc Island</div>
+  <div class="paragraph">Phu Quoc Island is a beautiful place in Vietnam. <span class="blk">(1)____</span> The island is famous for its fresh seafood, especially delicious fish. <span class="blk">(2)____</span> Phu Quoc is a peaceful and relaxing place, perfect for sunbathing and swimming. <span class="blk">(3)____</span> You cannot hear the noise of the busy city here. <span class="blk">(4)____</span></div>
+  <button class="btr" onclick="tv('t1')">Mở dịch đoạn này 🌟</button>
+  <div class="tv" id="t1">Đảo Phú Quốc là một địa điểm tuyệt đẹp ở Việt Nam. (1) Nơi đây có những bãi biển đẹp với biển xanh và cát trắng. Hòn đảo nổi tiếng với hải sản tươi sống, đặc biệt là các loại cá thơm ngon. (2) Trên đảo cũng có rất nhiều cây dừa và bạn có thể thưởng thức nước cốt dừa. Phú Quốc là một nơi thanh bình và thư giãn, hoàn hảo để tắm nắng và bơi lội. (3) Bạn cũng có thể đi lặn để ngắm những loài cá đầy màu sắc. Bạn không thể nghe thấy tiếng ồn ào của thành phố bận rộn ở đây. (4) Đây là một nơi tuyệt vời để đến thăm cùng gia đình vào kỳ nghỉ của bạn.</div>
+
+  <div class="ptitle">⛰️ Part 2 — Mount Fansipan</div>
+  <div class="paragraph">Mount Fansipan is the highest mountain in Viet Nam. <span class="blk">(1)____</span> The height of the mountain is 3,147.3 metres. People can reach the mountain by going hiking or by cable car. Fansipan is a famous destination for those who love travelling. <span class="blk">(2)____</span> There are about more than 2000 plant species there. Besides, people can enjoy wonderful scenery. <span class="blk">(3)____</span> The journey to the top can be dangerous and tiring, but it is worth it. <span class="blk">(4)____</span></div>
+  <button class="btr" onclick="tv('t2')">Mở dịch đoạn này 🌟</button>
+  <div class="tv" id="t2">Núi Fansipan là ngọn núi cao nhất ở Việt Nam. (1) Nó nằm ở tỉnh Lào Cai. Chiều cao của ngọn núi là 3.147,3 mét. Mọi người có thể lên núi bằng cách đi bộ đường dài hoặc đi cáp treo. Fansipan là một điểm đến nổi tiếng cho những ai yêu thích du lịch. (2) Khi đến đó, du khách có thể khám phá nhiều loại thực vật và động vật khác nhau. Có khoảng hơn 2000 loài thực vật ở đó. Bên cạnh đó, mọi người có thể thưởng thức phong cảnh tuyệt vời. (3) Thật tuyệt vời khi được ngắm nhìn những phong cảnh đẹp, núi non và thung lũng từ trên đỉnh và hít thở không khí trong lành. Hành trình lên đỉnh có thể nguy hiểm và mệt mỏi, nhưng nó hoàn toàn xứng đáng. (4) Fansipan là một nơi tuyệt vời để có được những trải nghiệm thú vị và tận hưởng thiên nhiên.</div>
+
+  <div class="gl"><h3>📚 Glossary — Từ vựng cần nhớ</h3>
+   <table class="gtb"><tr><th>Vocabulary</th><th>POS</th><th>IPA</th><th>Meaning</th></tr>
+    <tr><td class="gw">peaceful</td><td class="gp">adj</td><td class="gi">/ˈpiːsfl/</td><td>thanh bình, yên bình</td></tr>
+    <tr><td class="gw">sunbathing</td><td class="gp">n</td><td class="gi">/ˈsʌnbeɪðɪŋ/</td><td>tắm nắng</td></tr>
+    <tr><td class="gw">destination</td><td class="gp">n</td><td class="gi">/ˌdestɪˈneɪʃn/</td><td>điểm đến</td></tr>
+    <tr><td class="gw">cable car</td><td class="gp">n</td><td class="gi">/ˈkeɪbl kɑːr/</td><td>cáp treo</td></tr>
+    <tr><td class="gw">species</td><td class="gp">n</td><td class="gi">/ˈspiːʃiːz/</td><td>loài (động/thực vật)</td></tr>
+    <tr><td class="gw">scenery</td><td class="gp">n</td><td class="gi">/ˈsiːnəri/</td><td>phong cảnh</td></tr>
+    <tr><td class="gw">valleys</td><td class="gp">n</td><td class="gi">/ˈvæliz/</td><td>thung lũng</td></tr>
+    <tr><td class="gw">breathe</td><td class="gp">v</td><td class="gi">/briːð/</td><td>hít thở</td></tr>
+   </table>
+  </div>
+ </div>
+</div>
+
+<div class="rp">
+ <div class="slbl">🎯 8 câu hỏi</div>
+ <div id="app"></div>
+ <div class="sw"><button class="sbtn" onclick="openName()">🎯 NỘP BÀI TÍNH ĐIỂM &amp; XEM KẾT QUẢ</button></div>
+</div>
+</div>
+
+<div class="foot">🐻 Made with love — Ms. Chí Nên · ☎️ 0852639652</div>
+
+<div class="ov" id="nameOv"><div class="mb">
+ <h2>🏆 Nhập tên để nộp bài</h2><input id="nameIn" placeholder="Họ và tên học sinh">
+ <div class="err" id="nameErr"></div><button onclick="grade()" style="font-family:'Baloo 2';font-weight:700;color:#fff;background:var(--good);border:2px solid var(--ink);border-radius:12px;padding:10px 22px;cursor:pointer">Nộp bài ➜</button>
+</div></div>
+<div class="ov" id="scoreOv"><div class="mb">
+ <h2 id="hi"></h2><div class="rscore" id="scoreRaw"></div><div class="rs10" id="score10"></div>
+ <div class="rgif" id="gifbox"></div><div class="rcmt" id="comment"></div>
+ <button class="bcl" onclick="closeR()">Đóng</button>
+</div></div>
+
+<script>
+(function(){var box=document.getElementById('fl'),leaves=['🍃','🍂','🌿'],h='';
+ for(var i=0;i<14;i++){var dur=(10+Math.random()*10).toFixed(1),delay=(-(Math.random()*16)).toFixed(1),left=Math.random()*98;
+  h+='<span class="leaf" style="left:'+left+'%;animation-duration:'+dur+'s;animation-delay:'+delay+'s">'+leaves[i%3]+'</span>';}
+ box.innerHTML=h})();
+(function(){var box=document.getElementById('critterbox'),h='',n=6;
+ for(var i=0;i<n;i++){
+  var isBear=(i%3===2),dur=(20+Math.random()*12).toFixed(1),delay=(-(Math.random()*24)).toFixed(1),bottom=48+Math.random()*30,scale=.7+Math.random()*.5;
+  if(isBear){
+   h+='<div class="bear" style="bottom:'+bottom+'px;transform:scale('+scale.toFixed(2)+');animation-duration:'+dur+'s;animation-delay:'+delay+'s">'+
+    '<div class="body"></div><div class="head"></div><div class="ear l"></div><div class="ear r"></div><div class="muzzle"></div><div class="nose"></div>'+
+    '<div class="leg fl"></div><div class="leg fr"></div><div class="leg bl"></div><div class="leg br"></div></div>';
+  }else{
+   h+='<div class="capy" style="bottom:'+bottom+'px;transform:scale('+scale.toFixed(2)+');animation-duration:'+dur+'s;animation-delay:'+delay+'s">'+
+    (i%2===0?'<span class="bird">🐦</span>':'')+
+    '<div class="body"></div><div class="head"></div><div class="ear l"></div><div class="ear r"></div><div class="nose"></div>'+
+    '<div class="leg fl"></div><div class="leg fr"></div><div class="leg bl"></div><div class="leg br"></div></div>';
+  }
+ }
+ box.innerHTML=h})();
+
+var AC=null;
+function ac(){if(!AC){try{AC=new (window.AudioContext||window.webkitAudioContext)()}catch(e){}}if(AC&&AC.state==='suspended')AC.resume();return AC}
+function ding(){var c=ac();if(!c)return;var t=c.currentTime;[880,1174.7,1567.9].forEach(function(f,i){var o=c.createOscillator(),g=c.createGain();o.type='sine';o.frequency.value=f;o.connect(g);g.connect(c.destination);var s=t+i*0.09;g.gain.setValueAtTime(0.0001,s);g.gain.exponentialRampToValueAtTime(.22,s+.02);g.gain.exponentialRampToValueAtTime(.0001,s+.34);o.start(s);o.stop(s+.36)})}
+var DUCK_URL='https://hoctienganhcungcoMs. Chí Nên.github.io/homework/%E1%BA%A2nh_File%20nghe/Sound/Ti%E1%BA%BFng%20V%E1%BB%8Bt%20k%C3%AAu%20meme%20mp3.mp3';
+function buzz(){try{var a=new Audio(DUCK_URL);a.volume=.75;a.play().catch(function(){})}catch(e){}}
+function conf(){var cs=['#9C7A4E','#6B4423','#C9995C','#5FA0B8','#FFCE8A'];
+ for(var i=0;i<60;i++){var d=document.createElement('div');d.className='cn';
+  d.style.cssText='left:'+(Math.random()*100)+'vw;width:9px;height:14px;background:'+cs[i%5]+';opacity:.9';
+  document.body.appendChild(d);(function(d){setTimeout(function(){d.remove()},2500)})(d)}}
+function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
+function tv(id){var el=document.getElementById(id);el.classList.toggle('open');
+ var btn=el.previousElementSibling;btn.textContent=el.classList.contains('open')?'Ẩn bản dịch 🙈':'Mở dịch đoạn này 🌟'}
+
+function OPT(w,pos,ipa,vi,ok){return {w:w,pos:pos||'',ipa:ipa||'',vi:vi,ok:ok?1:0}}
+function grid2(opts){
+ return '<div class="grid2">'+opts.map(function(o){
+  var cls=o.ok?'hl-green':'p-word';
+  var pos=o.pos?' <span class="wt">'+o.pos+'</span>':'';
+  var ipa=o.ipa?' <span class="p-phonetic">/'+o.ipa+'/</span>':'';
+  return '<div><span class="'+cls+'">'+o.w+'</span>'+pos+ipa+' = <span class="p-mean">'+o.vi+'</span></div>';
+ }).join('')+'</div>';
+}
+var hxI=0;
+function ln(html){
+ var cls='hx'+(hxI++%6),qeI=0;
+ html=html.replace(/"([^"]+)"/g,function(m,p1){return '<span class="qe'+(qeI++%6)+'">"'+p1+'"</span>'});
+ return '<span class="p-grammar '+cls+'">▸ '+html+'</span>';
+}
+function why(lines){return lines.map(ln).join('<br>')}
+function bad(lines){return lines.map(ln).join('<br>')}
+function render(q){
+ hxI=0;
+ var html='<div class="vnt">💬 Dịch: '+q.vnt+'</div><ol style="margin:0;padding-left:22px">'+
+  '<li style="margin:10px 0">Phân tích đáp án:'+grid2(q.opts)+'</li>'+
+  '<li style="margin:10px 0"><span class="hl-green">✅ TẠI SAO ĐÚNG?</span><br>'+why(q.why)+'</li>'+
+  '<li style="margin:10px 0"><span class="hl-red">❌ TẠI SAO SAI?</span><br>'+bad(q.bad)+'</li></ol>'+
+  '<div class="frame">🔍 <i>'+q.ev+'</i><br>👉 <span class="p-mean">'+q.evvi+'</span></div>';
+ if(q.dict&&q.dict.length){
+  html+='<div class="dk"><b>🔊 Tra từ điển Cambridge:</b><br>Con bấm vào đây để nghe phát âm chuẩn và đọc theo cho hay nhé:'+
+   '<div class="dict">'+q.dict.map(DICT).join('')+'</div>'+
+   '<div class="say">👉 Nếu trang chưa hiện đúng từ, con gõ từ đó vào ô tìm kiếm, bấm loa 🔊 nghe và đọc theo.</div></div>';
+ }
+ return html;
+}
+function DICT(w){
+ var slug=w.trim().toLowerCase().replace(/\s+/g,'-');
+ return '<a href="https://dictionary.cambridge.org/vi/dictionary/english/'+slug+'" target="_blank" rel="noopener">🔊 Cambridge · '+w+'</a>';
+}
+
+var QUESTIONS=[
+{id:1,text:'Phu Quoc Passage - Blank (1):',correct:'It has beautiful beaches with blue sea and white sand.',
+ options:['It\'s a great place to visit with your family on your holiday.','It has beautiful beaches with blue sea and white sand.','There are also many coconut trees on the island, and you can enjoy coconut milk.','You can also go snorkeling to see colourful fish.'],
+ opts:[OPT('It\'s a great place to visit with your family on your holiday.','','','Đó là một nơi tuyệt vời để đi cùng gia đình vào kỳ nghỉ — câu kết luận, hợp với cuối bài',0),OPT('It has beautiful beaches with blue sea and white sand.','','','Nó có những bãi biển tuyệt đẹp với biển xanh và cát trắng',1),OPT('There are also many coconut trees on the island, and you can enjoy coconut milk.','','','Ngoài ra còn có nhiều cây dừa trên đảo — chứa từ "also", phải đứng sau khi đã liệt kê thứ khác',0),OPT('You can also go snorkeling to see colourful fish.','','','Bạn cũng có thể đi lặn — chứa từ "also", phải đứng sau khi đã liệt kê thứ khác',0)],
+ vnt:'Điền vào chỗ trống (1) trong đoạn văn Phú Quốc.',
+ why:['Câu trước đó là "Phu Quoc Island is a beautiful place in Vietnam." (Phú Quốc là một nơi tuyệt đẹp). Việc miêu tả bãi biển, cát trắng xanh rất phù hợp để tiếp nối ý "đẹp" ngay phần mở bài giới thiệu khái quát.'],
+ bad:['Câu "It\'s a great place to visit with your family" mang tính chất kết luận tóm gọn, hợp với cuối bài, không phải câu thứ 2.','Các câu chứa từ "also" (cũng có) như cây dừa hay lặn biển phải đứng sau khi đã liệt kê một vài thứ khác, không thể dùng ngay câu thứ 2.'],
+ ev:'Phu Quoc Island is a beautiful place in Vietnam. It has beautiful beaches with blue sea and white sand.',
+ evvi:'Đảo Phú Quốc là một địa điểm tuyệt đẹp ở Việt Nam. Nơi đây có những bãi biển đẹp với biển xanh và cát trắng.',
+ dict:['beaches']},
+{id:2,text:'Phu Quoc Passage - Blank (2):',correct:'There are also many coconut trees on the island, and you can enjoy coconut milk.',
+ options:['It\'s a great place to visit with your family on your holiday.','It has beautiful beaches with blue sea and white sand.','There are also many coconut trees on the island, and you can enjoy coconut milk.','You can also go snorkeling to see colourful fish.'],
+ opts:[OPT('It\'s a great place to visit with your family on your holiday.','','','câu kết luận, hợp với cuối bài',0),OPT('It has beautiful beaches with blue sea and white sand.','','','câu mở đầu miêu tả bãi biển, đã dùng ở blank (1)',0),OPT('There are also many coconut trees on the island, and you can enjoy coconut milk.','','','Ngoài ra còn có nhiều cây dừa trên đảo, và bạn có thể thưởng thức nước dừa',1),OPT('You can also go snorkeling to see colourful fish.','','','phù hợp hơn khi đặt cạnh câu về bơi lội/tắm nắng ở blank (3)',0)],
+ vnt:'Điền vào chỗ trống (2) trong đoạn văn Phú Quốc.',
+ why:['Câu trước đó nói về đồ ăn: "famous for its fresh seafood, especially delicious fish." Tiếp nối mạch nói về ẩm thực/đặc sản, việc liệt kê thêm đồ uống (nước dừa) kèm từ nối "also" tạo ra sự mạch lạc (Coherence) cực kỳ chuẩn.'],
+ bad:['Câu nói về "snorkeling" (lặn biển) sẽ phù hợp hơn nếu đặt cạnh cụm từ về bơi lội tắm nắng ở blank (3), không phải ngay sau câu về hải sản.'],
+ ev:'The island is famous for its fresh seafood, especially delicious fish. There are also many coconut trees on the island, and you can enjoy coconut milk.',
+ evvi:'Hòn đảo nổi tiếng với hải sản tươi sống, đặc biệt là các loại cá thơm ngon. Ngoài ra còn có nhiều cây dừa trên đảo, và bạn có thể thưởng thức nước cốt dừa.',
+ dict:['coconut']},
+{id:3,text:'Phu Quoc Passage - Blank (3):',correct:'You can also go snorkeling to see colourful fish.',
+ options:['It\'s a great place to visit with your family on your holiday.','It has beautiful beaches with blue sea and white sand.','There are also many coconut trees on the island, and you can enjoy coconut milk.','You can also go snorkeling to see colourful fish.'],
+ opts:[OPT('It\'s a great place to visit with your family on your holiday.','','','câu kết luận, hợp với cuối bài',0),OPT('It has beautiful beaches with blue sea and white sand.','','','đã dùng ở blank (1)',0),OPT('There are also many coconut trees on the island, and you can enjoy coconut milk.','','','đã dùng ở blank (2)',0),OPT('You can also go snorkeling to see colourful fish.','','','Bạn cũng có thể đi lặn để ngắm cá đầy màu sắc',1)],
+ vnt:'Điền vào chỗ trống (3) trong đoạn văn Phú Quốc.',
+ why:['Câu trước là "perfect for sunbathing and swimming" (hoàn hảo để tắm nắng và bơi lội). Việc tiếp tục bổ sung thêm một môn thể thao dưới nước nữa (snorkeling) bằng từ nối "also" là rất logic.'],
+ bad:['Các câu còn lại đã được dùng ở các chỗ trống khác hoặc sai ngữ cảnh đoạn giữa văn bản.'],
+ ev:'Phu Quoc is a peaceful and relaxing place, perfect for sunbathing and swimming. You can also go snorkeling to see colourful fish.',
+ evvi:'Phú Quốc là một nơi thanh bình và thư giãn, hoàn hảo để tắm nắng và bơi lội. Bạn cũng có thể đi lặn để ngắm những loài cá đầy màu sắc.',
+ dict:['colourful']},
+{id:4,text:'Phu Quoc Passage - Blank (4):',correct:'It\'s a great place to visit with your family on your holiday.',
+ options:['It\'s a great place to visit with your family on your holiday.','It has beautiful beaches with blue sea and white sand.','There are also many coconut trees on the island, and you can enjoy coconut milk.','You can also go snorkeling to see colourful fish.'],
+ opts:[OPT('It\'s a great place to visit with your family on your holiday.','','','Đó là một nơi tuyệt vời để đi cùng gia đình vào kỳ nghỉ',1),OPT('It has beautiful beaches with blue sea and white sand.','','','đã dùng ở blank (1)',0),OPT('There are also many coconut trees on the island, and you can enjoy coconut milk.','','','đã dùng ở blank (2)',0),OPT('You can also go snorkeling to see colourful fish.','','','đã dùng ở blank (3)',0)],
+ vnt:'Điền vào chỗ trống (4) trong đoạn văn Phú Quốc.',
+ why:['Vị trí số (4) nằm ở cuối bài văn. Đây là câu chốt mang tính chất tóm lược lại giá trị của Phú Quốc (một nơi tuyệt vời để du lịch).'],
+ bad:['3 câu kia mang tính chất liệt kê chi tiết (đặc điểm bãi biển, cây dừa, lặn ngắm cá) dùng cho phần thân bài, không phù hợp làm câu kết.'],
+ ev:'You cannot hear the noise of the busy city here. It\'s a great place to visit with your family on your holiday.',
+ evvi:'Bạn không thể nghe thấy tiếng ồn ào của thành phố bận rộn ở đây. Đây là một nơi tuyệt vời để đến thăm cùng gia đình vào kỳ nghỉ của bạn.',
+ dict:['holiday']},
+{id:5,text:'Mount Fansipan Passage - Blank (1):',correct:'It is located in Lao Cai Province.',
+ options:['It is amazing to see beautiful landscapes, mountains and valleys from the top and breathe fresh air.','It is located in Lao Cai Province.','Fansipan is a great place to get interesting experiences and enjoy nature.','When going there, tourists can explore different types of plants and animals.'],
+ opts:[OPT('It is amazing to see beautiful landscapes, mountains and valleys from the top and breathe fresh air.','','','Thật tuyệt vời khi ngắm phong cảnh, núi non và thung lũng từ trên đỉnh — hợp với blank (3), sau câu nói về "scenery"',0),OPT('It is located in Lao Cai Province.','','','Nó nằm ở tỉnh Lào Cai',1),OPT('Fansipan is a great place to get interesting experiences and enjoy nature.','','','Fansipan là nơi tuyệt vời để có trải nghiệm — câu kết luận, hợp cuối bài',0),OPT('When going there, tourists can explore different types of plants and animals.','','','Khi đến đó, du khách có thể khám phá thực vật/động vật — hợp với blank (2), trước câu nói về 2000 loài thực vật',0)],
+ vnt:'Điền vào chỗ trống (1) trong đoạn văn Fansipan.',
+ why:['Câu trước giới thiệu "Mount Fansipan is the highest mountain in Viet Nam." Thông tin theo sau tự nhiên nhất chính là vị trí địa lý của nó (tỉnh Lào Cai).'],
+ bad:['Đang giới thiệu khái quát chưa thể nhảy ngay vào chuyện "khám phá động thực vật" hay "ngắm cảnh từ trên đỉnh" — các câu đó phù hợp hơn ở vị trí sau.'],
+ ev:'Mount Fansipan is the highest mountain in Viet Nam. It is located in Lao Cai Province.',
+ evvi:'Núi Fansipan là ngọn núi cao nhất ở Việt Nam. Nó nằm ở tỉnh Lào Cai.',
+ dict:['province']},
+{id:6,text:'Mount Fansipan Passage - Blank (2):',correct:'When going there, tourists can explore different types of plants and animals.',
+ options:['It is amazing to see beautiful landscapes, mountains and valleys from the top and breathe fresh air.','It is located in Lao Cai Province.','Fansipan is a great place to get interesting experiences and enjoy nature.','When going there, tourists can explore different types of plants and animals.'],
+ opts:[OPT('It is amazing to see beautiful landscapes, mountains and valleys from the top and breathe fresh air.','','','hợp với blank (3)',0),OPT('It is located in Lao Cai Province.','','','đã dùng ở blank (1)',0),OPT('Fansipan is a great place to get interesting experiences and enjoy nature.','','','câu kết luận, hợp cuối bài',0),OPT('When going there, tourists can explore different types of plants and animals.','','','Khi đến đó, du khách có thể khám phá nhiều loại thực vật và động vật khác nhau',1)],
+ vnt:'Điền vào chỗ trống (2) trong đoạn văn Fansipan.',
+ why:['Chú ý câu ngay phía sau chỗ trống (2) là: "There are about more than 2000 plant species there." (Có khoảng hơn 2000 loài thực vật ở đó). Việc chọn câu có chứa keyword "plants and animals" để nối mạch là sự liên kết hoàn hảo.'],
+ bad:['Các câu miêu tả cảnh từ trên đỉnh núi không ăn nhập với số liệu 2000 loài thực vật ngay sau đó.'],
+ ev:'Fansipan is a famous destination for those who love travelling. When going there, tourists can explore different types of plants and animals. There are about more than 2000 plant species there.',
+ evvi:'Fansipan là một điểm đến nổi tiếng cho những ai yêu thích du lịch. Khi đến đó, du khách có thể khám phá nhiều loại thực vật và động vật khác nhau. Có khoảng hơn 2000 loài thực vật ở đó.',
+ dict:['explore']},
+{id:7,text:'Mount Fansipan Passage - Blank (3):',correct:'It is amazing to see beautiful landscapes, mountains and valleys from the top and breathe fresh air.',
+ options:['It is amazing to see beautiful landscapes, mountains and valleys from the top and breathe fresh air.','It is located in Lao Cai Province.','Fansipan is a great place to get interesting experiences and enjoy nature.','When going there, tourists can explore different types of plants and animals.'],
+ opts:[OPT('It is amazing to see beautiful landscapes, mountains and valleys from the top and breathe fresh air.','','','Thật tuyệt vời khi ngắm phong cảnh, núi non, thung lũng và hít thở không khí trong lành',1),OPT('It is located in Lao Cai Province.','','','đã dùng ở blank (1)',0),OPT('Fansipan is a great place to get interesting experiences and enjoy nature.','','','câu kết luận, hợp cuối bài',0),OPT('When going there, tourists can explore different types of plants and animals.','','','đã dùng ở blank (2)',0)],
+ vnt:'Điền vào chỗ trống (3) trong đoạn văn Fansipan.',
+ why:['Câu ngay trước đó là: "Besides, people can enjoy wonderful scenery." (Bên cạnh đó, mọi người có thể thưởng thức phong cảnh tuyệt vời). Câu đáp án đóng vai trò làm rõ thêm "scenery" đó là gì: đó là landscapes, mountains and valleys.'],
+ bad:['Các câu còn lại đã được dùng ở các chỗ trống khác hoặc không khớp với mạch văn miêu tả phong cảnh.'],
+ ev:'Besides, people can enjoy wonderful scenery. It is amazing to see beautiful landscapes, mountains and valleys from the top and breathe fresh air.',
+ evvi:'Bên cạnh đó, mọi người có thể thưởng thức phong cảnh tuyệt vời. Thật tuyệt vời khi được ngắm nhìn những phong cảnh đẹp, núi non và thung lũng từ trên đỉnh và hít thở không khí trong lành.',
+ dict:['valleys','breathe']},
+{id:8,text:'Mount Fansipan Passage - Blank (4):',correct:'Fansipan is a great place to get interesting experiences and enjoy nature.',
+ options:['It is amazing to see beautiful landscapes, mountains and valleys from the top and breathe fresh air.','It is located in Lao Cai Province.','Fansipan is a great place to get interesting experiences and enjoy nature.','When going there, tourists can explore different types of plants and animals.'],
+ opts:[OPT('It is amazing to see beautiful landscapes, mountains and valleys from the top and breathe fresh air.','','','đã dùng ở blank (3)',0),OPT('It is located in Lao Cai Province.','','','đã dùng ở blank (1)',0),OPT('Fansipan is a great place to get interesting experiences and enjoy nature.','','','Fansipan là một nơi tuyệt vời để có được những trải nghiệm thú vị và tận hưởng thiên nhiên',1),OPT('When going there, tourists can explore different types of plants and animals.','','','đã dùng ở blank (2)',0)],
+ vnt:'Điền vào chỗ trống (4) trong đoạn văn Fansipan.',
+ why:['Nằm ở cuối bài, sau khi trải qua hành trình nguy hiểm nhưng "worth it" (xứng đáng), đây là lời kết luận chốt lại khẳng định giá trị của chuyến đi.'],
+ bad:['Các câu còn lại chứa thông tin chi tiết (Lào Cai, cảnh quan, thực vật) chỉ phù hợp cho phần thân bài, không phù hợp làm câu kết.'],
+ ev:'The journey to the top can be dangerous and tiring, but it is worth it. Fansipan is a great place to get interesting experiences and enjoy nature.',
+ evvi:'Hành trình lên đỉnh có thể nguy hiểm và mệt mỏi, nhưng nó hoàn toàn xứng đáng. Fansipan là một nơi tuyệt vời để có được những trải nghiệm thú vị và tận hưởng thiên nhiên.',
+ dict:['experience']}
+];
+
+var TOTAL=QUESTIONS.length,score=0,done={},MAP={};
+var app=document.getElementById('app');
+QUESTIONS.forEach(function(q){
+ var so=shuffle(q.options);
+ MAP[q.id]=so;
+ var card=document.createElement('div'); card.className='q'; card.id='c'+q.id;
+ card.innerHTML='<div class="qt"><span class="qn">'+q.id+'</span>'+q.text+'</div>'+
+  '<div class="og" id="o'+q.id+'">'+so.map(function(o,i){return '<button class="ob" onclick="pick('+q.id+','+i+')">'+o+'</button>'}).join('')+'</div>'+
+  '<div class="ex" id="e'+q.id+'"></div>';
+ app.appendChild(card);
+});
+document.getElementById('lv').textContent='0/'+TOTAL;
+
+function pick(qid,i){
+ if(done[qid]) return;
+ done[qid]=true;
+ var q=QUESTIONS.find(function(x){return x.id===qid});
+ var so=MAP[qid],bs=document.getElementById('o'+qid).children;
+ var ok=so[i]===q.correct;
+ for(var k=0;k<bs.length;k++){bs[k].classList.add('dn');
+  if(so[k]===q.correct)bs[k].classList.add('ok');else if(k===i)bs[k].classList.add('no')}
+ document.getElementById('e'+qid).innerHTML=render(q);
+ document.getElementById('e'+qid).classList.add('on');
+ if(ok){score++;ding();conf()}
+ else{buzz();var c=document.getElementById('c'+qid);c.classList.add('shk');setTimeout(function(){c.classList.remove('shk')},430)}
+ document.getElementById('lv').textContent=score+'/'+TOTAL;
+}
+function openName(){document.getElementById('nameOv').classList.add('on');setTimeout(function(){document.getElementById('nameIn').focus()},150)}
+document.getElementById('nameIn').addEventListener('keydown',function(e){if(e.key==='Enter')grade()});
+function grade(){
+ var i=document.getElementById('nameIn'),n=i.value.trim();
+ if(!n){document.getElementById('nameErr').textContent='⚠️ Con chưa nhập tên kìa! Nhập tên rồi mới xem điểm được nha.';document.getElementById('nameErr').classList.add('show');i.focus();return}
+ document.getElementById('nameErr').classList.remove('show');
+ document.getElementById('nameOv').classList.remove('on');
+ var pct=score/TOTAL,ten=(pct*10).toFixed(2),m,gif;
+ document.getElementById('hi').textContent='🎉 Chúc mừng, '+n+'!';
+ document.getElementById('scoreRaw').textContent=score+'/'+TOTAL+' câu đúng';
+ document.getElementById('score10').textContent='⭐ '+ten+'/10 điểm';
+ if(pct===1){m='Xuất sắc! Con đúng trọn vẹn cả '+TOTAL+' câu — Cô Chí Nên cực kỳ tự hào về con! 🌟 ☎️ 0852639652 để đăng ký khoá học cùng cô nhé.';gif='https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif'}
+ else if(pct>=.8){m='Rất giỏi! Chỉ cần cẩn thận thêm chút xíu là hoàn hảo rồi! 👏 ☎️ 0852639652 để đăng ký khoá học cùng cô.';gif='https://media.giphy.com/media/111ebonMs90YLu/giphy.gif'}
+ else if(pct>=.6){m='Khá tốt! Con đang tiến bộ — đọc kỹ phần giải thích để hiểu sâu hơn nhé! 💪 ☎️ 0852639652 để đăng ký khoá học cùng cô.';gif='https://media.giphy.com/media/111ebonMs90YLu/giphy.gif'}
+ else{m='Đừng nản nhé con ơi! Con đọc lại phần giải thích và làm lại. Cô tin con làm được! 💖 ☎️ 0852639652 để đăng ký khoá học cùng cô.';gif='https://media.giphy.com/media/d2lcHJTG5Tscg/giphy.gif'}
+ document.getElementById('comment').innerHTML='📝 <b>Lời phê của Ms. Chí Nên:</b><br>'+m;
+ var fb=pct>=.6?'🎊':'🤗';
+ var gb=document.getElementById('gifbox'); gb.innerHTML='';
+ var im=document.createElement('img'); im.src=gif; im.alt='reaction'; im.style.width='100%';
+ im.onerror=function(){gb.innerHTML='<div style="font-size:64px;display:flex;align-items:center;justify-content:center;height:120px">'+fb+'</div>'};
+ gb.appendChild(im);
+ document.getElementById('scoreOv').classList.add('on');
+ if(pct>=.6){var n2=0;var iv=setInterval(function(){conf();if(++n2>=4)clearInterval(iv)},350)}
+}
+function closeR(){document.getElementById('scoreOv').classList.remove('on')}
+
+var MSNH=[
+ '🐻 Chào con lớp 6 yêu quý của cô! Đọc kỹ hai đoạn trước khi làm câu hỏi nhé.',
+ '📖 Bên trái là bài đọc, bên phải là câu hỏi. Mỗi đoạn đều có nút mở bản dịch riêng.',
+ '🔍 Mỗi câu đều có Cambridge Dictionary để con luyện phát âm chuẩn — nhớ bấm nghe nhé!',
+ '😂 Chọn sai là chú vịt kêu quạc quạc đó nha — nghe vui mà nhớ bài lâu hơn!',
+ '🌱 Sai một câu không sao cả, đọc kỹ phần giải thích là con sẽ hiểu ngay thôi. Cô luôn tin con!',
+ '☎️ Cần cô hỗ trợ thêm bài vở, gọi/nhắn Cô Chí Nên: 0852639652 nhé con!'
+];
+(function(){var e=document.getElementById('msTx'),k=0;
+ setInterval(function(){k=(k+1)%MSNH.length;e.style.opacity=0;
+  setTimeout(function(){e.innerHTML=MSNH[k];e.style.opacity=1},250)},4200)})();
+</script>
+<script>/*devclean*/(function(){
+var ZW=/[\u00AD\u034F\u061C\u115F\u1160\u17B4\u17B5\u180E\u200B-\u200F\u202A-\u202E\u2060-\u206F\uFEFF]/g,
+    SP=/[\u00A0\u1680\u2000-\u200A\u2028\u2029\u202F\u205F\u3000\t]/g,
+    AP=/[\u2018\u2019\u201A\u201B\u2032\u2035\u02B9\u02BB\u02BC\u02BD\u02C8\u0060\u00B4\uFF07]/g,
+    DQ=/[\u201C\u201D\u201E\u201F\u2033\u2036\u00AB\u00BB\uFF02]/g,
+    DS=/[\u2010\u2011\u2012\u2212\uFE63\uFF0D]/g;
+function clean(v){if(!v)return v;var s=String(v);try{s=s.normalize('NFKC')}catch(e){}
+  return s.replace(ZW,'').replace(SP,' ').replace(AP,"'").replace(DQ,'"').replace(DS,'-').replace(/[\u0300-\u036f]/g,'').replace(/ {2,}/g,' ');}
+window.__devclean=clean;
+function fix(skip){var L=document.querySelectorAll('input:not([type]),input[type=text],input[type=search],textarea');
+  for(var i=0;i<L.length;i++){var el=L[i];if(el===skip||el.readOnly||el.disabled)continue;var v=el.value,c=clean(v);if(c!==v)el.value=c;}}
+['pointerdown','mousedown','touchstart','click','change','focusout'].forEach(function(t){document.addEventListener(t,function(e){fix(t==='focusout'||t==='change'?null:e.target)},true)});
+document.addEventListener('keydown',function(e){if(e.key==='Enter'||e.keyCode===13)fix(null)},true);
+})();</script>
+
+<script>
+// Auto-bypass password lock for MS Chi Nen
+(function() {
+    function unlock() {
+        var pw = document.getElementById('passwordModal') || document.getElementById('lockModal') || document.getElementById('pwModal');
+        if (pw) { pw.style.setProperty('display', 'none', 'important'); pw.style.setProperty('visibility', 'hidden', 'important'); }
+        var main = document.getElementById('mainContent') || document.getElementById('quizContainer');
+        if (main) { main.style.setProperty('display', 'block', 'important'); }
+        if (typeof initQuiz === 'function') { try { initQuiz(); } catch(e){} }
+        if (typeof createUnicorns === 'function') { try { createUnicorns(); } catch(e){} }
+    }
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', unlock);
+    } else {
+        unlock();
+    }
+})();
+</script>
+
+</body>
+</html>

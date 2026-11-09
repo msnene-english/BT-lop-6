@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎍 New Year Voyage Reading — Unit 6 | English 6 | Ms. Chí Nên</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+ --ink:#123544;--dim:#4C6A74;
+ --sky:#0FA9C2;--sky-d:#08707F;
+ --coral:#FF6B57;--coral-d:#C2412F;
+ --pink:#F0477F;--pink-d:#B01E55;
+ --sun:#FFB81C;--sun-d:#8F5F00;
+ --mint:#2DAA48;--mint-d:#17702B;
+ --lilac:#8B63F2;--lilac-d:#5532C2;
+ --card:#FFFFFF;--edge:#BFE9EE;
+ --good:#1B9C5A;--good-bg:#DDF7E6;
+ --bad:#E0503C;--bad-bg:#FFE6E0;
+ --line:#0E3B4A;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Nunito',sans-serif;color:var(--ink);min-height:100vh;overflow-x:hidden;
+ background:linear-gradient(180deg,#2EC4F1 0%,#69D6F5 30%,#A8EEF5 55%,#7FE3E0 74%,#2FC3CF 100%);background-attachment:fixed}
+/* ══ bầu trời: mặt trời cười, mây bông, hải âu ══ */
+#sky{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.sun{position:absolute;right:7vw;top:15vh;width:118px;height:118px}
+.sun .rays{position:absolute;inset:-34px;border-radius:50%;
+ background:repeating-conic-gradient(rgba(255,214,70,.55) 0 9deg,transparent 9deg 22.5deg);animation:spin 26s linear infinite;
+ -webkit-mask:radial-gradient(circle,transparent 52px,#000 54px,#000 88px,transparent 92px);mask:radial-gradient(circle,transparent 52px,#000 54px,#000 88px,transparent 92px)}
+.sun .disc{position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 38% 34%,#FFF8C8,#FFDA3D 50%,#FFA62B 92%);
+ box-shadow:0 0 0 8px rgba(255,218,61,.35),0 0 40px 10px rgba(255,200,60,.45)}
+.sun .eye{position:absolute;top:44px;width:11px;height:15px;border-radius:50%;background:#6B3A00;animation:blink 5s infinite}
+.sun .eye.l{left:36px}.sun .eye.r{right:36px}
+@keyframes blink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
+.sun .mouth{position:absolute;left:38px;top:62px;width:42px;height:22px;border:5px solid #6B3A00;border-top:none;border-radius:0 0 30px 30px}
+.sun .chk{position:absolute;top:66px;width:15px;height:9px;border-radius:50%;background:rgba(255,110,110,.55)}
+.sun .chk.l{left:18px}.sun .chk.r{right:18px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.cloud{position:absolute;left:0;width:120px;height:40px;border-radius:40px;background:#fff;opacity:.95;animation:cloud linear infinite;
+ box-shadow:0 6px 0 rgba(160,220,240,.45)}
+.cloud::before{content:'';position:absolute;left:18px;top:-26px;width:50px;height:50px;border-radius:50%;background:#fff}
+.cloud::after{content:'';position:absolute;left:54px;top:-38px;width:62px;height:62px;border-radius:50%;background:#fff}
+@keyframes cloud{0%{transform:translateX(-200px) scale(var(--s,1))}100%{transform:translateX(110vw) scale(var(--s,1))}}
+.gull{position:absolute;left:0;width:46px;height:20px;animation:gullFly linear infinite}
+.gull .gb{animation:gullBob 2.6s ease-in-out infinite alternate}
+.gull svg{width:46px;height:20px;overflow:visible;animation:flapG .5s ease-in-out infinite alternate;transform-origin:50% 60%}
+@keyframes gullFly{0%{transform:translateX(-80px)}100%{transform:translateX(108vw)}}
+@keyframes gullBob{from{transform:translateY(0)}to{transform:translateY(-16px)}}
+@keyframes flapG{from{transform:scaleY(1)}to{transform:scaleY(.45)}}
+/* ══ biển & đảo ══ */
+#ground{position:fixed;left:0;right:0;bottom:0;height:300px;z-index:1;pointer-events:none;overflow:hidden}
+.wv{position:absolute;left:0;width:calc(100% + 240px);background-repeat:repeat-x;background-size:240px 100%;animation:wave linear infinite}
+@keyframes wave{from{transform:translateX(0)}to{transform:translateX(-240px)}}
+.wv.w1{bottom:44px;height:46px;animation-duration:9s;opacity:.85}
+.wv.w2{bottom:26px;height:44px;animation-duration:6s;animation-direction:reverse}
+.wv.w3{bottom:10px;height:40px;animation-duration:4.5s}
+.seabed{position:absolute;left:0;right:0;bottom:0;height:52px;background:linear-gradient(180deg,#0FA3B8,#0A8BA0)}
+.sand{position:absolute;left:0;bottom:0;width:44vw;height:24px;border-radius:0 60px 0 0;background:linear-gradient(180deg,#FFE7A8,#F4CF7C);box-shadow:inset 0 3px 0 #FFF3CF}
+.shell{position:absolute;bottom:4px}
+.shell svg{display:block}
+.star{animation:starW 3s ease-in-out infinite alternate}
+@keyframes starW{from{transform:rotate(-10deg)}to{transform:rotate(12deg)}}
+/* đảo xanh */
+.isl{position:absolute;right:1vw;bottom:58px;width:330px;height:190px}
+.isl .mound{position:absolute;left:0;right:0;bottom:0;height:78px;border-radius:50% 50% 12px 12px/100% 100% 12px 12px;
+ background:linear-gradient(180deg,#5CD16B,#2E9E46 70%);box-shadow:inset 0 -14px 0 #F4D58A,inset 0 -18px 0 #E9C46A}
+.isl .road{position:absolute;left:40px;right:40px;bottom:34px;height:9px;border-radius:9px;background:#9AA6AE;border-top:2px solid #C9D3D8}
+.isl .road::after{content:'';position:absolute;left:6px;right:6px;top:3px;height:2px;background:repeating-linear-gradient(90deg,#fff 0 10px,transparent 10px 20px)}
+.ecar{position:absolute;left:44px;bottom:40px;width:46px;height:26px;animation:ecar 11s ease-in-out infinite}
+@keyframes ecar{0%{transform:translateX(0) scaleX(1)}46%{transform:translateX(196px) scaleX(1)}50%{transform:translateX(196px) scaleX(-1)}96%{transform:translateX(0) scaleX(-1)}100%{transform:translateX(0) scaleX(1)}}
+.palm{position:absolute;bottom:56px;transform-origin:50% 100%;animation:palmSw 4.5s ease-in-out infinite alternate}
+@keyframes palmSw{from{transform:rotate(-2.5deg)}to{transform:rotate(2.5deg)}}
+.hmk{position:absolute;left:62px;bottom:90px;width:78px;height:30px;transform-origin:50% 0;animation:hmk 2.8s ease-in-out infinite alternate}
+@keyframes hmk{from{transform:rotate(-5deg)}to{transform:rotate(5deg)}}
+.lh{position:absolute;right:26px;bottom:60px;width:34px;height:116px}
+.lh .tw{position:absolute;left:3px;right:3px;bottom:0;height:88px;clip-path:polygon(18% 0,82% 0,100% 100%,0 100%);
+ background:repeating-linear-gradient(180deg,#E9343B 0 16px,#FFFFFF 16px 30px)}
+.lh .gal{position:absolute;left:0;right:0;bottom:86px;height:6px;border-radius:3px;background:#0E3B4A}
+.lh .lamp{position:absolute;left:8px;right:8px;bottom:92px;height:14px;border-radius:3px;background:radial-gradient(circle,#FFF9C4,#FFD54F);box-shadow:0 0 16px 6px rgba(255,236,140,.85)}
+.lh .roof{position:absolute;left:5px;right:5px;bottom:106px;height:12px;clip-path:polygon(50% 0,100% 100%,0 100%);background:#E9343B}
+.lh .beam{position:absolute;left:17px;bottom:99px;width:190px;height:34px;margin-top:-17px;transform-origin:0 50%;
+ background:linear-gradient(90deg,rgba(255,248,190,.9),rgba(255,248,190,0));clip-path:polygon(0 42%,100% 0,100% 100%,0 58%);animation:beam 6s linear infinite}
+@keyframes beam{0%{transform:translateY(17px) rotate(0)}100%{transform:translateY(17px) rotate(360deg)}}
+.isl2{position:absolute;left:3vw;bottom:62px;width:150px;height:110px}
+.isl2 .mound{position:absolute;left:0;right:0;bottom:0;height:40px;border-radius:50% 50% 10px 10px/100% 100% 10px 10px;background:linear-gradient(180deg,#F8DFA0,#E9C46A)}
+/* thuyền cao tốc + vệt bọt */
+.boat{position:absolute;left:0;bottom:46px;animation:boat 20s linear infinite}
+@keyframes boat{0%{transform:translateX(-260px)}100%{transform:translateX(calc(100vw + 40px))}}
+.boat .bb{position:relative;animation:boatBob 1.1s ease-in-out infinite alternate}
+@keyframes boatBob{from{transform:translateY(0) rotate(-1.5deg)}to{transform:translateY(-5px) rotate(1.5deg)}}
+.boat svg{display:block;position:relative;z-index:2}
+.wake{position:absolute;right:120px;bottom:2px;width:190px;height:16px;border-radius:50% 0 0 50%;
+ background:radial-gradient(circle at 10px 8px,#fff 4px,transparent 5px) 0 0/22px 16px repeat-x,linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.95));animation:wake .5s linear infinite}
+@keyframes wake{from{background-position:0 0,0 0}to{background-position:-22px 0,0 0}}
+.spray{position:absolute;right:110px;bottom:8px;width:10px;height:10px;border-radius:50%;background:#fff;animation:spray .8s ease-out infinite}
+@keyframes spray{0%{opacity:1;transform:translate(0,0) scale(.6)}100%{opacity:0;transform:translate(-40px,-22px) scale(1.4)}}
+/* cá heo nhảy, rùa biển */
+.dol{position:absolute;bottom:20px;width:70px;height:70px}
+.dol .arm{position:absolute;left:0;top:0;width:70px;height:70px;transform-origin:35px 70px;animation:leap 4.6s ease-in-out infinite}
+.dol .arm svg{position:absolute;left:5px;top:-10px}
+@keyframes leap{0%{transform:rotate(-80deg);opacity:0}8%{opacity:1}50%{transform:rotate(0)}92%{opacity:1}100%{transform:rotate(80deg);opacity:0}}
+.turtle{position:absolute;left:0;bottom:6px;animation:turtle 38s linear infinite reverse}
+@keyframes turtle{0%{transform:translateX(-120px)}100%{transform:translateX(105vw)}}
+.turtle .fl{transform-origin:50% 0;animation:flip .9s ease-in-out infinite alternate}
+@keyframes flip{from{transform:rotate(-18deg)}to{transform:rotate(18deg)}}
+.bub{position:absolute;bottom:8px;width:8px;height:8px;border-radius:50%;border:2px solid rgba(255,255,255,.8);animation:bub 4s ease-in infinite}
+@keyframes bub{0%{opacity:0;transform:translateY(0)}20%{opacity:1}100%{opacity:0;transform:translateY(-46px)}}
+@media(max-width:820px){#ground{height:200px}.isl{transform:scale(.7);transform-origin:100% 100%}.isl2,.sun{display:none}}
+@media(prefers-reduced-motion:reduce){#sky *,#ground *{animation:none!important}}
+/* ── sticky note ── */
+.note{position:sticky;top:0;z-index:50;padding:6px 14px;text-align:center;
+ background:linear-gradient(90deg,#0891B2,#FF6B57 52%,#F59E0B);box-shadow:0 4px 0 var(--line)}
+.note .in{display:flex;align-items:center;gap:10px;max-width:1400px;margin:0 auto;justify-content:center}
+.note .tg{flex:none;background:#FFF6C9;color:#7A3E00;font-weight:900;font-size:.8rem;padding:3px 12px;border:3px solid #7A3E00;border-radius:999px;white-space:nowrap;box-shadow:2px 2px 0 #7A3E00}
+.note .tx{color:#fff;font-weight:800;font-size:.95rem;line-height:1.45;text-shadow:0 1px 4px rgba(0,0,0,.4);transition:opacity .25s}
+/* ── compact header ── */
+header{position:relative;z-index:10;max-width:1380px;margin:8px auto 6px;background:var(--card);
+ border:4px solid var(--line);border-radius:16px;box-shadow:5px 5px 0 #FF8A65;
+ padding:5px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:64px}
+header h1{font-family:'Baloo 2',cursive;font-size:clamp(1.05rem,1.8vw,1.35rem);font-weight:800;color:var(--sky-d);line-height:1.25;white-space:nowrap}
+header h1 .p1{font-family:'Baloo 2',cursive;font-size:.72rem;vertical-align:middle;background:#FF6B57;color:#fff;padding:1px 9px;margin-left:8px;border:3px solid var(--line);border-radius:999px;box-shadow:2px 2px 0 var(--line)}
+header .by{font-size:.8rem;color:var(--dim);font-weight:800;margin-top:1px}
+header .by b{color:#C2412F}
+.hright{display:flex;align-items:center;gap:10px}
+.chips{display:grid;grid-template-columns:auto auto;gap:4px 6px}
+.chip{font-family:'Baloo 2',cursive;font-weight:800;font-size:.74rem;line-height:1.1;padding:3px 9px;border:3px solid var(--line);border-radius:999px;box-shadow:2px 2px 0 var(--line);white-space:nowrap;color:#fff;text-align:center}
+.chip.c1{background:#0891B2}.chip.c2{background:#FF6B57}.chip.c3{background:#2DAA48}.chip.c4{background:#FFC93C;color:#5A2E00}
+.gauge{position:relative;background:radial-gradient(circle at 35% 30%,#FFFBD6,#FFD23F 70%,#F0A800);border:4px solid #7A3E00;border-radius:50%;width:58px;height:58px;
+ display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:3px 3px 0 var(--line);flex:none}
+.gauge::before{content:'🧭';position:absolute;top:-12px;right:-9px;font-size:15px}
+.gauge .num{font-family:'Baloo 2',cursive;font-size:1rem;color:#5A2E00;font-weight:800;line-height:1}
+.gauge .lbl{font-size:.55rem;font-weight:900;color:#7A3E00;text-transform:uppercase}
+@media(max-width:1180px){header{flex-wrap:wrap}header h1{white-space:normal}}
+/* ── layout ── */
+.main{position:relative;z-index:5;max-width:1380px;margin:0 auto;display:flex;gap:18px;padding:4px 16px 0;align-items:flex-start}
+.lp,.rp{max-height:calc(100vh - 240px);overflow-y:auto;padding-right:4px}
+.lp{flex:0 0 48%}
+.rp{flex:1;min-width:0}
+.lp::-webkit-scrollbar,.rp::-webkit-scrollbar{width:9px}
+.lp::-webkit-scrollbar-thumb,.rp::-webkit-scrollbar-thumb{background:#FFB627;border-radius:6px;border:2px solid #0E7490}
+.slbl{font-family:'Baloo 2',cursive;font-size:1.1rem;font-weight:800;color:var(--sky-d);margin-bottom:8px;display:flex;align-items:center;gap:10px;
+ background:rgba(255,255,255,.92);border-radius:999px;padding:1px 14px;border:3px solid var(--line)}
+.slbl::after{content:'';flex:1;height:8px;border-radius:8px;background:repeating-linear-gradient(90deg,#22C3D6 0 10px,#FFD23F 10px 20px,#FF8A65 20px 30px)}
+@media(max-width:940px){.main{flex-direction:column;padding-bottom:210px}.lp{flex:1 1 auto;width:100%}.lp,.rp{max-height:none!important}}
+/* ── passage cards ── */
+.pc{position:relative;background:var(--card);border:4px solid var(--edge);border-radius:18px;padding:26px 18px 14px;margin:20px 0 22px;box-shadow:6px 6px 0 rgba(14,59,74,.22)}
+.pc .stamp{position:absolute;top:-22px;right:18px;width:52px;height:52px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff,#E6FBFF);
+ border:4px solid currentColor;display:grid;place-items:center;font-size:24px;box-shadow:3px 3px 0 var(--line)}
+.lvl{position:absolute;top:-15px;left:18px;font-family:'Baloo 2',cursive;font-weight:800;font-size:.85rem;line-height:1.2;background:#FFD23F;color:#5A2E00;border:3px solid #5A2E00;border-radius:999px;padding:3px 12px;box-shadow:3px 3px 0 #5A2E00}
+.ptitle{font-family:'Baloo 2',cursive;font-size:1.3rem;font-weight:800;margin-bottom:4px}
+.pins{font-size:.92rem;color:var(--dim);font-style:italic;font-weight:700;margin-bottom:10px;line-height:1.6}
+.pblk{border-left:7px solid;border-radius:12px;padding:12px 14px 4px;margin:16px 0;position:relative}
+.pblk .em{position:absolute;top:-13px;right:10px;font-size:1.2rem;background:#fff;border:3px solid var(--line);border-radius:50%;width:36px;height:36px;display:grid;place-items:center;box-shadow:2px 2px 0 var(--line)}
+.paragraph{font-size:1.16rem;line-height:1.95;margin-bottom:10px;text-align:justify}
+.paragraph b{padding:1px 6px;border-radius:7px;white-space:nowrap}
+.bk-sky{background:#C6F1F7;color:#08707F}.bk-mint{background:#C9F2D2;color:#17702B}.bk-coral{background:#FFDCD3;color:#C2412F}
+.bk-sun{background:#FFE9A8;color:#8F5F00}.bk-lilac{background:#E1D6FF;color:#5532C2}.bk-pink{background:#FFD3E3;color:#B01E55}
+.btr{font-family:'Baloo 2',cursive;font-size:.85rem;background:linear-gradient(135deg,#FFE27A,#8FE6EE);border:3px solid #0E7490;color:#0E3B4A;
+ padding:5px 16px;border-radius:999px;cursor:pointer;transition:.15s;font-weight:800;display:block;margin:6px 0 12px;box-shadow:3px 3px 0 #0E7490}
+.btr:hover{transform:translate(1px,1px);box-shadow:2px 2px 0 #0E7490}
+.translation{display:none;margin-bottom:12px;font-size:1rem;line-height:1.8;color:#24424C;background:#FFFDF3;border-left:4px solid var(--sun);border-radius:0 12px 12px 0;padding:10px 14px;font-style:italic}
+.gl{margin-top:12px;background:var(--card);border:3px solid var(--edge);border-radius:12px;overflow:hidden}
+.gl h3{font-family:'Baloo 2',cursive;font-size:1rem;font-weight:800;color:#fff;margin:0;padding:8px 14px}
+table.gtb{width:100%;border-collapse:collapse;table-layout:fixed;font-size:.95rem}
+.gtb tr{border-top:1px dotted var(--edge)}
+.gtb tr:nth-child(even){background:#F0FBFC}
+.gtb td,.gtb th{padding:7px 12px;text-align:left;vertical-align:top}
+.gtb th{font-weight:800;font-size:.82rem;color:var(--dim)}
+.gtb .gw{font-weight:900;color:var(--sky-d)}
+.gtb .gp{color:var(--lilac-d);font-weight:700;font-size:.86rem}
+/* ── quiz cards ── */
+.sec{background:rgba(255,255,255,.96);border-radius:18px;padding:16px;margin-bottom:16px;box-shadow:6px 6px 0 rgba(14,59,74,.22);border:4px solid var(--edge)}
+.sech{font-family:'Baloo 2',cursive;font-size:1.15rem;font-weight:800;margin-bottom:2px}
+.secs{font-size:.88rem;color:var(--dim);font-style:italic;font-weight:700;margin-bottom:12px;line-height:1.55}
+.q{background:#FCFEFF;border:2px solid #D3ECEF;border-left:7px solid var(--sky);border-radius:14px;padding:14px;margin-bottom:14px}
+.q .qt{font-weight:800;font-size:1.08rem;line-height:1.75}
+.q .qt b{padding:1px 6px;border-radius:7px;white-space:nowrap}
+.qn{display:inline-block;background:var(--qc,var(--sky));color:#fff;min-width:38px;text-align:center;border:2px solid var(--line);border-radius:999px;padding:2px 9px;margin-right:9px;
+ font-family:'Baloo 2',cursive;font-weight:800;font-size:.95rem;line-height:1.3;vertical-align:1px;box-shadow:2px 2px 0 var(--line)}
+.og{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:11px}
+.ob{background:#fff;color:var(--ink);border:2px solid #CDE6EA;border-radius:12px;padding:11px 13px;
+ font-family:'Nunito';font-weight:800;font-size:1rem;cursor:pointer;text-align:left;line-height:1.5;transition:.14s;box-shadow:0 3px 0 #CDE6EA}
+.ob:hover:not(.dn){transform:translateY(-2px);border-color:var(--qc,var(--sky))}
+.ob.dn{cursor:default}
+.ob.ok{background:var(--good-bg);border-color:var(--good);color:#0b6b3c;box-shadow:0 3px 0 #9fe3bd}
+.ob.no{background:var(--bad-bg);border-color:var(--bad);color:#a31832;box-shadow:0 3px 0 #f7bac5}
+.ex{display:none;margin-top:12px;background:#fff;border:2px solid #DCEEF1;border-radius:12px;padding:14px;font-size:.98rem;line-height:1.85}
+.ex.on{display:block;animation:pop .3s}
+@keyframes pop{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+.shk{animation:shk .42s}
+@keyframes shk{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+/* ── explanation content ── */
+.vnt{margin-bottom:10px;padding:9px 13px;border-radius:12px;background:#FFF5D6;border-left:5px solid var(--sun);font-weight:700;line-height:1.7}
+.ex ol{margin:0;padding-left:22px}
+.ex ol>li{margin:10px 0;line-height:1.75;padding-left:4px}
+.ex ol>li::marker{font-weight:900;color:var(--pink-d)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+@media(max-width:600px){.grid2{grid-template-columns:1fr}.og{grid-template-columns:1fr}}
+.grid2>div{border:2px solid #D3E8EC;border-radius:12px;padding:8px 11px;background:#FBFFFF;line-height:1.7;font-size:.97rem}
+.grid2>div.gk{border-color:var(--good);background:var(--good-bg);box-shadow:0 0 0 3px rgba(27,156,90,.14)}
+.p-word{color:#1E6FD9;font-weight:800}
+.hl-green{color:#11924E;font-weight:900}
+.hl-red{color:#D8334A;font-weight:900}
+.wt{display:inline-block;margin:0 3px;padding:0 7px;border-radius:6px;font-size:.78em;font-weight:700;background:rgba(110,100,160,.14);color:#5B5480}
+.p-phonetic{padding:0 6px;border-radius:6px;background:#F1E8FF;color:#7A3FC8;font-weight:700}
+.p-mean{color:#B5532E;font-weight:700}
+.p-grammar{display:inline;line-height:1.95;padding:3px 8px 3px 2px;border-radius:8px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.hx0{background:#FFF3B0}.hx1{background:#D6ECFF}.hx2{background:#FFDDEE}
+.hx3{background:#DDF7D0}.hx4{background:#EBDFFF}.hx5{background:#FFE4CC}
+.qe0{color:#1D4ED8;font-weight:800}.qe1{color:#C2185B;font-weight:800}.qe2{color:#0F8A5F;font-weight:800}.qe3{color:#7C3AED;font-weight:800}.qe4{color:#D9480F;font-weight:800}.qe5{color:#0E7490;font-weight:800}
+.frame{margin-top:10px;padding:10px 13px;border-radius:14px;background:#fff;border:2px dashed var(--edge);line-height:1.75}
+.frame i{color:var(--dim)}
+.dk{margin-top:12px;padding:11px 13px;border-radius:14px;background:#FFFBEF;border-left:5px solid var(--sun)}
+.dict{margin-top:7px;display:flex;flex-wrap:wrap;gap:8px}
+.dict a{display:inline-flex;align-items:center;gap:5px;padding:5px 14px;border-radius:999px;font-size:.9rem;font-weight:800;text-decoration:none;color:#fff;transition:transform .15s;box-shadow:0 3px 0 rgba(0,0,0,.15)}
+.dict a:hover{transform:translateY(-2px)}
+.dict a.d0{background:linear-gradient(135deg,#FF4D8D,#FF9F1C)}.dict a.d1{background:linear-gradient(135deg,#2FBF4A,#2FA3EE)}
+.dict a.d2{background:linear-gradient(135deg,#2FA3EE,#6A7BFF)}.dict a.d3{background:linear-gradient(135deg,#8F6BFF,#FF4D8D)}
+.say{margin-top:7px;font-size:.9rem;color:var(--dim)}
+/* ── submit / modal ── */
+.sw{text-align:center;padding:12px 0 8px}
+.sbtn{font-family:'Baloo 2',cursive;font-size:1.08rem;font-weight:800;color:#fff;background:linear-gradient(135deg,#0891B2,#FF6B57);border:4px solid var(--line);
+ padding:12px 34px;border-radius:999px;cursor:pointer;transition:.15s;box-shadow:5px 5px 0 #FFC93C}
+.sbtn:hover{transform:translate(2px,2px);box-shadow:3px 3px 0 #FFC93C}
+.foot{text-align:center;margin:10px 0 14px;font-size:.92rem;color:var(--ink);font-weight:800;line-height:1.7;
+ background:rgba(255,255,255,.95);border:3px solid var(--line);border-radius:14px;padding:10px 16px;box-shadow:4px 4px 0 #FFC93C}
+.ov{display:none;position:fixed;inset:0;z-index:100;background:rgba(8,60,80,.55);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:16px}
+.ov.on{display:flex}
+.mb{position:relative;background:var(--card);border:4px solid var(--line);border-radius:20px;padding:26px 28px;max-width:460px;width:100%;
+ text-align:center;box-shadow:7px 7px 0 #FFC93C;animation:popin .3s ease}
+@keyframes popin{from{transform:scale(.92);opacity:0}to{transform:scale(1);opacity:1}}
+.mb h2{font-family:'Baloo 2',cursive;font-size:1.3rem;font-weight:800;color:var(--sky-d);margin-bottom:14px}
+.mb input{width:100%;font-family:'Nunito';font-size:1rem;font-weight:700;padding:12px 14px;background:#fff;border:2.5px solid var(--edge);border-radius:12px;color:var(--ink);text-align:center;outline:none;margin-bottom:10px}
+.mb input:focus{border-color:var(--sky)}
+.err{color:var(--bad);font-size:.85rem;font-weight:800;margin-bottom:8px;display:none}
+.err.show{display:block}
+.rname{font-size:1.05rem;font-weight:800;color:var(--pink-d);margin-bottom:6px}
+.rscore{font-family:'Baloo 2',cursive;font-size:2.6rem;font-weight:800;color:var(--sky-d);line-height:1;margin:6px 0}
+.rs10{font-size:1rem;font-weight:800;color:var(--ink);margin-bottom:9px}
+.rgif{width:190px;margin:10px auto;display:block;border:3px solid var(--line);box-shadow:4px 4px 0 #FFC93C;border-radius:12px}
+.rcmt{font-size:.96rem;line-height:1.75;background:#FFF8DE;border:2.5px dashed var(--edge);border-radius:14px;padding:12px 14px;margin:12px 0}
+.bcl{font-family:'Nunito';font-size:.88rem;font-weight:800;background:transparent;border:2.5px solid var(--edge);color:var(--ink);padding:10px 24px;border-radius:12px;cursor:pointer}
+.cn{position:fixed;top:-16px;z-index:200;pointer-events:none;animation:cf 2.4s forwards}
+@keyframes cf{0%{transform:translateY(0) rotate(0);opacity:1}100%{transform:translateY(108vh) rotate(700deg);opacity:0}}
+
+/* trang luôn có thanh kéo: kéo xuống thì khung bài lên cao, lộ cảnh biển động phía dưới */
+@media(min-width:941px){body{height:auto!important;overflow:visible!important;overflow-x:clip!important}}
+</style>
+<style id="emph-hl">
+/* từ gạch chân / in đậm trong đề: tô màu nổi bật cho dễ thấy */
+.qt u,.ctx u,.paragraph u,.pins u,.secs u{color:#D6336C!important;font-weight:900;background:linear-gradient(transparent 50%,#FFE066 50%);text-decoration:underline;text-decoration-color:#D6336C;text-decoration-thickness:3px;text-underline-offset:3px;padding:0 3px;border-radius:3px}
+.qt b:not([class]),.qt strong,.ctx b:not([class]),.ctx strong,.paragraph b:not([class]),.paragraph strong,.pins b:not([class]),.secs b:not([class]){color:#C2255C!important;background:#FFE3EC;border-radius:6px;padding:0 5px;font-weight:900}
+.qt .kw,.ctx .kw{color:#fff!important;background:linear-gradient(135deg,#F03E8A,#7C3AED)!important;border-color:#5B21B6!important;box-shadow:0 2px 0 rgba(91,33,182,.35)}
+.paragraph u.tw,.paragraph .mw{color:#D6336C!important;font-weight:900;background:linear-gradient(transparent 45%,#FFE066 45%);text-decoration:underline;text-decoration-color:#D6336C;text-decoration-thickness:3px;text-underline-offset:4px;padding:0 3px;border-radius:3px;border-bottom:none!important}
+.twq{display:inline-block;margin-left:3px;padding:1px 6px;border-radius:999px;background:#7C3AED;color:#fff;font-size:.62em;font-weight:900;line-height:1.3;vertical-align:super;white-space:nowrap;font-style:normal}
+</style>
+<style>/*touchscroll*/@media (hover:none),(pointer:coarse){html,body{overflow-y:auto!important;height:auto!important;-webkit-overflow-scrolling:touch}.lp,.rp{max-height:none!important;overflow:visible!important}.main{padding-bottom:42px!important;align-items:flex-start}}</style>
+</head>
+<body>
+<div id="sky"></div>
+<div id="ground">
+ <div class="isl2">
+  <div class="mound"></div>
+  <svg class="palm" style="left:52px;bottom:30px" width="56" height="84" viewBox="0 0 80 120" aria-hidden="true"><path d="M42 120 Q36 80 40 40" stroke="#8D6E63" stroke-width="8" fill="none" stroke-linecap="round"/><path d="M40 40 Q14 26 2 44 Q20 30 40 42 Z" fill="#2E9E46"/><path d="M40 40 Q66 24 78 44 Q60 30 40 42 Z" fill="#43B85A"/><path d="M40 38 Q28 10 8 12 Q30 18 40 40 Z" fill="#3DAE52"/><path d="M40 38 Q54 8 74 14 Q52 20 40 40 Z" fill="#2E9E46"/><circle cx="37" cy="44" r="4" fill="#7B4A2A"/><circle cx="44" cy="45" r="4" fill="#6B3E22"/></svg>
+ </div>
+ <div class="isl">
+  <svg class="palm" style="left:20px" width="80" height="120" viewBox="0 0 80 120" aria-hidden="true"><path d="M42 120 Q34 80 40 40" stroke="#8D6E63" stroke-width="8" fill="none" stroke-linecap="round"/><path d="M36 100h10M36 84h10M37 68h9M38 54h8" stroke="#6D4C41" stroke-width="2"/><path d="M40 40 Q14 26 2 44 Q20 30 40 42 Z" fill="#2E9E46"/><path d="M40 40 Q66 24 78 44 Q60 30 40 42 Z" fill="#43B85A"/><path d="M40 38 Q28 10 8 12 Q30 18 40 40 Z" fill="#3DAE52"/><path d="M40 38 Q54 8 74 14 Q52 20 40 40 Z" fill="#2E9E46"/><circle cx="37" cy="44" r="4" fill="#7B4A2A"/><circle cx="44" cy="45" r="4" fill="#6B3E22"/></svg>
+  <svg class="palm" style="left:104px;animation-delay:-2s" width="72" height="108" viewBox="0 0 80 120" aria-hidden="true"><path d="M38 120 Q46 80 40 40" stroke="#8D6E63" stroke-width="8" fill="none" stroke-linecap="round"/><path d="M36 100h10M36 84h10M37 68h9M38 54h8" stroke="#6D4C41" stroke-width="2"/><path d="M40 40 Q14 26 2 44 Q20 30 40 42 Z" fill="#43B85A"/><path d="M40 40 Q66 24 78 44 Q60 30 40 42 Z" fill="#2E9E46"/><path d="M40 38 Q28 10 8 12 Q30 18 40 40 Z" fill="#2E9E46"/><path d="M40 38 Q54 8 74 14 Q52 20 40 40 Z" fill="#3DAE52"/><circle cx="40" cy="45" r="4" fill="#7B4A2A"/></svg>
+  <svg class="hmk" viewBox="0 0 66 30" aria-hidden="true"><path d="M0 2 Q33 34 66 2" stroke="#FF6B57" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M4 6 Q33 30 62 6" stroke="#FFD23F" stroke-width="3" fill="none" stroke-dasharray="5 4"/></svg>
+  <div class="mound"></div>
+  <div class="road"></div>
+  <svg class="ecar" viewBox="0 0 46 26" aria-hidden="true"><rect x="2" y="9" width="42" height="11" rx="5" fill="#34D3E0" stroke="#0E3B4A" stroke-width="2"/><path d="M10 10 L15 2 H31 L37 10 Z" fill="#E0FBFF" stroke="#0E3B4A" stroke-width="2"/><line x1="23" y1="3" x2="23" y2="10" stroke="#0E3B4A" stroke-width="2"/><circle cx="12" cy="21" r="4.5" fill="#263238"/><circle cx="34" cy="21" r="4.5" fill="#263238"/><circle cx="12" cy="21" r="1.8" fill="#CFD8DC"/><circle cx="34" cy="21" r="1.8" fill="#CFD8DC"/><path d="M21 12 l-3 4 h3 l-2 3 l5 -5 h-3 l2 -2 z" fill="#FFD23F"/></svg>
+  <div class="lh"><div class="beam"></div><div class="tw"></div><div class="gal"></div><div class="lamp"></div><div class="roof"></div></div>
+ </div>
+ <div class="wv w1" id="w1"></div>
+ <div class="dol" style="left:30vw"><div class="arm"><svg width="62" height="30" viewBox="0 0 62 30" aria-hidden="true"><path d="M2 18 Q14 4 36 6 Q52 7 60 14 Q52 18 44 17 Q30 24 14 22 L4 28 L7 20 Z" fill="#5B9BD5"/><path d="M14 20 Q30 22 44 16 Q36 13 22 15 Z" fill="#DDEEFF"/><path d="M30 6 L26 0 L36 6 Z" fill="#4A88C2"/><circle cx="50" cy="11" r="1.8" fill="#0E3B4A"/></svg></div></div>
+ <div class="dol" style="left:38vw"><div class="arm" style="animation-delay:-1.2s"><svg width="54" height="26" viewBox="0 0 62 30" aria-hidden="true"><path d="M2 18 Q14 4 36 6 Q52 7 60 14 Q52 18 44 17 Q30 24 14 22 L4 28 L7 20 Z" fill="#7FB3E6"/><path d="M14 20 Q30 22 44 16 Q36 13 22 15 Z" fill="#E8F4FF"/><path d="M30 6 L26 0 L36 6 Z" fill="#5B9BD5"/><circle cx="50" cy="11" r="1.8" fill="#0E3B4A"/></svg></div></div>
+ <div class="boat"><div class="bb"><div class="wake"></div><div class="spray"></div><div class="spray" style="animation-delay:-.4s;right:104px"></div>
+  <svg width="140" height="52" viewBox="0 0 140 52" aria-hidden="true"><path d="M4 30 H136 Q128 46 108 48 H22 Q10 44 4 30 Z" fill="#FFFFFF" stroke="#0E3B4A" stroke-width="2.5"/><path d="M8 36 H130" stroke="#FF6B57" stroke-width="4"/><path d="M40 30 V16 Q42 10 50 10 H96 L112 30 Z" fill="#F4FBFF" stroke="#0E3B4A" stroke-width="2.5"/><rect x="50" y="15" width="12" height="9" rx="2" fill="#38BDF8"/><rect x="66" y="15" width="12" height="9" rx="2" fill="#38BDF8"/><path d="M82 15 H96 L104 24 H82 Z" fill="#38BDF8"/><line x1="58" y1="10" x2="58" y2="0" stroke="#0E3B4A" stroke-width="2"/><path d="M58 0 L72 4 L58 8 Z" fill="#E9343B"/></svg>
+ </div></div>
+ <div class="wv w2" id="w2"></div>
+ <div class="turtle"><svg width="74" height="38" viewBox="0 0 74 38" aria-hidden="true"><g class="fl"><path d="M22 24 L10 36 L26 28 Z" fill="#6CC070"/></g><g class="fl" style="animation-delay:-.45s"><path d="M46 24 L58 36 L48 26 Z" fill="#6CC070"/></g><ellipse cx="36" cy="20" rx="22" ry="13" fill="#3E9B4F" stroke="#1F6B30" stroke-width="2"/><path d="M26 14 L36 10 L46 14 L46 24 L36 28 L26 24 Z" fill="#7BCB6E" stroke="#1F6B30" stroke-width="1.5"/><ellipse cx="63" cy="18" rx="9" ry="7" fill="#7FCF7A" stroke="#1F6B30" stroke-width="2"/><circle cx="66" cy="16" r="1.6" fill="#0E3B4A"/><path d="M14 18 L4 14 L12 22 Z" fill="#6CC070"/></svg></div>
+ <div class="bub" style="left:22vw"></div><div class="bub" style="left:56vw;animation-delay:-1.5s"></div><div class="bub" style="left:78vw;animation-delay:-2.8s"></div>
+ <div class="wv w3" id="w3"></div>
+ <div class="sand">
+  <div class="shell star" style="left:5vw"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1 L15 9 L23 9 L17 14 L19 22 L12 17 L5 22 L7 14 L1 9 L9 9 Z" fill="#FF8A3D" stroke="#C2410C" stroke-width="1.2"/><circle cx="12" cy="12" r="1.4" fill="#FFE0B2"/><circle cx="12" cy="6" r="1" fill="#FFE0B2"/><circle cx="17" cy="11" r="1" fill="#FFE0B2"/></svg></div>
+  <div class="shell" style="left:13vw"><svg width="22" height="18" viewBox="0 0 22 18" aria-hidden="true"><path d="M11 17 L1 7 Q11 -3 21 7 Z" fill="#FFB4C6" stroke="#D9487A" stroke-width="1.2"/><path d="M11 17 L6 4 M11 17 L11 2 M11 17 L16 4" stroke="#D9487A" stroke-width="1"/></svg></div>
+  <div class="shell star" style="left:22vw;animation-delay:-1.5s"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1 L15 9 L23 9 L17 14 L19 22 L12 17 L5 22 L7 14 L1 9 L9 9 Z" fill="#FF6B57" stroke="#B91C1C" stroke-width="1.2"/><circle cx="12" cy="12" r="1.4" fill="#FFE0B2"/></svg></div>
+  <div class="shell" style="left:31vw"><svg width="20" height="16" viewBox="0 0 22 18" aria-hidden="true"><path d="M11 17 L1 7 Q11 -3 21 7 Z" fill="#FFE9A8" stroke="#C99400" stroke-width="1.2"/><path d="M11 17 L6 4 M11 17 L11 2 M11 17 L16 4" stroke="#C99400" stroke-width="1"/></svg></div>
+  <div class="shell" style="left:38vw;bottom:6px"><svg width="18" height="12" viewBox="0 0 18 12" aria-hidden="true"><path d="M1 11 Q4 1 12 2 Q18 4 16 11 Z" fill="#E1D6FF" stroke="#7C5BD9" stroke-width="1.2"/></svg></div>
+ </div>
+</div>
+
+<div class="note"><div class="in">
+ <span class="tg">⛵ MS NHẮN</span>
+ <span class="tx" id="msTx">🎍 Căng buồm lên nào thuỷ thủ lớp 6! New Year Voyage Reading có 11 câu (31 → 41), băng qua 2 chặng biển để cập đảo điểm 10! 🔥</span>
+</div></div>
+
+<header>
+ <div>
+  <h1>🎍 New Year Voyage Reading · Câu 31 → 41<span class="p1">11 câu</span></h1>
+  <div class="by">Ms. Chí Nên · ☎️ <b>0852639652</b> · English 6 · Unit 6 · Test 1 · Chặng 1: Kagami Mochi (Nhật Bản) · Chặng 2: New Year ở phương Tây</div>
+ </div>
+ <div class="hright">
+  <div class="chips">
+   <span class="chip c1">⛵ VOYAGE</span>
+   <span class="chip c2">🧭 New Year</span>
+   <span class="chip c3">🎍 CHẶNG 1 · NHẬT</span>
+   <span class="chip c4">🎉 CHẶNG 2 · TÂY</span>
+  </div>
+  <div><span id="sc" style="display:none"></span><div class="gauge"><div class="num" id="lv">0/11</div><div class="lbl">Điểm</div></div></div>
+ </div>
+</header>
+
+<div class="main">
+<div class="lp">
+ <div class="slbl">📖 Bài đọc</div>
+
+ <div class="pc" style="border-color:var(--sky);color:var(--sky)">
+  <div class="lvl">CHẶNG 1</div>
+  <div class="stamp">🎍</div>
+  <div class="ptitle" style="color:var(--sky-d)">Chặng 1 · Kagami Mochi — Japan's New Year</div>
+  <div class="pins">I. Cloze Test. Read the passage and choose the best answer for each of the numbered blanks from 31 to 36.</div>
+
+  <div class="pblk" style="border-color:var(--sky);background:#E8FAFC;color:var(--ink)">
+   <div class="em">🎍</div>
+   <div class="paragraph">If you visit Japan during New Year, you may <b class="bk-sky">(31) ______</b> mochi rice cake displays around Japanese homes and shops. These are called <i>kagami mochi</i>, or mirror rice cake.</div>
+   <button class="btr" onclick="toggleTranslation('trans1')">Mở dịch đoạn này 🌟</button>
+   <div class="translation" id="trans1">Nếu bạn đến thăm Nhật Bản trong dịp Năm mới, bạn có thể nhìn thấy những vật trưng bày bánh gạo mochi xung quanh các ngôi nhà và cửa hàng ở Nhật Bản. Chúng được gọi là kagami mochi, hay bánh gạo gương.</div>
+  </div>
+  <div class="pblk" style="border-color:var(--sun);background:#FFF8E1;color:var(--ink)">
+   <div class="em">🍊</div>
+   <div class="paragraph">The traditional <b class="bk-sun">(32) ______</b> of offering <i>kagami mochi</i> to the gods has existed in many areas in Japan for hundreds of years. It normally includes a big round mochi under a <b class="bk-lilac">(33) ______</b> one, with a Japanese bitter orange on top. People put it on a wooden stand <b class="bk-coral">(34) ______</b> other paper, plant, and food decorations.</div>
+   <button class="btr" onclick="toggleTranslation('trans2')">Mở dịch đoạn này 🌟</button>
+   <div class="translation" id="trans2">Phong tục truyền thống dâng kagami mochi cho các vị thần đã tồn tại ở nhiều khu vực ở Nhật Bản hàng trăm năm nay. Nó thường bao gồm một chiếc bánh mochi tròn lớn nằm dưới một chiếc nhỏ hơn, với một quả cam đắng Nhật Bản ở trên cùng. Mọi người đặt nó trên một chiếc kệ gỗ cùng với các đồ trang trí bằng giấy, cây cối và thức ăn khác.</div>
+  </div>
+  <div class="pblk" style="border-color:var(--mint);background:#ECFBEF;color:var(--ink)">
+   <div class="em">🌅</div>
+   <div class="paragraph">Each part of the <i>kagami mochi</i> has a <b class="bk-mint">(35) ______</b> meaning: the two round mochi are the sun and moon. The bitter orange is called <i>daidai</i> in Japanese, which sounds <b class="bk-lilac">(36) ______</b> "generation after generation". It shows the hope that the family will continue for a long time. Putting the mochi on top of each other also means increased fortunes in the coming year.</div>
+   <button class="btr" onclick="toggleTranslation('trans3')">Mở dịch đoạn này 🌟</button>
+   <div class="translation" id="trans3">Mỗi phần của kagami mochi có một ý nghĩa khác nhau: hai chiếc bánh mochi tròn tượng trưng cho mặt trời và mặt trăng. Quả cam đắng được gọi là daidai trong tiếng Nhật, nghe giống như "hết thế hệ này sang thế hệ khác". Nó thể hiện hy vọng rằng gia đình sẽ duy trì, kéo dài mãi. Việc đặt các chiếc mochi chồng lên nhau cũng có ý nghĩa là tăng thêm vận may trong năm tới.</div>
+  </div>
+
+  <div class="gl"><h3 style="background:linear-gradient(90deg,var(--sky-d),var(--sky))">📚 Glossary — Chặng 1</h3>
+   <table class="gtb"><tr><th>Từ vựng</th><th>Loại từ</th><th>Nghĩa tiếng Việt</th></tr>
+    <tr><td class="gw">display</td><td class="gp">Noun/Verb</td><td>sự trưng bày / trưng bày</td></tr>
+    <tr><td class="gw">traditional</td><td class="gp">Adjective</td><td>thuộc về truyền thống</td></tr>
+    <tr><td class="gw">exist</td><td class="gp">Verb</td><td>tồn tại</td></tr>
+    <tr><td class="gw">generation</td><td class="gp">Noun</td><td>thế hệ</td></tr>
+    <tr><td class="gw">fortune</td><td class="gp">Noun</td><td>vận may, tài lộc</td></tr>
+   </table>
+  </div>
+ </div>
+
+ <div class="pc" style="border-color:var(--coral);color:var(--coral)">
+  <div class="lvl" style="background:#FFB3A6;color:#5A1E00;border-color:#5A1E00;box-shadow:3px 3px 0 #5A1E00">CHẶNG 2</div>
+  <div class="stamp">🎉</div>
+  <div class="ptitle" style="color:var(--coral-d)">Chặng 2 · New Year ở phương Tây</div>
+  <div class="pins">II. Reading Comprehension. Read the passage and choose the best answer for each of the questions from 37 to 41.</div>
+
+  <div class="pblk" style="border-color:var(--pink);background:#FFEFF5;color:var(--ink)">
+   <div class="em">🎉</div>
+   <div class="paragraph">There are many traditions and customs for New Year's Day in Western countries. On the night before, called New Year's Eve, people have noisy parties and big meals. They stay up late and count down the seconds until midnight. There are often fireworks displays, and people go outside at midnight to watch them. At midnight, it is traditional to kiss or shake hands and wish other people "Happy New Year." Many people make New Year's resolutions, which are promises to themselves. They see New Year's Day as a chance to make a <u class="tw">fresh</u><sup class="twq">Câu 40</sup> start.</div>
+   <button class="btr" onclick="toggleTranslation('trans4')">Mở dịch đoạn này 🌟</button>
+   <div class="translation" id="trans4">Có rất nhiều truyền thống và phong tục cho Ngày Năm Mới ở các nước phương Tây. Vào đêm trước đó, được gọi là Đêm Giao thừa (New Year's Eve), mọi người tổ chức các bữa tiệc ồn ào và những bữa ăn lớn. Họ thức khuya và đếm ngược từng giây cho đến nửa đêm. Thường có các buổi trình diễn pháo hoa, và mọi người ra ngoài vào lúc nửa đêm để xem chúng. Vào đúng nửa đêm, theo truyền thống, người ta thường hôn hoặc bắt tay và chúc người khác "Chúc mừng năm mới". Nhiều người lập ra các mục tiêu cho Năm mới (resolutions), đó là những lời hứa với chính bản thân họ. Họ coi Ngày Năm Mới là cơ hội để có một khởi đầu mới.</div>
+  </div>
+  <div class="pblk" style="border-color:var(--lilac);background:#F4EFFF;color:var(--ink)">
+   <div class="em">🥂</div>
+   <div class="paragraph">Different cultures celebrate the new year in many ways. The Dutch eat doughnuts for good luck. People in the South of the U.S.A. cook black-eyed peas for luck as well. For the Jewish New Year, called Rosh Hashana, people eat sweet honey so that they will have a sweet year ahead.</div>
+   <button class="btr" onclick="toggleTranslation('trans5')">Mở dịch đoạn này 🌟</button>
+   <div class="translation" id="trans5">Các nền văn hóa khác nhau ăn mừng năm mới theo nhiều cách. Người Hà Lan ăn bánh rán (doughnuts) để cầu may. Người dân ở miền Nam nước Mỹ nấu đậu mắt đen cũng để cầu may mắn. Đối với Năm mới của người Do Thái, gọi là Rosh Hashana, mọi người ăn mật ong ngọt để họ sẽ có một năm ngọt ngào ở phía trước.</div>
+  </div>
+
+  <div class="gl"><h3 style="background:linear-gradient(90deg,var(--coral-d),var(--coral))">📚 Glossary — Chặng 2</h3>
+   <table class="gtb"><tr><th>Từ vựng</th><th>Loại từ</th><th>Nghĩa tiếng Việt</th></tr>
+    <tr><td class="gw">resolution</td><td class="gp">Noun</td><td>quyết tâm, mục tiêu (năm mới)</td></tr>
+    <tr><td class="gw">midnight</td><td class="gp">Noun</td><td>nửa đêm</td></tr>
+    <tr><td class="gw">celebrate</td><td class="gp">Verb</td><td>ăn mừng, kỷ niệm</td></tr>
+    <tr><td class="gw">culture</td><td class="gp">Noun</td><td>nền văn hóa</td></tr>
+    <tr><td class="gw">ahead</td><td class="gp">Adverb</td><td>phía trước, sắp tới</td></tr>
+   </table>
+  </div>
+ </div>
+</div>
+
+<div class="rp">
+ <div class="slbl">🎯 11 câu hỏi</div>
+ <div id="app"></div>
+ <div class="sw"><button class="sbtn" onclick="openName()">🎯 NỘP BÀI TÍNH ĐIỂM &amp; XEM KẾT QUẢ</button></div>
+ <div class="foot">🎍 Bài tập của <b>Ms. Chí Nên</b> · Đăng ký khoá tiếng Anh lớp 1 → 12: <b>☎️ 0852639652</b> để được trải nghiệm hệ thống web học tập đẹp, sinh động — chấm điểm tự động, giải chi tiết từng câu, học vui như một chuyến du lịch biển mỗi ngày!</div>
+</div>
+</div>
+
+<div class="ov" id="ovN"><div class="mb">
+ <h2>📮 Con ghi tên vào đây nhé!</h2>
+ <input id="nIn" placeholder="Ví dụ: Nguyễn Văn A" autocomplete="off" maxlength="50">
+ <div class="err" id="nEm">⚠️ Con chưa nhập tên kìa! Nhập tên rồi mới xem điểm được nha.</div>
+ <button class="sbtn" style="margin-top:12px;font-size:1rem;padding:11px 26px" onclick="showResult()">🚀 Xem kết quả</button>
+</div></div>
+
+<div class="ov" id="ovR"><div class="mb" style="max-width:480px">
+ <div class="rname" id="rn"></div>
+ <div class="rscore"><span id="rSc">0</span>/<span id="rTt">0</span></div>
+ <div class="rs10">🎓 Quy đổi: <span id="r10">0</span>/10 điểm</div>
+ <img class="rgif" id="rGif" src="" alt="">
+ <div class="rcmt" id="rMs"></div>
+ <button class="bcl" onclick="closeR()">Đóng &amp; xem lại bài</button>
+</div></div>
+
+<script>
+/* ══ cảnh đảo: mây, hải âu, sóng biển ══ */
+function rnd(a,b){return a+Math.random()*(b-a)}
+function svgURL(s){return 'url("data:image/svg+xml,'+encodeURIComponent(s)+'")'}
+function WAVE(c1,c2){return "<svg xmlns='http://www.w3.org/2000/svg' width='240' height='60' preserveAspectRatio='none' viewBox='0 0 240 60'><path d='M0 18 Q30 2 60 18 T120 18 T180 18 T240 18 V60 H0 Z' fill='"+c1+"'/><path d='M0 18 Q30 2 60 18 T120 18 T180 18 T240 18' fill='none' stroke='"+c2+"' stroke-width='4'/></svg>"}
+(function(){var h='',sky=document.getElementById('sky');
+ h+='<div class="sun"><div class="rays"></div><div class="disc"></div><div class="eye l"></div><div class="eye r"></div><div class="chk l"></div><div class="chk r"></div><div class="mouth"></div></div>';
+ for(var i=0;i<6;i++)h+='<div class="cloud" style="top:'+rnd(5,46).toFixed(0)+'vh;--s:'+(i%2?0.7:1.05)+';animation-duration:'+rnd(60,100).toFixed(0)+'s;animation-delay:-'+rnd(0,70).toFixed(0)+'s"></div>';
+ var G='<svg viewBox="0 0 46 20"><path d="M2 12 Q12 0 23 12 Q34 0 44 12" fill="none" stroke="#33515C" stroke-width="3.5" stroke-linecap="round"/></svg>';
+ for(var j=0;j<5;j++)h+='<div class="gull" style="top:'+rnd(10,52).toFixed(0)+'vh;animation-duration:'+rnd(24,40).toFixed(0)+'s;animation-delay:-'+rnd(0,30).toFixed(0)+'s"><div class="gb" style="animation-delay:-'+rnd(0,2).toFixed(1)+'s">'+G+'</div></div>';
+ sky.innerHTML=h;
+ document.getElementById('w1').style.backgroundImage=svgURL(WAVE('#7FE0EA','#E6FCFF'));
+ document.getElementById('w2').style.backgroundImage=svgURL(WAVE('#29C2D3','#BFF6FB'));
+ document.getElementById('w3').style.backgroundImage=svgURL(WAVE('#0FA3B8','#9BEFF7'));
+})();
+
+/* ══ âm thanh ══ */
+var AC=null;
+function ac(){if(!AC){try{AC=new (window.AudioContext||window.webkitAudioContext)()}catch(e){}}if(AC&&AC.state==='suspended')AC.resume();return AC}
+function ding(){var c=ac();if(!c)return;var t=c.currentTime;[988,1318.5,1975.5].forEach(function(f,i){var o=c.createOscillator(),g=c.createGain();o.type='sine';o.frequency.value=f;o.connect(g);g.connect(c.destination);var s=t+i*0.08;g.gain.setValueAtTime(0.0001,s);g.gain.exponentialRampToValueAtTime(.12,s+.02);g.gain.exponentialRampToValueAtTime(.0001,s+.32);o.start(s);o.stop(s+.34)})}
+var DUCK_URL='https://hoctienganhcungcoMs. Chí Nên.github.io/homework/%E1%BA%A2nh_File%20nghe/Sound/Ti%E1%BA%BFng%20V%E1%BB%8Bt%20k%C3%AAu%20meme%20mp3.mp3';
+function buzz(){try{var a=new Audio(DUCK_URL);a.volume=.75;a.play().catch(function(){})}catch(e){}}
+function conf(){var cs=['#0FA9C2','#FFD23F','#FF6B57','#2DAA48','#F0477F'];
+ for(var i=0;i<50;i++){var d=document.createElement('div');d.className='cn';
+  d.style.cssText='left:'+(Math.random()*100)+'vw;width:10px;height:10px;border-radius:'+(i%2?'50%':'2px')+';background:'+cs[i%5]+';opacity:.95';
+  document.body.appendChild(d);(function(d){setTimeout(function(){d.remove()},2500)})(d)}}
+function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
+function toggleTranslation(id){
+ var el=document.getElementById(id);
+ if(el.style.display==='block'){el.style.display='none';}else{el.style.display='block';}
+}
+
+/* ══ lời giải ══ */
+function OPT(w,pos,ipa,vi,ok){return {w:w,pos:pos||'',ipa:ipa||'',vi:vi,ok:ok?1:0}}
+function grid2(opts){
+ return '<div class="grid2">'+opts.map(function(o){
+  var cls=o.ok?'hl-green':'p-word';
+  var pos=o.pos?' <span class="wt">'+o.pos+'</span>':'';
+  var ipa=o.ipa?' <span class="p-phonetic">/'+o.ipa+'/</span>':'';
+  return '<div'+(o.ok?' class="gk"':'')+'>'+(o.ok?'✅ ':'')+'<span class="'+cls+'">'+o.w+'</span>'+pos+ipa+'<br>= <span class="p-mean">'+o.vi+'</span></div>';
+ }).join('')+'</div>';
+}
+var hxI=0;
+function ln(txt){
+ var cls='hx'+(hxI++%6),qeI=0;
+ txt=txt.replace(/"([^"]+)"/g,function(m,p1){return '<span class="qe'+(qeI++%6)+'">"'+p1+'"</span>'});
+ return '<span class="p-grammar '+cls+'">▸ '+txt+'</span>';
+}
+function lines(a){return a.map(ln).join('<br>')}
+function DICT(w,i){
+ var slug=w.trim().toLowerCase().replace(/\s+/g,'-');
+ return '<a class="d'+(i%4)+'" href="https://dictionary.cambridge.org/vi/dictionary/english/'+slug+'" target="_blank" rel="noopener">🔊 Cambridge · '+w+'</a>';
+}
+function render(q){
+ hxI=0;
+ var shown=MAP[q.id].map(function(w){return q.opts.find(function(o){return o.w===w})});
+ var lab='Nghĩa của '+shown.length+' phương án:';
+ var html='<div class="vnt">💬 Dịch: '+q.vnt+'</div><ol>'+
+  '<li><b>'+lab+'</b>'+grid2(shown)+'</li>'+
+  '<li><span class="hl-green">✅ TẠI SAO ĐÚNG?</span><br>'+lines(q.why)+'</li>'+
+  '<li><span class="hl-red">❌ TẠI SAO SAI?</span><br>'+lines(q.bad)+'</li></ol>'+
+  '<div class="frame">🔍 <i>'+q.ev+'</i><br>👉 <span class="p-mean">'+q.evvi+'</span></div>';
+ if(q.dict&&q.dict.length){
+  html+='<div class="dk"><b>🔊 Tra từ điển Cambridge:</b><br>Con bấm vào đây để nghe phát âm chuẩn và đọc theo cho hay nhé:'+
+   '<div class="dict">'+q.dict.map(DICT).join('')+'</div>'+
+   '<div class="say">👉 Nếu trang chưa hiện đúng từ, con gõ từ đó vào ô tìm kiếm, bấm loa 🔊 nghe và đọc theo.</div></div>';
+ }
+ return html;
+}
+
+/* ══ câu hỏi ══ */
+var QS=[
+{id:31,part:1,col:'sky',text:`If you visit Japan during New Year, you may <b>(31) ______</b> mochi rice cake displays around Japanese homes and shops.`,
+ opts:[OPT(`like`,`prep`,`laɪk`,`giống như`),OPT(`different`,`adj`,`ˈdɪfrənt`,`khác biệt`),OPT(`smaller`,`adj`,`ˈsmɔːlər`,`nhỏ hơn`),OPT(`see`,`v`,`siː`,`nhìn thấy`,1)],
+ vnt:`Nếu bạn đến thăm Nhật Bản trong dịp Năm mới, bạn có thể nhìn thấy những vật trưng bày bánh gạo mochi xung quanh các ngôi nhà và cửa hàng ở Nhật Bản.`,
+ why:[`Bước 1: Trước chỗ trống là động từ khiếm khuyết "may" (có thể); theo ngữ pháp, sau "may" luôn cần một động từ nguyên thể không to (V-inf).`,
+  `Bước 2: Chủ ngữ "you" (bạn) đang nói về việc đi thăm Nhật Bản và bắt gặp các vật trưng bày bánh mochi quanh nhà và cửa hàng — đây là hành động dùng mắt để quan sát.`,
+  `Bước 3: "you may see mochi rice cake displays" = bạn có thể nhìn thấy những vật trưng bày bánh gạo mochi → chọn "see". Con đã nhìn thấy kagami mochi rồi đó!`],
+ bad:[`"different" và "smaller" là tính từ, không thể đứng ngay sau "may" để làm động từ chính, sai hoàn toàn về ngữ pháp.`,
+  `"like" (thích/giống như) có thể là động từ, nhưng "you may like mochi rice cake displays" không hợp văn cảnh bằng "nhìn thấy", vì câu đang nói về việc bắt gặp vật trưng bày khi đi thăm, chứ không bàn về cảm xúc thích hay không.`],
+ ev:`If you visit Japan during New Year, you may see mochi rice cake displays around Japanese homes and shops.`,
+ evvi:`Nếu bạn đến thăm Nhật Bản trong dịp Năm mới, bạn có thể nhìn thấy những vật trưng bày bánh gạo mochi xung quanh các ngôi nhà và cửa hàng ở Nhật Bản.`,
+ dict:[`see`,`like`,`different`,`smaller`,`display`]},
+{id:32,part:1,col:'sun',text:`The traditional <b>(32) ______</b> of offering <i>kagami mochi</i> to the gods has existed in many areas in Japan for hundreds of years.`,
+ opts:[OPT(`custom`,`n`,`ˈkʌstəm`,`phong tục`,1),OPT(`different`,`adj`,`ˈdɪfrənt`,`khác biệt`),OPT(`smaller`,`adj`,`ˈsmɔːlər`,`nhỏ hơn`),OPT(`with`,`prep`,`wɪð`,`với, cùng với`)],
+ vnt:`Phong tục truyền thống dâng kagami mochi cho các vị thần đã tồn tại ở nhiều khu vực ở Nhật Bản hàng trăm năm nay.`,
+ why:[`Bước 1: Chỗ trống đứng sau tính từ "traditional" (truyền thống) và trước giới từ "of" — vị trí này cần một danh từ (noun) để tạo thành cụm danh từ.`,
+  `Bước 2: Cụm "traditional ___ of offering kagami mochi to the gods" cần một từ chỉ "việc làm được lưu truyền qua nhiều thế hệ", đó chính là "phong tục".`,
+  `Bước 3: "The traditional custom of offering kagami mochi" = phong tục truyền thống dâng kagami mochi → chọn "custom". Việc dâng bánh mochi lên các vị thần chính là một phong tục đẹp của người Nhật!`],
+ bad:[`"different" và "smaller" là tính từ, không thể làm danh từ chính đứng sau "traditional", sai từ loại.`,
+  `"with" là giới từ, không thể đứng ngay sau tính từ để làm danh từ của cụm "the traditional ___ of...".`],
+ ev:`The traditional custom of offering kagami mochi to the gods has existed in many areas in Japan for hundreds of years.`,
+ evvi:`Phong tục truyền thống dâng kagami mochi cho các vị thần đã tồn tại ở nhiều khu vực ở Nhật Bản hàng trăm năm nay.`,
+ dict:[`custom`,`different`,`smaller`,`tradition`,`offer`]},
+{id:33,part:1,col:'lilac',text:`It normally includes a big round mochi under a <b>(33) ______</b> one, with a Japanese bitter orange on top.`,
+ opts:[OPT(`smaller`,`adj`,`ˈsmɔːlər`,`nhỏ hơn`,1),OPT(`different`,`adj`,`ˈdɪfrənt`,`khác biệt`),OPT(`with`,`prep`,`wɪð`,`với`),OPT(`like`,`prep`,`laɪk`,`giống như`)],
+ vnt:`Nó thường bao gồm một chiếc bánh mochi tròn lớn nằm dưới một chiếc nhỏ hơn, với một quả cam đắng Nhật Bản ở trên cùng.`,
+ why:[`Bước 1: Câu đang mô tả cấu tạo của kagami mochi: "a big round mochi" (một bánh to) nằm dưới "a ___ one" — chữ "one" ở đây thay cho "mochi".`,
+  `Bước 2: Để tạo sự tương phản với "big" (to) ở bánh dưới, bánh phía trên cần một tính từ so sánh chỉ kích thước ngược lại.`,
+  `Bước 3: "a big round mochi under a smaller one" = một bánh to tròn ở dưới một bánh nhỏ hơn → chọn "smaller". Hai lớp bánh chồng lên nhau tượng trưng cho mặt trời và mặt trăng đó!`],
+ bad:[`"different" (khác biệt) chỉ nói chung là "khác" mà không nêu rõ kích thước, không tạo được sự tương phản to – nhỏ như bài cần.`,
+  `"with" và "like" là giới từ, không thể đứng sau mạo từ "a" để bổ nghĩa cho "one", sai hoàn toàn về ngữ pháp.`],
+ ev:`It normally includes a big round mochi under a smaller one, with a Japanese bitter orange on top.`,
+ evvi:`Nó thường bao gồm một chiếc bánh mochi tròn lớn nằm dưới một chiếc nhỏ hơn, với một quả cam đắng Nhật Bản ở trên cùng.`,
+ dict:[`smaller`,`different`,`big`,`round`,`orange`]},
+{id:34,part:1,col:'coral',text:`People put it on a wooden stand <b>(34) ______</b> other paper, plant, and food decorations.`,
+ opts:[OPT(`with`,`prep`,`wɪð`,`cùng với`,1),OPT(`like`,`prep`,`laɪk`,`giống như`),OPT(`different`,`adj`,`ˈdɪfrənt`,`khác biệt`),OPT(`smaller`,`adj`,`ˈsmɔːlər`,`nhỏ hơn`)],
+ vnt:`Mọi người đặt nó trên một chiếc kệ gỗ cùng với các đồ trang trí bằng giấy, cây cối và thức ăn khác.`,
+ why:[`Bước 1: Trước chỗ trống là "People put it on a wooden stand" (mọi người đặt nó trên một chiếc kệ gỗ) — một hành động đã hoàn chỉnh về ngữ pháp.`,
+  `Bước 2: Sau chỗ trống là "other paper, plant, and food decorations" (các đồ trang trí giấy, cây, thức ăn khác) — đây là những thứ đi kèm với kagami mochi trên kệ.`,
+  `Bước 3: Để nối hai thành phần đi kèm với nhau, ta dùng giới từ chỉ sự kèm theo "with": "...a wooden stand with other decorations" = một chiếc kệ cùng với các đồ trang trí khác → chọn "with".`],
+ bad:[`"like" (giống như) không hợp lý vì kagami mochi không "giống" đồ trang trí giấy, cây, thức ăn.`,
+  `"different" và "smaller" là tính từ, không thể đứng giữa hai danh từ để nối chúng lại, sai hoàn toàn cấu trúc.`],
+ ev:`People put it on a wooden stand with other paper, plant, and food decorations.`,
+ evvi:`Mọi người đặt nó trên một chiếc kệ gỗ cùng với các đồ trang trí bằng giấy, cây cối và thức ăn khác.`,
+ dict:[`with`,`like`,`decoration`,`wooden`,`stand`]},
+{id:35,part:1,col:'mint',text:`Each part of the <i>kagami mochi</i> has a <b>(35) ______</b> meaning: the two round mochi are the sun and moon.`,
+ opts:[OPT(`different`,`adj`,`ˈdɪfrənt`,`khác biệt, riêng biệt`,1),OPT(`smaller`,`adj`,`ˈsmɔːlər`,`nhỏ hơn`),OPT(`like`,`prep`,`laɪk`,`giống như`),OPT(`with`,`prep`,`wɪð`,`với`)],
+ vnt:`Mỗi phần của kagami mochi có một ý nghĩa khác nhau: hai chiếc bánh mochi tròn tượng trưng cho mặt trời và mặt trăng.`,
+ why:[`Bước 1: Chỗ trống đứng ngay trước danh từ "meaning" (ý nghĩa), nên cần một tính từ để bổ nghĩa cho danh từ này.`,
+  `Bước 2: Ngay sau dấu hai chấm, tác giả liệt kê lần lượt ý nghĩa riêng của từng phần: hai bánh mochi là mặt trời và mặt trăng, quả cam là lời chúc trường tồn — mỗi phần một ý nghĩa khác nhau.`,
+  `Bước 3: "has a different meaning" = có một ý nghĩa khác nhau/riêng biệt → chọn "different". Mỗi phần của kagami mochi đều mang một câu chuyện riêng!`],
+ bad:[`"smaller" (nhỏ hơn) chỉ nói về kích thước, không thể dùng để miêu tả "ý nghĩa" (meaning).`,
+  `"like" và "with" là giới từ, không thể đứng trước danh từ "meaning" để làm tính từ bổ nghĩa, sai từ loại.`],
+ ev:`Each part of the kagami mochi has a different meaning: the two round mochi are the sun and moon.`,
+ evvi:`Mỗi phần của kagami mochi có một ý nghĩa khác nhau: hai chiếc bánh mochi tròn tượng trưng cho mặt trời và mặt trăng.`,
+ dict:[`different`,`smaller`,`meaning`,`sun`,`moon`]},
+{id:36,part:1,col:'lilac',text:`The bitter orange is called <i>daidai</i> in Japanese, which sounds <b>(36) ______</b> "generation after generation".`,
+ opts:[OPT(`like`,`prep`,`laɪk`,`giống như`,1),OPT(`smaller`,`adj`,`ˈsmɔːlər`,`nhỏ hơn`),OPT(`different`,`adj`,`ˈdɪfrənt`,`khác biệt`),OPT(`with`,`prep`,`wɪð`,`với`)],
+ vnt:`Quả cam đắng được gọi là daidai trong tiếng Nhật, nghe giống như "hết thế hệ này sang thế hệ khác".`,
+ why:[`Bước 1: Trước chỗ trống là động từ "sounds" (nghe có vẻ), đây là động từ chỉ cảm giác về âm thanh.`,
+  `Bước 2: Để so sánh âm thanh của một từ với một từ/cụm từ khác, tiếng Anh dùng cấu trúc cố định "sound like + danh từ/cụm từ".`,
+  `Bước 3: "daidai...sounds like "generation after generation"" = daidai nghe giống như "hết thế hệ này sang thế hệ khác" → chọn "like". Đây là một lối chơi chữ rất thú vị của người Nhật!`],
+ bad:[`"smaller" và "different" là tính từ, không thể đứng sau "sounds" theo cấu trúc "sound like", sai cấu trúc.`,
+  `"with" không tạo thành cấu trúc có nghĩa nào sau "sounds"; không ai nói "sounds with" khi so sánh âm thanh.`],
+ ev:`The bitter orange is called daidai in Japanese, which sounds like "generation after generation".`,
+ evvi:`Quả cam đắng được gọi là daidai trong tiếng Nhật, nghe giống như "hết thế hệ này sang thế hệ khác".`,
+ dict:[`like`,`sound`,`different`,`generation`,`orange`]},
+
+{id:37,part:2,col:'pink',text:`Which of the following is the best title for the passage?`,
+ opts:[OPT(`New Year's Eve in the U.S.A.`,``,``,`Đêm Giao thừa ở Hoa Kỳ`),OPT(`New Year Traditions in Western Countries`,``,``,`Truyền thống Năm mới ở các nước phương Tây`,1),OPT(`New Year Food Around the World`,``,``,`Món ăn Năm mới trên toàn thế giới`),OPT(`New Year's Day in the South`,``,``,`Ngày Năm mới ở miền Nam`)],
+ vnt:`Tiêu đề nào sau đây là tốt nhất cho đoạn văn?`,
+ why:[`Bước 1: Câu mở đầu đoạn 1 đã nêu bao quát chủ đề chính: "There are many traditions and customs for New Year's Day in Western countries" (Có rất nhiều truyền thống và phong tục cho Ngày Năm Mới ở các nước phương Tây).`,
+  `Bước 2: Đoạn 1 kể về cách đón giao thừa (tiệc, pháo hoa, đếm ngược, lời chúc, resolutions); đoạn 2 kể thêm cách các nền văn hóa khác nhau (Hà Lan, miền Nam Mỹ, người Do Thái) đón năm mới — cả hai đoạn đều xoay quanh truyền thống năm mới ở phương Tây.`,
+  `Bước 3: Tiêu đề bao quát nhất cho toàn bài là "New Year Traditions in Western Countries" → chọn đáp án này.`],
+ bad:[`"New Year's Eve in the U.S.A." và "New Year's Day in the South" chỉ là một phần nhỏ của bài (chỉ nói tới đêm giao thừa hoặc miền Nam Mỹ), quá hẹp để làm tiêu đề cho cả bài.`,
+  `"New Year Food Around the World" chỉ phù hợp với vài câu cuối đoạn 2 nói về món ăn; nó không bao hàm được đoạn 1 nói về pháo hoa, đếm ngược và lời chúc.`],
+ ev:`There are many traditions and customs for New Year's Day in Western countries.`,
+ evvi:`Có rất nhiều truyền thống và phong tục cho Ngày Năm Mới ở các nước phương Tây.`,
+ dict:[`tradition`,`custom`,`title`,`celebrate`]},
+{id:38,part:2,col:'sky',text:`On New Year's Eve, people in Western countries ________.`,
+ opts:[OPT(`eat lots of food`,``,``,`ăn rất nhiều đồ ăn`,1),OPT(`go to sleep early`,``,``,`đi ngủ sớm`),OPT(`watch fireworks at home`,``,``,`xem pháo hoa ở nhà`),OPT(`go to peaceful places`,``,``,`đi đến những nơi yên bình`)],
+ vnt:`Vào đêm giao thừa, người dân ở các nước phương Tây ________.`,
+ why:[`Bước 1: Con tìm câu nói về đêm giao thừa (New Year's Eve) trong đoạn 1: "people have noisy parties and big meals" (mọi người tổ chức tiệc ồn ào và những bữa ăn lớn).`,
+  `Bước 2: "big meals" (những bữa ăn lớn/thịnh soạn) có nghĩa tương đương với "eat lots of food" (ăn rất nhiều đồ ăn).`,
+  `Bước 3: Vậy đáp án đúng là "eat lots of food" — khớp hoàn toàn với dẫn chứng trong bài.`],
+ bad:[`Bài nói họ "stay up late" (thức khuya) nên "go to sleep early" (đi ngủ sớm) là ngược hẳn, sai.`,
+  `Bài nói họ "go outside at midnight to watch" pháo hoa (ra ngoài xem), nên "watch fireworks at home" (xem ở nhà) là sai.`,
+  `Bài nói họ tổ chức "noisy parties" (tiệc ồn ào) chứ không "đi đến những nơi yên bình" — hai ý này trái ngược nhau.`],
+ ev:`On the night before, called New Year's Eve, people have noisy parties and big meals.`,
+ evvi:`Vào đêm trước đó, được gọi là Đêm Giao thừa, mọi người tổ chức các bữa tiệc ồn ào và những bữa ăn lớn.`,
+ dict:[`party`,`meal`,`firework`,`midnight`]},
+{id:39,part:2,col:'mint',text:`What do people often do on New Year's Day?`,
+ opts:[OPT(`They dream of their fresh start.`,``,``,`Họ mơ về khởi đầu mới của họ.`),OPT(`They make promises to themselves.`,``,``,`Họ tự hứa với bản thân mình.`,1),OPT(`They shake hands with family members.`,``,``,`Họ bắt tay với các thành viên trong gia đình.`),OPT(`They sing "Happy New Year".`,``,``,`Họ hát bài hát "Chúc mừng năm mới".`)],
+ vnt:`Mọi người thường làm gì vào Ngày Năm Mới?`,
+ why:[`Bước 1: Con tìm cụm "resolutions" trong đoạn 1: "Many people make New Year's resolutions, which are promises to themselves" (Nhiều người lập ra mục tiêu năm mới, đó là những lời tự hứa với chính mình).`,
+  `Bước 2: "New Year's resolutions" = "promises to themselves" (những lời hứa với bản thân) — đây chính là hành động phổ biến vào Ngày Năm Mới mà bài đề cập.`,
+  `Bước 3: Vậy đáp án đúng là "They make promises to themselves." — diễn đạt lại đúng ý câu gốc.`],
+ bad:[`Bài nói họ "see" (coi) năm mới là cơ hội khởi đầu mới, chứ không phải "dream of" (nằm mơ về) nó — hai động từ khác nghĩa.`,
+  `Bài chỉ nói họ bắt tay, chúc "other people" (người khác) nói chung, không nói cụ thể là "family members" (thành viên gia đình).`,
+  `Bài nói họ "wish" (chúc) "Happy New Year" chứ không nói họ "sing" (hát) câu đó.`],
+ ev:`Many people make New Year's resolutions, which are promises to themselves.`,
+ evvi:`Nhiều người lập ra các mục tiêu cho Năm mới (resolutions), đó là những lời hứa với chính bản thân họ.`,
+ dict:[`resolution`,`promise`,`shake`,`wish`]},
+{id:40,part:2,col:'coral',text:`The word "fresh" in Passage II is closest in meaning to ________.`,
+ opts:[OPT(`natural`,``,``,`tự nhiên`),OPT(`confident`,``,``,`tự tin`),OPT(`new`,``,``,`mới`,1),OPT(`lively`,``,``,`sống động`)],
+ vnt:`Từ "fresh" trong đoạn 1 gần nghĩa nhất với từ nào?`,
+ why:[`Bước 1: Con tìm từ "fresh" trong đoạn 1, nó xuất hiện trong câu cuối: "a chance to make a fresh start" (một cơ hội để tạo ra một khởi đầu mới mẻ).`,
+  `Bước 2: Cụm "fresh start" nghĩa là làm lại từ đầu, bỏ qua những điều cũ để bắt đầu một điều hoàn toàn mới.`,
+  `Bước 3: Vì vậy từ gần nghĩa nhất với "fresh" trong văn cảnh này là "new" (mới) → chọn "new".`],
+ bad:[`"natural" (tự nhiên) không liên quan đến ý nghĩa "khởi đầu lại", không thay thế được "fresh" trong "fresh start".`,
+  `"confident" (tự tin) là cảm giác của con người, không phải tính chất của một "khởi đầu".`,
+  `"lively" (sống động) miêu tả sự sôi động, không phù hợp với ý "bắt đầu lại từ đầu" của "fresh start".`],
+ ev:`They see New Year's Day as a chance to make a fresh start.`,
+ evvi:`Họ coi Ngày Năm Mới là cơ hội để có một khởi đầu mới.`,
+ dict:[`fresh`,`new`,`natural`,`confident`,`lively`]},
+{id:41,part:2,col:'lilac',text:`Which of the following statements is NOT true according to the passage?`,
+ opts:[OPT(`Western people kiss and shake hands on New Year's Eve.`,``,``,`Người phương Tây hôn và bắt tay vào Đêm Giao thừa.`,1),OPT(`There are lots of ways for people in different cultures to celebrate New Year.`,``,``,`Có rất nhiều cách để mọi người ở các nền văn hóa khác nhau đón Năm mới.`),OPT(`People in the U.S.A. eat peas for good luck.`,``,``,`Người dân ở Mỹ ăn đậu để cầu may.`),OPT(`Jewish people eat sweets to wish for a sweet year ahead.`,``,``,`Người Do Thái ăn đồ ngọt để cầu mong một năm ngọt ngào phía trước.`)],
+ vnt:`Khẳng định nào sau đây là KHÔNG đúng theo đoạn văn?`,
+ why:[`Bước 1: Bài viết nói rõ trình tự thời gian: đêm trước gọi là "New Year's Eve" (Đêm Giao thừa) — lúc này mọi người ăn tiệc; còn việc hôn và bắt tay chỉ xảy ra "At midnight" (Vào đúng nửa đêm), tức thời điểm chuyển sang Ngày Năm Mới.`,
+  `Bước 2: Câu khẳng định nói hành động hôn/bắt tay xảy ra "on New Year's Eve" (vào đêm giao thừa, trước nửa đêm) — điều này sai mốc thời gian so với bài, vì bài ghi rõ là "at midnight".`,
+  `Bước 3: Vậy đáp án không đúng (not true) chính là "Western people kiss and shake hands on New Year's Eve." → chọn đáp án này.`],
+ bad:[`"There are lots of ways..." là đúng theo bài: đoạn 2 liệt kê nhiều cách khác nhau (Hà Lan, miền Nam Mỹ, người Do Thái) để đón năm mới.`,
+  `"People in the U.S.A. eat peas for good luck." là đúng: bài viết ghi "People in the South of the U.S.A. cook black-eyed peas for luck as well" (đậu mắt đen cũng là một loại đậu/peas).`,
+  `"Jewish people eat sweets..." là đúng: bài viết ghi "people eat sweet honey so that they will have a sweet year ahead" — mật ong (honey) là một loại đồ ngọt (sweets).`],
+ ev:`At midnight, it is traditional to kiss or shake hands and wish other people "Happy New Year."`,
+ evvi:`Vào đúng nửa đêm, theo truyền thống, người ta thường hôn hoặc bắt tay và chúc người khác "Chúc mừng năm mới".`,
+ dict:[`midnight`,`kiss`,`shake`,`culture`,`luck`]}
+];
+QS.forEach(function(q){q.options=q.opts.map(function(o){return o.w});q.correct=q.opts.filter(function(o){return o.ok})[0].w});
+
+/* ══ dựng trang ══ */
+var TOTAL=QS.length,answered=0,score=0,done={},MAP={};
+var TINT={sky:'#E8FAFC',mint:'#ECFBEF',coral:'#FFF0EC',lilac:'#F4EFFF',pink:'#FFEFF5',sun:'#FFF8E1'};
+var SECINFO={
+ 1:{c:'sky',t:"🎍 Chặng 1 · Kagami Mochi (Nhật Bản) — Câu 31 → 36",s:"I. Cloze Test. Read the passage and choose the best answer for each of the numbered blanks from 31 to 36."},
+ 2:{c:'coral',t:"🎉 Chặng 2 · New Year ở phương Tây — Câu 37 → 41",s:"II. Reading Comprehension. Read the passage and choose the best answer for each of the questions from 37 to 41."}};
+var app=document.getElementById('app'),secs={};
+[1,2].forEach(function(p){var s=document.createElement('div');s.className='sec';s.dataset.part=p;s.style.borderColor='var(--'+SECINFO[p].c+')';
+ s.innerHTML='<div class="sech" style="color:var(--'+SECINFO[p].c+'-d)">'+SECINFO[p].t+'</div><div class="secs">'+SECINFO[p].s+'</div>';
+ secs[p]=s;app.appendChild(s)});
+QS.forEach(function(q){
+ var so=q.tf?q.options.slice():shuffle(q.options);
+ MAP[q.id]=so;
+ var card=document.createElement('div');
+ card.className='q';card.id='c'+q.id;
+ card.style.setProperty('--qc','var(--'+q.col+')');
+ card.style.borderLeftColor='var(--'+q.col+')';
+ card.style.background=TINT[q.col];
+ card.innerHTML='<div class="qt"><span class="qn">'+q.id+'</span>'+q.text.replace(/<b>/g,'<b class="bk-'+q.col+'">')+'</div>'+
+  '<div class="og" id="o'+q.id+'">'+so.map(function(o,i){return '<button class="ob" onclick="pick('+q.id+','+i+')">'+String.fromCharCode(65+i)+'. '+o+'</button>'}).join('')+'</div>'+
+  '<div class="ex" id="e'+q.id+'"></div>';
+ secs[q.part].appendChild(card);
+});
+
+function pick(qid,i){
+ if(done[qid])return;done[qid]=true;answered++;
+ var q=QS.find(function(x){return x.id===qid});
+ var so=MAP[qid],bs=document.getElementById('o'+qid).children;
+ var ok=so[i]===q.correct;
+ for(var k=0;k<bs.length;k++){bs[k].classList.add('dn');
+  if(so[k]===q.correct)bs[k].classList.add('ok');else if(k===i)bs[k].classList.add('no')}
+ document.getElementById('e'+qid).innerHTML=render(q);
+ document.getElementById('e'+qid).classList.add('on');
+ if(ok){score++;ding();conf()}
+ else{buzz();var c=document.getElementById('c'+qid);c.classList.add('shk');setTimeout(function(){c.classList.remove('shk')},430)}
+ bump();
+}
+function bump(){document.getElementById('lv').textContent=score+'/'+TOTAL;document.getElementById('sc').textContent=score+'/'+TOTAL}
+
+/* ══ khung đọc vừa màn hình: chừa ~95px đáy cho cảnh biển ══ */
+function fitPanels(){var m=document.querySelector('.main'),ps=document.querySelectorAll('.lp,.rp');if(!m||!ps.length)return;
+ if(window.innerWidth<=940){ps.forEach(function(e){e.style.maxHeight=''});m.style.paddingBottom='';return}
+ var n=document.querySelector('.note'),nh=n?n.offsetHeight:0,h=Math.max(320,window.innerHeight-nh-104);
+ ps.forEach(function(e){e.style.maxHeight=h+'px'});
+ var pb=parseFloat(getComputedStyle(m).paddingBottom)||0,top=ps[0].getBoundingClientRect().top+window.scrollY,want=Math.max(40,top-nh-8),extra=document.documentElement.scrollHeight-window.innerHeight-pb;
+ m.style.paddingBottom=Math.max(0,want-extra)+'px'}
+window.addEventListener('resize',fitPanels);window.addEventListener('load',fitPanels);
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitPanels);
+fitPanels();
+
+/* ══ nộp bài ══ */
+function openName(){
+ if(answered<TOTAL){alert('Con ơi, con còn '+(TOTAL-answered)+' câu chưa cập bến kìa! Hoàn thành hết rồi mới nộp bài nhé!');return;}
+ document.getElementById('ovN').classList.add('on');setTimeout(function(){document.getElementById('nIn').focus()},150);
+}
+document.getElementById('nIn').addEventListener('keydown',function(e){if(e.key==='Enter')showResult()});
+function showResult(){
+ var i=document.getElementById('nIn'),n=i.value.trim();
+ if(!n){document.getElementById('nEm').classList.add('show');i.focus();return}
+ document.getElementById('nEm').classList.remove('show');
+ document.getElementById('ovN').classList.remove('on');
+ var pct=score/TOTAL,ten=(pct*10).toFixed(2),g,m,gif;
+ document.getElementById('rn').textContent='Học viên: '+n;
+ if(score===TOTAL){g='🏆 CẬP ĐẢO ĐIỂM 10, '+n+'!';m='Con lái con tàu qua trọn cả '+TOTAL+' câu, không vướng một con sóng nào — đúng chuẩn thuyền trưởng nhí lớp 6! Ms. Chí Nên rất tự hào về con! 🌟 ☎️ 0852639652.';gif='https://media.giphy.com/media/11sBLVxNs7v6WA/giphy.gif'}
+ else if(pct>=.8){g='👏 CẬP BẾN QUÁ ĐẸP, '+n+'!';m='Con đã vượt cả 2 chặng rất vững, chỉ cần đọc kĩ thêm chút xíu ở vài câu dễ trượt là cập đảo điểm 10 luôn! Bài kiểm tra Unit 6 con sẽ làm thật tốt! ☎️ 0852639652.';gif='https://media.giphy.com/media/3o7abGQa0p2EWzchcg/giphy.gif'}
+ else if(pct>=.6){g='💪 VƯỢT SÓNG RỒI, '+n+'!';m='Con đã qua ngưỡng an toàn rồi đó. Mở lời giải từng câu ra xem lại, chép từ mới vào vở là chuyến sau con lướt êm như tàu cao tốc!';gif='https://media.giphy.com/media/3o7abGQa0p2EWzchcg/giphy.gif'}
+ else{g='🌱 CĂNG BUỒM LẠI NÀO, '+n+'!';m='Đừng buồn con nhé. Thuỷ thủ giỏi nào cũng từng gặp sóng to — xem lời giải của cô, ghi chép từ mới, rồi bấm làm lại nha, Ms tin con sẽ làm tốt hơn! 💪';gif='https://media.giphy.com/media/l378giAZgxPw3eO52/giphy.gif'}
+ document.getElementById('rSc').textContent=score;
+ document.getElementById('rTt').textContent=TOTAL;
+ document.getElementById('r10').textContent=ten;
+ document.getElementById('rGif').src=gif;
+ document.getElementById('rMs').innerHTML='<b>'+g+'</b><br>'+m;
+ document.getElementById('ovR').classList.add('on');
+ if(pct>=.6){conf();ding()}
+}
+function closeR(){document.getElementById('ovR').classList.remove('on')}
+
+/* ══ lời nhắc — đổi theo phần đang làm ══ */
+var GEN=[
+ '🎍 Căng buồm lên nào thuỷ thủ lớp 6! New Year Voyage Reading có 11 câu (31 → 41), băng qua 2 chặng biển để cập đảo điểm 10! 🔥',
+ '🚨 LƯU Ý TỪ Ms. Chí Nên: Các em cuộn câu hỏi đến đâu thì làm đến đó! TỰ GIÁC tra cứu từ mới bằng Google Dịch/Từ điển Cambridge để hiểu rõ câu hỏi, tuyệt đối KHÔNG chọn bừa. Chỉ có đọc kỹ giải thích và GHI CHÉP từ mới vào vở thì tiếng Anh mới thực sự giỏi lên. Tránh làm qua loa chống đối! 📝',
+ '🚤 Tàu cao tốc đã nổ máy — mỗi câu đúng là thêm một hải lý tiến gần tới bài kiểm tra Unit 6 điểm cao! 💥',
+ '🐬 Đúng liên tục là chuỗi 🔥 bùng cháy như cá heo nhảy sóng — giữ nhịp, cập đảo điểm 10 đang vẫy tay chờ con! 🔥',
+ '💪 Thuyền trưởng nhí không sợ sóng to — lỡ trượt một câu thì đọc lời giải, chỉnh lái rồi lướt tiếp!',
+ '🦆 Chọn sai thì chú vịt kêu quạc quạc — cười một cái thật tươi, xem lời giải, rồi tăng tốc cập bến nhé!',
+ '🌅 Hải đăng đang soi đường cho con — đọc kĩ từng dòng, ngày kiểm tra chỉ việc cắm cờ chiến thắng trên đảo! 🚩',
+ '☎️ Đăng ký khoá tiếng Anh lớp 1 → 12 cùng Ms. Chí Nên — 0852639652 — học vui như đi du lịch biển, điểm lên vù vù!'];
+var PMSG={
+ 1:['🎍 CHẶNG 1 · Kagami Mochi Nhật Bản! 6 chỗ trống là 6 cột mốc trên đường ra đảo — lái thật vững, cập bến từng câu một nào! 🔥',
+    '🚤 Mỗi chỗ trống đúng là tàu lướt thêm một đoạn — hạ gọn cả 6 câu là con mở khoá CHẶNG 2 ngay! ⛵'],
+ 2:['🎉 CHẶNG 2 · New Year ở phương Tây! 5 câu trắc nghiệm là 5 con sóng lớn — săn bằng chứng trong bài, vượt sóng thật oai! 🔥',
+    '🌊 Chỉ còn vài câu nữa là cập đảo điểm 10 rồi — thuỷ thủ lớp 6 tăng tốc về đích nào! 🚩']};
+var curP=0,mk=0,msEl=document.getElementById('msTx');
+function showMsg(t){msEl.style.opacity=0;setTimeout(function(){msEl.innerHTML=t;msEl.style.opacity=1;fitPanels()},250)}
+setInterval(function(){var list=(PMSG[curP]||[]).concat(GEN);mk=(mk+1)%list.length;showMsg(list[mk])},5200);
+function whichPart(){
+ var rp=document.querySelector('.rp'),r=rp.getBoundingClientRect(),mid=Math.max(r.top,0)+Math.min(r.height,window.innerHeight)*0.45,p=1;
+ [1,2].forEach(function(k){if(secs[k].getBoundingClientRect().top<mid)p=k});
+ if(p!==curP){curP=p;mk=0;showMsg(PMSG[p][0])}
+}
+document.querySelector('.rp').addEventListener('scroll',whichPart,{passive:true});
+window.addEventListener('scroll',whichPart,{passive:true});
+</script>
+<style>/*streak*/
+#stkRow{display:flex;align-items:center;flex:0 0 auto;margin:0 4px}#stkRow.in{align-self:center;margin:0 0 0 8px}#stkRow.in .bar,#stkRow.in .nx,#stkRow.in .lbl{display:none!important}#stkRow.in #stkP{flex-direction:row!important;gap:6px;padding:4px 10px 4px 8px;position:static}#stkRow.in .fl,#stkRow.in .n{position:static;line-height:1}
+#stkRow.fixed{position:fixed;left:10px;bottom:12px;z-index:60}
+#stkP{display:flex;align-items:center;gap:6px;padding:2px 10px 2px 7px;border-radius:999px;background:#FFF7ED;border:2px solid #FDBA74;font-family:'Baloo 2','Nunito',sans-serif;
+ font-weight:700;color:#9A3412;font-size:.92rem;transition:transform .25s;white-space:nowrap}
+#stkP .fl{display:inline-block;position:static;font-size:1.1rem;transition:font-size .3s;transform-origin:50% 90%}
+#stkP.hot .fl{animation:stkFl .5s ease-in-out infinite alternate}@keyframes stkFl{from{transform:scale(1) rotate(-6deg)}to{transform:scale(1.25) rotate(6deg)}}
+#stkP.pop{transform:scale(1.15)}#stkP.cold{filter:grayscale(.6);opacity:.85}
+#stkP .n{display:inline-grid;place-items:center;min-width:22px;height:22px;padding:0 5px;border-radius:999px;background:linear-gradient(135deg,#FB923C,#EF4444);color:#fff;font-size:.9rem}
+#stkP .bar{width:54px;height:6px;border-radius:99px;background:#FED7AA;overflow:hidden}#stkP .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#F97316,#EF4444);transition:width .3s}
+#stkP .nx{font-size:.78rem;color:#C2410C}
+#stkToast{position:fixed;left:50%;top:38%;z-index:70;transform:translate(-50%,-50%) scale(.4);opacity:0;pointer-events:none;text-align:center;padding:18px 26px;border-radius:26px;
+ background:linear-gradient(135deg,#FFF7ED,#FEF3C7);border:4px solid #FDBA74;box-shadow:0 18px 40px rgba(0,0,0,.25);font-family:'Baloo 2','Nunito',sans-serif;color:#9A3412;max-width:86vw;transition:all .35s cubic-bezier(.2,1.6,.4,1)}
+#stkToast.show{opacity:1;transform:translate(-50%,-50%) scale(1)}#stkToast b{display:block;font-size:2.3rem;line-height:1.15}#stkToast span{font-weight:700;font-size:1.05rem}
+#stkToast.soft{background:linear-gradient(135deg,#EFF6FF,#F5F3FF);border-color:#93C5FD;color:#1E3A8A}#stkToast.soft b{font-size:1.6rem}
+.stkSpark{position:fixed;z-index:69;pointer-events:none;font-size:26px;animation:stkSp 1.2s ease-out forwards}
+@keyframes stkSp{0%{opacity:1;transform:translate(0,0) scale(.6)}100%{opacity:0;transform:translate(var(--x),var(--y)) scale(1.3) rotate(240deg)}}
+@media(max-width:700px){#stkP .bar,#stkP .nx,#stkP .lbl{display:none}#stkP{padding:2px 7px 2px 5px}#stkToast b{font-size:1.8rem}}
+@media (prefers-reduced-motion:reduce){#stkP.hot .fl,.stkSpark{animation:none}}
+</style>
+<script>/*streak*/(function(){
+ const $=id=>document.getElementById(id),num=el=>{const m=(el.textContent||'').match(/(\d+)\s*\/\s*(\d+)/);return m?[+m[1],+m[2]]:[0,0]};
+ let get=null,anchor=null,mode='after';const sc=$('scoreChip'),pg=$('progChip');
+ if(sc&&pg){get=()=>{const s=num(sc),a=num(pg);return [a[0],s[0],a[1]]};anchor=sc}
+ else{try{if(typeof answered!=='undefined'&&typeof score!=='undefined'){get=()=>[answered,score,typeof TOTAL!=='undefined'?TOTAL:0];anchor=$('sc')&&$('sc').parentElement}}catch(e){}
+  if(!get)try{if(typeof done==='object'&&done&&$('lv')){get=()=>{const v=Object.values(done);return [v.length,v.filter(x=>x===true).length,typeof QS!=='undefined'?QS.length:0]};anchor=$('lv').closest('.gauge')||$('lv');mode='in'}}catch(e){}}
+ if(!get)return;
+ const row=document.createElement('div');row.id='stkRow';
+ row.innerHTML='<div id="stkP" class="cold" title="Số câu đúng liên tiếp"><span class="fl">🔥</span><span class="lbl">Chuỗi đúng</span><span class="n" id="stkN">0</span><span class="bar"><i id="stkB"></i></span><span class="nx" id="stkX">→ 3</span></div>';
+ if(!anchor){row.className='fixed';document.body.appendChild(row)}else if(mode==='in'){row.className='in';anchor.insertAdjacentElement('afterend',row)}else anchor.insertAdjacentElement('afterend',row);
+ const toast=document.createElement('div');toast.id='stkToast';document.body.appendChild(toast);
+ const P=document.getElementById('stkP'),N=document.getElementById('stkN'),B=document.getElementById('stkB'),X=document.getElementById('stkX');
+ let cur=0,best=0,[lastA,lastS]=get(),tmr=null;
+ const NEXT=n=>n<3?3:n<5?5:n<10?10:(Math.floor(n/5)+1)*5,LOW=n=>n<3?0:n<5?3:n<10?5:Math.floor(n/5)*5;
+ const PRAISE={3:['🔥 3 câu liền!','Con đang vào guồng rồi đó!'],5:['🔥🔥 5 câu liền!','Siêu đỉnh luôn — cô thấy con tập trung lắm!'],10:['🌟 10 câu liền!','Không ai cản nổi con nữa rồi!'],
+  15:['🏆 15 câu liền!','Con là ngôi sao của lớp đó!'],20:['👑 20 câu liền!','Tuyệt vời — cô tự hào về con lắm!']};
+ const OOPS=['Không sao đâu con — mình bắt đầu chuỗi mới nhé! 💪','Đọc lời giải rồi làm tiếp, chuỗi mới đang chờ con! 🌱','Sai một câu là học thêm một điều — cố lên con! 🌈','Hít một hơi thật sâu, câu sau con sẽ làm được! ⭐'];
+ function say(t,sub,soft){toast.className=soft?'soft':'';toast.innerHTML='<b>'+t+'</b><span>'+sub+'</span>';void toast.offsetWidth;toast.classList.add('show');clearTimeout(tmr);tmr=setTimeout(()=>toast.classList.remove('show'),soft?1600:2000)}
+ function burst(){const E=['🔥','⭐','✨','🎉','💛','🌟'];for(let i=0;i<16;i++){const s=document.createElement('div');s.className='stkSpark';s.textContent=E[i%E.length];
+  const a=Math.random()*Math.PI*2,r=120+Math.random()*160;s.style.cssText='left:50%;top:38%;--x:'+Math.cos(a)*r+'px;--y:'+Math.sin(a)*r+'px';document.body.appendChild(s);setTimeout(()=>s.remove(),1300)}}
+ function paint(){N.textContent=cur;const lo=LOW(cur),hi=NEXT(cur);B.style.width=Math.min(100,(cur-lo)/(hi-lo)*100)+'%';X.textContent='→ '+hi;
+  P.classList.toggle('cold',cur===0);P.classList.toggle('hot',cur>=3);P.classList.add('pop');setTimeout(()=>P.classList.remove('pop'),250);
+  P.querySelector('.fl').style.fontSize=(1.1+Math.min(cur,15)*.03)+'rem'}
+ function check(){const [a,s,tot]=get();if(a===lastA)return;const dA=a-lastA,dS=s-lastS;lastA=a;lastS=s;if(dA<=0)return;
+  if(dS>=dA){const before=cur;cur+=dA;best=Math.max(best,cur);paint();
+   const hit=Object.keys(PRAISE).map(Number).filter(m=>before<m&&cur>=m).pop()||(cur>=25&&Math.floor(cur/5)>Math.floor(before/5)?cur-cur%5:0);
+   if(hit){const p=PRAISE[hit]||['🚀 '+hit+' câu liền!','Con đang bay cao lắm rồi!'];say(p[0],p[1]);burst()}}
+  else{const had=cur;cur=0;paint();if(had>=3)say('Chuỗi '+had+' câu — giỏi lắm!',OOPS[Math.floor(Math.random()*OOPS.length)],true)}
+  if(tot&&a>=tot)setTimeout(()=>{say('🏅 Chuỗi dài nhất: '+best+' câu',best>=5?'Con làm bài thật tuyệt vời!':'Lần sau mình thử phá kỷ lục này nhé!');if(best>=5)burst()},2400)}
+ setInterval(check,250);
+})();</script>
+<script>/*devclean*/(function(){
+var ZW=/[\u00AD\u034F\u061C\u115F\u1160\u17B4\u17B5\u180E\u200B-\u200F\u202A-\u202E\u2060-\u206F\uFEFF]/g,
+    SP=/[\u00A0\u1680\u2000-\u200A\u2028\u2029\u202F\u205F\u3000\t]/g,
+    AP=/[\u2018\u2019\u201A\u201B\u2032\u2035\u02B9\u02BB\u02BC\u02BD\u02C8\u0060\u00B4\uFF07]/g,
+    DQ=/[\u201C\u201D\u201E\u201F\u2033\u2036\u00AB\u00BB\uFF02]/g,
+    DS=/[\u2010\u2011\u2012\u2212\uFE63\uFF0D]/g;
+function clean(v){if(!v)return v;var s=String(v);try{s=s.normalize('NFKC')}catch(e){}
+  return s.replace(ZW,'').replace(SP,' ').replace(AP,"'").replace(DQ,'"').replace(DS,'-').replace(/[\u0300-\u036f]/g,'').replace(/ {2,}/g,' ');}
+window.__devclean=clean;
+function fix(skip){var L=document.querySelectorAll('input:not([type]),input[type=text],input[type=search],textarea');
+  for(var i=0;i<L.length;i++){var el=L[i];if(el===skip||el.readOnly||el.disabled)continue;var v=el.value,c=clean(v);if(c!==v)el.value=c;}}
+['pointerdown','mousedown','touchstart','click','change','focusout'].forEach(function(t){document.addEventListener(t,function(e){fix(t==='focusout'||t==='change'?null:e.target)},true)});
+document.addEventListener('keydown',function(e){if(e.key==='Enter'||e.keyCode===13)fix(null)},true);
+})();</script>
+
+<script>
+// Auto-bypass password lock for MS Chi Nen
+(function() {
+    function unlock() {
+        var pw = document.getElementById('passwordModal') || document.getElementById('lockModal') || document.getElementById('pwModal');
+        if (pw) { pw.style.setProperty('display', 'none', 'important'); pw.style.setProperty('visibility', 'hidden', 'important'); }
+        var main = document.getElementById('mainContent') || document.getElementById('quizContainer');
+        if (main) { main.style.setProperty('display', 'block', 'important'); }
+        if (typeof initQuiz === 'function') { try { initQuiz(); } catch(e){} }
+        if (typeof createUnicorns === 'function') { try { createUnicorns(); } catch(e){} }
+    }
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', unlock);
+    } else {
+        unlock();
+    }
+})();
+</script>
+
+</body>
+</html>
