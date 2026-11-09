@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🌙 TEST FOR UNIT 7 · p1 (I · II · III) — Ms. Chí Nên</title>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600;700&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--rose:#E91E63;--deep:#AD1457;--pink:#FFC2DC;--lilac:#B388FF;--mint:#12B886;--sun:#FFC93C;
+  --bad:#F2455B;--ink:#3B1B2E}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Nunito',sans-serif;color:var(--ink);
+  background:linear-gradient(160deg,#FFF0F6,#FFE3EF 55%,#FDEBFF);background-attachment:fixed}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:radial-gradient(rgba(233,30,99,.10) 1.5px,transparent 1.6px);background-size:22px 22px}
+/* ── TIM BAY ĐA MÀU ĐA HÌNH ── */
+.hs{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.h{position:absolute;bottom:-60px;animation:rise linear infinite}
+.h i{display:block;animation:sway ease-in-out infinite alternate;font-style:normal;line-height:1}
+@keyframes rise{0%{transform:translateY(0);opacity:0}7%{opacity:.9}90%{opacity:.9}
+  100%{transform:translateY(-116vh);opacity:0}}
+@keyframes sway{from{transform:translateX(-16px) rotate(-16deg)}to{transform:translateX(16px) rotate(16deg)}}
+/* trái tim vẽ bằng CSS — 3 biến thể hình dáng */
+.ch{position:relative;width:var(--s);height:var(--s);background:var(--c);transform:rotate(-45deg);
+  border-radius:0 0 4px 0}
+.ch::before,.ch::after{content:'';position:absolute;width:var(--s);height:var(--s);background:var(--c);border-radius:50%}
+.ch::before{top:calc(var(--s)/-2);left:0}
+.ch::after{top:0;left:calc(var(--s)/2)}
+.ch.slim{border-radius:0 0 45% 0}
+.ch.out{background:transparent;border:2.5px solid var(--c);border-top-color:transparent;border-left-color:transparent}
+.ch.out::before,.ch.out::after{background:transparent;border:2.5px solid var(--c)}
+.wrap{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:16px 14px 80px}
+h1,h2,h3,.pill,.qn,.sbtn,.ck,.lb,.l{font-family:'Quicksand',sans-serif;font-weight:700}
+.note{position:relative;border-radius:3px 3px 16px 3px;box-shadow:4px 6px 14px rgba(173,20,87,.18)}
+.note::after{content:'';position:absolute;right:0;bottom:0;width:24px;height:24px;
+  background:linear-gradient(135deg,transparent 50%,rgba(173,20,87,.16) 50%);border-radius:0 0 14px 0}
+.pin{position:absolute;top:-9px;left:50%;transform:translateX(-50%);width:18px;height:18px;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,#fff 8%,var(--rose) 45%,var(--deep));box-shadow:0 2px 5px rgba(0,0,0,.25)}
+.hdr{background:linear-gradient(180deg,#FFDCEA,var(--pink));padding:18px 18px 16px;text-align:center;
+  margin:8px 0 18px;transform:rotate(-.5deg)}
+.hdr h1{font-size:clamp(18px,4vw,27px);line-height:1.3;color:var(--deep)}
+.hdr p{font-size:.83rem;font-weight:800;color:#8A2E56;margin-top:6px}
+.sb{position:sticky;top:8px;z-index:9;background:#fff;border-radius:999px;box-shadow:0 4px 14px rgba(173,20,87,.2);
+  display:flex;align-items:center;gap:10px;padding:8px 16px;margin-bottom:18px;border:2px solid var(--pink)}
+.sb b{font-family:'Quicksand',sans-serif;font-size:1.1rem;color:var(--deep)}
+.tr{flex:1;height:11px;background:#FCE4EF;border-radius:999px;overflow:hidden}
+.fl{height:100%;width:0;background:linear-gradient(90deg,var(--rose),var(--lilac),var(--mint));transition:width .45s}
+.sec{background:linear-gradient(180deg,#FFF7FA,#FFEFF6);padding:16px 14px 18px;margin-bottom:24px}
+.sec:nth-child(even){transform:rotate(.35deg)}.sec:nth-child(odd){transform:rotate(-.3deg)}
+.st{display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin:2px 0 5px}
+.pill{color:#fff;border-radius:999px;padding:2px 14px;font-size:.95rem;box-shadow:0 3px 8px rgba(173,20,87,.25)}
+.st h2{font-size:1.06rem;line-height:1.35;color:var(--deep)}
+.si{font-size:.89rem;font-weight:700;color:#8A2E56;font-style:italic;margin:2px 0 12px;line-height:1.6}
+.th{background:linear-gradient(180deg,#FFF9DC,#FFF3BF);padding:12px 13px 14px;margin-bottom:14px;
+  border-radius:3px 3px 14px 3px;box-shadow:3px 4px 10px rgba(160,120,0,.16);position:relative}
+.th::after{content:'';position:absolute;right:0;bottom:0;width:22px;height:22px;
+  background:linear-gradient(135deg,transparent 50%,rgba(160,120,0,.15) 50%);border-radius:0 0 12px 0}
+.th h3{font-size:1rem;color:#8A6100;margin-bottom:9px;line-height:1.4}
+.ru{background:#fff;border-left:6px solid var(--rose);border-radius:0 10px 10px 0;padding:7px 11px;margin-bottom:7px;
+  font-size:.93rem;line-height:1.75;font-weight:700;box-shadow:0 2px 6px rgba(0,0,0,.06)}
+.ru b{color:var(--deep)}
+.eg{display:inline-block;background:#FFE9F2;border:1.5px solid var(--rose);border-radius:8px;padding:0 8px;
+  font-weight:800;color:var(--deep);margin:2px 3px 0 0}
+.tb{width:100%;border-collapse:collapse;margin:8px 0;font-size:.87rem}
+.tb th{background:var(--rose);color:#fff;padding:6px 8px;border:1.5px solid #fff;font-family:'Quicksand',sans-serif;font-size:.9rem}
+.tb td{background:#fff;padding:6px 8px;border:1.5px solid #FAD4E4;font-weight:700;line-height:1.65}
+.tb tr:nth-child(even) td{background:#FFF7FA}
+.tb td b{color:var(--mint)}.tb td s{color:var(--bad)}
+.tip{background:#E4FBF4;border:2px solid var(--mint);border-radius:12px;padding:8px 12px;font-size:.92rem;
+  font-weight:700;line-height:1.78;color:#065F46}
+.wn{background:#FFECEF;border:2px solid var(--bad);border-radius:12px;padding:8px 12px;font-size:.92rem;
+  font-weight:700;line-height:1.78;color:#9F1239;margin-top:8px}
+.wn s{color:#BE123C}
+.wb{background:#F6EEFF;border:2px dashed var(--lilac);border-radius:14px;padding:10px 12px 12px;margin-bottom:14px}
+.wb .lb{font-size:.9rem;color:#6D28D9;margin-bottom:7px}
+.wb .cs{display:flex;flex-wrap:wrap;gap:7px}
+.wb span{background:#fff;border:2px solid var(--lilac);border-radius:9px;padding:3px 12px;font-weight:800;
+  font-size:.93rem;box-shadow:0 2px 5px rgba(109,40,217,.15);transition:.2s}
+.wb span.used{opacity:.32;text-decoration:line-through;box-shadow:none}
+.q{background:#fff;border-radius:3px 3px 13px 3px;padding:11px 12px 12px;margin-bottom:11px;
+  box-shadow:2px 3px 9px rgba(173,20,87,.13);border-left:5px solid var(--pink)}
+.q.shk{animation:shk .42s}
+@keyframes shk{0%,100%{transform:translateX(0)}25%{transform:translateX(-7px)}75%{transform:translateX(7px)}}
+.qn{display:inline-block;background:var(--rose);color:#fff;border-radius:8px;min-width:30px;text-align:center;
+  padding:0 8px;margin-right:7px;font-size:.93rem;box-shadow:0 2px 5px rgba(233,30,99,.35)}
+.qt{font-weight:700;font-size:1rem;line-height:1.85}
+.qt .bl{display:inline-block;min-width:94px;border-bottom:3px solid var(--rose);text-align:center;color:var(--rose);font-weight:900}
+.qt u{background:var(--sun);border-radius:5px;padding:0 5px;text-decoration:none;font-weight:900}
+.src{background:#FFF7FA;border-left:5px solid var(--lilac);border-radius:0 11px 11px 0;padding:8px 12px;margin-top:8px;
+  font-weight:800;font-size:1rem;line-height:1.8}
+.quote{background:#F0F9FF;border-left:5px solid #38BDF8;border-radius:0 11px 11px 0;padding:9px 12px;margin-top:8px;
+  font-weight:800;font-size:1.02rem;line-height:1.8;color:#075985;font-style:italic}
+/* ── SẮP XẾP TỪ ── */
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:9px}
+.cp{background:#FFF7FA;border:2px solid var(--lilac);border-radius:10px;padding:6px 13px;font-weight:800;font-size:.97rem;
+  cursor:pointer;box-shadow:0 2px 6px rgba(109,40,217,.16);transition:.14s;color:#4C1D95}
+.cp:hover:not(.gone){transform:translateY(-2px);background:#F3E8FF}
+.cp.gone{opacity:.25;pointer-events:none;text-decoration:line-through}
+.built{margin-top:9px;min-height:44px;background:#FFFDFE;border:2px dashed var(--rose);border-radius:11px;
+  padding:9px 12px;font-weight:800;font-size:1.02rem;line-height:1.7;color:var(--deep)}
+.built.ok{border-style:solid;border-color:var(--mint);background:#D7F7EC;color:#065F46}
+.built.no{border-style:solid;border-color:var(--bad);background:#FFE1E6;color:#9F1239}
+.built .ph{color:#C99;font-weight:700;font-style:italic}
+.acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:9px}
+.og{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.og.c4{grid-template-columns:repeat(4,1fr)}.og.c1{grid-template-columns:1fr}
+@media(max-width:640px){.og.c4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.og{grid-template-columns:1fr}}
+.ob{background:#FFF7FA;border:2px solid var(--pink);border-radius:11px;padding:9px 12px;font-family:'Nunito';
+  font-size:.96rem;font-weight:800;cursor:pointer;box-shadow:0 3px 7px rgba(173,20,87,.12);transition:.14s;
+  text-align:center;line-height:1.5;color:var(--ink)}
+.ob:hover:not(.dn){transform:translateY(-2px);background:#FFEAF3;border-color:var(--rose)}
+.ob.ok{background:#D7F7EC;border-color:var(--mint);color:#065F46}
+.ob.no{background:#FFE1E6;border-color:var(--bad);color:#9F1239}
+.ob.dim{opacity:.4}
+/* phần GẠCH CHÂN của bài phát âm — tô vàng + gạch chân đậm cho thật rõ */
+.ob u,.g2 u{background:#FFE066;border-radius:4px;padding:0 3px;font-weight:900;color:var(--ink);
+  text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:3px;text-decoration-color:var(--deep)}
+.ob.ok u,.ob.no u{background:rgba(255,255,255,.65)}
+.fr{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:9px}
+.ti{flex:1;min-width:190px;padding:9px 13px;border:2px solid var(--pink);border-radius:11px;font-family:'Nunito';
+  font-size:.98rem;font-weight:800;outline:none;background:#FFFDFE}
+.ti:focus{border-color:var(--rose);background:#fff}
+.ti.ok{border-color:var(--mint);background:#D7F7EC}.ti.no{border-color:var(--bad);background:#FFE1E6}
+.ck{background:var(--rose);color:#fff;border:none;border-radius:11px;padding:9px 18px;font-size:.98rem;cursor:pointer;
+  box-shadow:0 4px 10px rgba(233,30,99,.35);white-space:nowrap}
+.ck.gh{background:#fff;color:var(--rose);border:2px solid var(--rose);box-shadow:none}
+.ck:hover:not(:disabled){transform:translateY(-2px)}
+.ck:disabled{opacity:.4;cursor:default}
+.hb{margin-top:9px;background:#FFF9DC;border:1.5px dashed var(--sun);border-radius:10px;padding:7px 11px;
+  font-size:.87rem;font-weight:700;color:#8A6100;line-height:1.7}
+.ex{display:none;margin-top:10px;background:#FFFDFE;border-radius:12px;padding:12px;font-size:.94rem;line-height:1.75;
+  box-shadow:0 3px 10px rgba(173,20,87,.14);border:1.5px solid #FAD4E4}
+.ex.show{display:block}
+.kb{background:#D7F7EC;border:1.5px solid var(--mint);border-radius:9px;padding:7px 11px;margin-bottom:8px;
+  font-weight:900;color:#065F46;line-height:1.7}
+.vi{background:#FFF7E0;border-left:4px solid var(--sun);border-radius:0 8px 8px 0;padding:6px 11px;margin-bottom:8px;
+  font-weight:700;color:#8A6100;line-height:1.7}
+.sp{background:#FFF7FA;border:1.5px solid #FAD4E4;border-radius:9px;padding:7px 11px;margin-bottom:7px;line-height:1.75}
+.sp .l{display:inline-block;background:var(--lilac);color:#fff;border-radius:6px;padding:0 8px;font-size:.85rem;margin-bottom:3px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:5px 0}
+@media(max-width:600px){.g2{grid-template-columns:1fr}}
+.g2>div{background:#fff;border:1.5px solid #FAE0EB;border-radius:8px;padding:5px 9px;line-height:1.65;font-weight:700}
+.w{color:#1D4ED8;font-weight:800}.m{color:#C2410C;font-weight:700}.g{color:var(--mint);font-weight:900}
+.t{background:#FCE7F1;color:#8A2E56;padding:1px 5px;border-radius:4px;font-size:.78em;font-weight:800;margin:0 3px}
+.pg{background:linear-gradient(transparent 54%,#FFE066 54%);font-weight:800;line-height:2}
+.ipa{color:#7B1FA2;background:rgba(123,31,162,.09);border-radius:4px;padding:1px 5px;font-family:'Courier New',monospace;font-size:.88em;font-weight:800}
+.sub{text-align:center;margin-top:22px}
+.sbtn{background:var(--rose);color:#fff;border:none;border-radius:999px;padding:13px 40px;font-size:1.2rem;cursor:pointer;
+  box-shadow:0 6px 16px rgba(233,30,99,.4)}
+.sbtn:hover{transform:translateY(-2px)}
+.ov{position:fixed;inset:0;background:rgba(59,27,46,.7);z-index:99;display:none;align-items:center;justify-content:center;
+  padding:16px;overflow-y:auto;backdrop-filter:blur(3px)}
+.ov.on{display:flex}
+.mb{background:linear-gradient(180deg,#FFF7FA,#FFEAF3);border-radius:3px 3px 18px 3px;box-shadow:5px 7px 22px rgba(0,0,0,.35);
+  padding:22px;width:410px;max-width:96%;text-align:center;position:relative}
+.mb h2{font-size:1.35rem;color:var(--deep);margin-bottom:10px;line-height:1.25}
+.mb input{width:100%;padding:11px;border:2px solid var(--pink);border-radius:11px;font-family:'Nunito';font-weight:800;
+  font-size:1rem;text-align:center;outline:none;margin-bottom:10px}
+.mb input.er{border-color:var(--bad);background:#FFE1E6;animation:shk .42s}
+.mb .em{color:var(--bad);font-weight:800;font-size:.86rem;display:none;margin-bottom:8px}
+.mb .gr{font-family:'Quicksand',sans-serif;font-weight:700;font-size:1.22rem;color:var(--deep);line-height:1.3;margin-bottom:4px}
+.mb .rs{font-family:'Quicksand',sans-serif;font-weight:700;font-size:2.5rem;color:var(--rose)}
+.mb .rt{font-weight:900;color:#6D28D9;font-size:1.08rem;margin:4px 0 6px}
+.mb .rm{font-weight:700;font-size:.93rem;line-height:1.65;margin-bottom:10px}
+.mb img{width:100%;max-width:250px;border-radius:13px;margin:10px auto;display:block}
+.cf{position:fixed;top:-12px;width:9px;height:14px;z-index:100;pointer-events:none;border-radius:2px}
+@keyframes fall{to{transform:translateY(105vh) rotate(700deg);opacity:.2}}
+</style>
+<style>/*scn*/.zsg .wk{position:absolute;left:0;animation:zsgW linear infinite}.zsg .wk.rv{animation-name:zsgW2}.zsg .wk svg{display:block}.zsg .flp{display:inline-block;transform:scaleX(-1)}@keyframes zsgW{from{transform:translateX(-22vw)}to{transform:translateX(112vw)}}@keyframes zsgW2{from{transform:translateX(112vw)}to{transform:translateX(-22vw)}}
+.zsg .l1{animation:zsgLg .5s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:50% 0}.zsg .l2{animation:zsgLg .5s ease-in-out infinite alternate-reverse;transform-box:fill-box;transform-origin:50% 0}@keyframes zsgLg{from{transform:rotate(-12deg)}to{transform:rotate(12deg)}}
+.zsg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;background:linear-gradient(180deg,#0F172A 0%,#312E81 36%,#6D28D9 62%,#14532D 80%,#052E16 100%)}
+.zsg svg.scene{position:absolute;inset:0;width:100%;height:100%}
+.zsg .bb{animation:zsgBuf .5s ease-in-out infinite alternate}@keyframes zsgBuf{from{transform:translateY(0)}to{transform:translateY(-2.5px)}}
+.zsg .boy{animation:zsgBoy 1s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:50% 100%}@keyframes zsgBoy{from{transform:rotate(-2.5deg)}to{transform:rotate(2.5deg)}}
+.zsg .tl{animation:zsgTl .7s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:100% 0}@keyframes zsgTl{from{transform:rotate(-12deg)}to{transform:rotate(12deg)}}
+.zsg .hd{animation:zsgHd .8s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:0 100%}@keyframes zsgHd{from{transform:rotate(-3deg)}to{transform:rotate(4deg)}}
+.zsg .nt{animation:zsgNt 2.1s ease-out infinite}@keyframes zsgNt{0%{transform:translate(0,0);opacity:0}25%{opacity:1}100%{transform:translate(26px,-38px) rotate(18deg);opacity:0}}
+.zsg .arm{animation:zsgArm .5s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:50% 0}@keyframes zsgArm{from{transform:rotate(-22deg)}to{transform:rotate(22deg)}}
+.zsg .arm2{animation:zsgArm .5s ease-in-out infinite alternate-reverse;transform-box:fill-box;transform-origin:50% 0}
+.zsg .whl{animation:zsgWhl 1s linear infinite;transform-box:fill-box;transform-origin:center}@keyframes zsgWhl{to{transform:rotate(360deg)}}
+.zsg .flap2{animation:zsgFlp .4s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:0 0}@keyframes zsgFlp{from{transform:skewX(-8deg)}to{transform:skewX(10deg)}}
+.zsg .pole{animation:zsgPole .5s ease-in-out infinite alternate}@keyframes zsgPole{from{transform:translateY(0)}to{transform:translateY(-3px)}}
+.zsg .bsk{animation:zsgBsk .5s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:50% 0}@keyframes zsgBsk{from{transform:rotate(-6deg)}to{transform:rotate(6deg)}}
+.zsg .sk{animation:zsgSk 1.2s ease-in-out infinite;transform-box:fill-box;transform-origin:20% 10%}@keyframes zsgSk{0%,100%{transform:rotate(-10deg)}50%{transform:rotate(40deg)}}
+.zsg .kite{animation:zsgKite 3s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:50% 100%}@keyframes zsgKite{from{transform:rotate(-10deg) translateY(0)}to{transform:rotate(10deg) translateY(-14px)}}
+.zsg .kt{animation:zsgKt 1s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:50% 0}@keyframes zsgKt{from{transform:skewX(-14deg)}to{transform:skewX(14deg)}}
+.zsg .wav{animation:zsgWav 3s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:50% 100%}@keyframes zsgWav{from{transform:skewX(-6deg)}to{transform:skewX(6deg)}}
+.zsg .fog{animation:zsgFog 60s linear infinite}@keyframes zsgFog{from{transform:translateX(-500px)}to{transform:translateX(500px)}}
+.zsg .puff{animation:zsgPf 1.6s ease-out infinite;transform-box:fill-box;transform-origin:center}@keyframes zsgPf{0%{transform:translate(0,0) scale(.5);opacity:.95}100%{transform:translate(-40px,-50px) scale(1.8);opacity:0}}
+.zsg .sw{animation:zsgSwg 2.4s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:50% 0}@keyframes zsgSwg{from{transform:rotate(-16deg)}to{transform:rotate(16deg)}}
+.zsg .win{animation:zsgWn 3s ease-in-out infinite alternate}@keyframes zsgWn{from{opacity:.6}to{opacity:1}}
+.zsg .cl{animation:zsgCl 80s linear infinite}@keyframes zsgCl{from{transform:translateX(-300px)}to{transform:translateX(1500px)}}
+.zsg .flap{animation:zsgFp .35s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:50% 100%}@keyframes zsgFp{from{transform:scaleY(1)}to{transform:scaleY(-.6)}}
+.zsg .bw{animation:zsgBw .22s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:center}@keyframes zsgBw{from{transform:scaleX(1)}to{transform:scaleX(.3)}}
+.zsg .lf{animation:zsgLf 3s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:0 100%}@keyframes zsgLf{from{transform:rotate(-6deg)}to{transform:rotate(6deg)}}
+.zsg .lt{animation:zsgLt 3.4s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:50% 100%}@keyframes zsgLt{from{transform:rotate(-6deg)}to{transform:rotate(6deg)}}
+.zsg .rip{animation:zsgRp 4s ease-in-out infinite alternate}@keyframes zsgRp{from{transform:translateX(-16px);opacity:.35}to{transform:translateX(16px);opacity:.85}}
+.zsg .sunr{animation:zsgSr 40s linear infinite;transform-box:fill-box;transform-origin:center}@keyframes zsgSr{to{transform:rotate(360deg)}}
+.zsg .fly{position:absolute;bottom:-40px;animation:zsgUp linear infinite}.zsg .fly>svg{display:block;animation:zsgZz 2.4s ease-in-out infinite alternate}@keyframes zsgUp{to{transform:translateY(-118vh)}}@keyframes zsgZz{from{transform:translateX(-40px) rotate(-10deg)}to{transform:translateX(40px) rotate(10deg)}}
+.zsg .fj{position:absolute;animation:zsgFj 3.6s ease-in-out infinite}@keyframes zsgFj{0%,55%{transform:translate(0,0) rotate(-50deg);opacity:0}60%{opacity:1}78%{transform:translate(50px,-70px) rotate(0)}95%{transform:translate(100px,0) rotate(50deg);opacity:1}100%{opacity:0}}
+.zsg .bob{animation:zsgBb 1.8s ease-in-out infinite alternate}@keyframes zsgBb{from{transform:translateY(0) rotate(-2deg)}to{transform:translateY(-5px) rotate(2deg)}}
+.zsg .smk{animation:zsgSm 4s ease-out infinite;transform-box:fill-box;transform-origin:center}@keyframes zsgSm{0%{transform:translateY(0) scale(.6);opacity:0}30%{opacity:.8}100%{transform:translateY(-80px) scale(1.5);opacity:0}}
+.zsg .tw{animation:zsgTw ease-in-out infinite alternate}@keyframes zsgTw{from{opacity:.15}to{opacity:1}}
+.zsg .glow{animation:zsgGl 2.6s ease-in-out infinite alternate}@keyframes zsgGl{from{opacity:.45}to{opacity:1}}
+.zsg .ff{position:absolute;animation:zsgFf ease-in-out infinite alternate}@keyframes zsgFf{0%{transform:translate(0,0);opacity:.2}50%{opacity:1}100%{transform:translate(60px,-80px);opacity:.3}}
+.zsg .hop{animation:zsgHop .6s ease-in-out infinite}@keyframes zsgHop{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+.zsg .blink{animation:zsgBl 4s infinite;transform-box:fill-box;transform-origin:center}@keyframes zsgBl{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
+.zsg .wisp{animation:zsgWs 3s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:50% 100%}@keyframes zsgWs{from{transform:translateY(0) scale(.9);opacity:.6}to{transform:translateY(-20px) scale(1.1);opacity:1}}
+.zsg .flw{animation:zsgFlw .3s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:50% 100%}@keyframes zsgFlw{from{transform:scaleY(1)}to{transform:scaleY(-.5)}}
+.zsg .stream{stroke-dasharray:22 10;animation:zsgStr .6s linear infinite}@keyframes zsgStr{to{stroke-dashoffset:-32}}
+.zsg .flag{animation:zsgFlag .5s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:0 50%}@keyframes zsgFlag{from{transform:skewY(-6deg)}to{transform:skewY(6deg)}}
+.zsg .float{animation:zsgFlt 6s ease-in-out infinite alternate}@keyframes zsgFlt{from{transform:translateY(0)}to{transform:translateY(-16px)}}
+.zsg .vine{animation:zsgVn 3s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:50% 0}@keyframes zsgVn{from{transform:rotate(-5deg)}to{transform:rotate(5deg)}}
+.zsg .frog{animation:zsgFr 3s ease-in-out infinite;transform-box:fill-box;transform-origin:50% 100%}@keyframes zsgFr{0%,70%,100%{transform:translateY(0)}80%{transform:translateY(-24px)}90%{transform:translateY(0) scaleY(.9)}}
+@media (prefers-reduced-motion:reduce){.zsg *{animation:none!important}}
+body{background:#0F172A!important;animation:none!important}body::before{display:none!important}.hs{display:none!important}.wrap{position:relative!important;z-index:2!important}.hdr,.sec{box-shadow:6px 6px 0 rgba(31,37,68,.18),0 14px 34px rgba(0,0,0,.28)!important}.sb{box-shadow:0 8px 22px rgba(0,0,0,.25)!important;border-color:#6D28D9!important}
+.cbw{margin-top:12px;padding:10px 14px;border-radius:14px;border-left:5px solid #FACC15;background:#FFFBEB;color:#3b2f1a;line-height:1.6;font-weight:700;font-size:.92rem;text-align:left}
+.cbw .cbl{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}.cbw a{display:inline-flex;align-items:center;gap:5px;padding:6px 14px;border-radius:99px;font-size:.95rem;font-weight:900;text-decoration:none;color:#fff!important;border:3px solid #fff;
+ background:linear-gradient(90deg,#F43F5E,#F59E0B,#22C55E,#06B6D4,#8B5CF6,#EC4899,#F43F5E);background-size:300% 100%;animation:cbRain 3.5s linear infinite,cbBob 1.6s ease-in-out infinite alternate;box-shadow:0 4px 0 rgba(0,0,0,.18),0 0 12px rgba(236,72,153,.5);text-shadow:0 1px 2px rgba(0,0,0,.35)}
+.cbw a:hover{transform:scale(1.08) rotate(-2deg)}@keyframes cbRain{to{background-position:300% 0}}@keyframes cbBob{to{transform:translateY(-3px)}}</style>
+</head>
+<body>
+<div class="zsg" aria-hidden="true"><svg class="scene" viewBox="0 0 1300 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><circle class="tw" style="animation-delay:-1.1s;animation-duration:2.6s" cx="522" cy="317" r="0.9" fill="#FFFFFF"/><circle class="tw" style="animation-delay:-1.7s;animation-duration:2.1s" cx="577" cy="321" r="1.2" fill="#C4B5FD"/><circle class="tw" style="animation-delay:-2.3s;animation-duration:1.7s" cx="692" cy="11" r="1.9" fill="#FEF3C7"/><circle class="tw" style="animation-delay:-0.7s;animation-duration:3.1s" cx="932" cy="204" r="1.9" fill="#FFFFFF"/><circle class="tw" style="animation-delay:-1.8s;animation-duration:3.1s" cx="842" cy="247" r="1.8" fill="#FFFFFF"/><circle class="tw" style="animation-delay:-2.8s;animation-duration:2.1s" cx="671" cy="205" r="2.1" fill="#FFFFFF"/><circle class="tw" style="animation-delay:-2.0s;animation-duration:2.4s" cx="664" cy="48" r="2.2" fill="#FEF3C7"/><circle class="tw" style="animation-delay:-1.9s;animation-duration:1.9s" cx="724" cy="354" r="1.0" fill="#C4B5FD"/><circle class="tw" style="animation-delay:-2.0s;animation-duration:3.1s" cx="984" cy="273" r="1.9" fill="#FFFFFF"/><circle class="tw" style="animation-delay:-0.3s;animation-duration:3.3s" cx="170" cy="146" r="1.1" fill="#FFFFFF"/><circle class="tw" style="animation-delay:-1.5s;animation-duration:1.7s" cx="1182" cy="76" r="1.6" fill="#C4B5FD"/><circle class="tw" style="animation-delay:-2.3s;animation-duration:1.4s" cx="66" cy="103" r="1.6" fill="#FEF3C7"/><circle class="tw" style="animation-delay:-2.4s;animation-duration:2.1s" cx="253" cy="176" r="1.8" fill="#FFFFFF"/><circle class="tw" style="animation-delay:-1.3s;animation-duration:3.1s" cx="804" cy="203" r="1.3" fill="#FFFFFF"/><circle class="tw" style="animation-delay:-2.7s;animation-duration:2.3s" cx="102" cy="11" r="1.8" fill="#FFFFFF"/><circle class="tw" style="animation-delay:-0.6s;animation-duration:2.9s" cx="1247" cy="128" r="0.9" fill="#FEF3C7"/><circle class="tw" style="animation-delay:-0.9s;animation-duration:2.3s" cx="382" cy="339" r="1.3" fill="#C4B5FD"/><circle class="tw" style="animation-delay:-0.0s;animation-duration:3.3s" cx="753" cy="124" r="1.1" fill="#FEF3C7"/><circle class="tw" style="animation-delay:-0.3s;animation-duration:1.7s" cx="559" cy="232" r="1.2" fill="#FFFFFF"/><circle class="tw" style="animation-delay:-1.2s;animation-duration:2.8s" cx="970" cy="255" r="1.4" fill="#C4B5FD"/><circle class="tw" style="animation-delay:-2.8s;animation-duration:2.2s" cx="895" cy="147" r="0.9" fill="#C4B5FD"/><circle class="tw" style="animation-delay:-2.9s;animation-duration:3.1s" cx="983" cy="130" r="0.9" fill="#FFFFFF"/><circle class="tw" style="animation-delay:-1.1s;animation-duration:3.0s" cx="1145" cy="298" r="2.2" fill="#C4B5FD"/><circle class="tw" style="animation-delay:-0.8s;animation-duration:2.8s" cx="1062" cy="319" r="0.9" fill="#C4B5FD"/><circle class="tw" style="animation-delay:-2.3s;animation-duration:1.5s" cx="1090" cy="144" r="1.2" fill="#C4B5FD"/><circle class="tw" style="animation-delay:-1.4s;animation-duration:2.3s" cx="759" cy="157" r="1.3" fill="#FFFFFF"/><circle class="tw" style="animation-delay:-1.6s;animation-duration:2.9s" cx="892" cy="193" r="1.1" fill="#FEF3C7"/><circle class="tw" style="animation-delay:-2.3s;animation-duration:2.8s" cx="758" cy="250" r="0.7" fill="#FFFFFF"/><circle class="tw" style="animation-delay:-0.7s;animation-duration:1.5s" cx="253" cy="263" r="1.1" fill="#FEF3C7"/><circle class="tw" style="animation-delay:-0.0s;animation-duration:3.1s" cx="1106" cy="271" r="0.7" fill="#C4B5FD"/><circle class="tw" style="animation-delay:-0.9s;animation-duration:1.5s" cx="628" cy="260" r="1.9" fill="#FFFFFF"/><circle class="tw" style="animation-delay:-2.5s;animation-duration:3.4s" cx="1084" cy="202" r="1.6" fill="#FEF3C7"/><circle class="tw" style="animation-delay:-0.5s;animation-duration:2.6s" cx="47" cy="361" r="2.1" fill="#FFFFFF"/><circle class="tw" style="animation-delay:-0.7s;animation-duration:2.5s" cx="463" cy="225" r="0.9" fill="#C4B5FD"/><circle class="tw" style="animation-delay:-0.0s;animation-duration:1.9s" cx="297" cy="313" r="1.0" fill="#FEF3C7"/><circle class="tw" style="animation-delay:-2.7s;animation-duration:1.9s" cx="730" cy="242" r="1.5" fill="#FEF3C7"/><circle class="tw" style="animation-delay:-2.1s;animation-duration:3.1s" cx="364" cy="53" r="1.6" fill="#FEF3C7"/><circle class="tw" style="animation-delay:-0.3s;animation-duration:2.8s" cx="1004" cy="130" r="1.5" fill="#C4B5FD"/><circle class="tw" style="animation-delay:-2.9s;animation-duration:2.2s" cx="960" cy="321" r="1.9" fill="#FEF3C7"/><circle class="tw" style="animation-delay:-2.9s;animation-duration:2.5s" cx="288" cy="279" r="0.8" fill="#FFFFFF"/><circle class="tw" style="animation-delay:-1.6s;animation-duration:3.2s" cx="1072" cy="269" r="2.1" fill="#FEF3C7"/><circle class="tw" style="animation-delay:-0.1s;animation-duration:2.5s" cx="486" cy="208" r="1.9" fill="#FFFFFF"/><circle class="tw" style="animation-delay:-1.0s;animation-duration:2.2s" cx="1170" cy="168" r="1.7" fill="#FEF3C7"/><circle class="tw" style="animation-delay:-2.8s;animation-duration:2.1s" cx="1008" cy="310" r="1.1" fill="#FFFFFF"/><circle class="tw" style="animation-delay:-2.3s;animation-duration:1.4s" cx="836" cy="97" r="1.4" fill="#C4B5FD"/><circle class="tw" style="animation-delay:-0.9s;animation-duration:2.5s" cx="394" cy="147" r="1.2" fill="#FEF3C7"/><circle class="tw" style="animation-delay:-2.3s;animation-duration:3.0s" cx="731" cy="205" r="0.8" fill="#C4B5FD"/><circle class="tw" style="animation-delay:-2.1s;animation-duration:3.4s" cx="1014" cy="180" r="1.3" fill="#FFFFFF"/><circle class="tw" style="animation-delay:-2.1s;animation-duration:1.5s" cx="892" cy="371" r="2.0" fill="#C4B5FD"/><circle class="tw" style="animation-delay:-1.3s;animation-duration:2.2s" cx="103" cy="72" r="1.1" fill="#FFFFFF"/><circle class="tw" style="animation-delay:-0.8s;animation-duration:2.2s" cx="12" cy="196" r="1.1" fill="#C4B5FD"/><circle class="tw" style="animation-delay:-0.2s;animation-duration:2.2s" cx="598" cy="287" r="2.2" fill="#FEF3C7"/><circle class="tw" style="animation-delay:-1.8s;animation-duration:2.0s" cx="1128" cy="74" r="1.9" fill="#FEF3C7"/><circle class="tw" style="animation-delay:-1.9s;animation-duration:2.9s" cx="1256" cy="182" r="1.3" fill="#FFFFFF"/><circle class="tw" style="animation-delay:-2.7s;animation-duration:2.1s" cx="262" cy="280" r="1.6" fill="#FEF3C7"/><circle class="tw" style="animation-delay:-1.1s;animation-duration:3.2s" cx="426" cy="73" r="1.9" fill="#C4B5FD"/><circle class="tw" style="animation-delay:-2.1s;animation-duration:2.9s" cx="372" cy="332" r="1.5" fill="#FFFFFF"/><circle class="tw" style="animation-delay:-0.5s;animation-duration:3.3s" cx="359" cy="337" r="0.9" fill="#FEF3C7"/><circle class="tw" style="animation-delay:-1.4s;animation-duration:1.5s" cx="960" cy="100" r="2.0" fill="#C4B5FD"/><circle class="tw" style="animation-delay:-0.2s;animation-duration:2.5s" cx="113" cy="284" r="1.4" fill="#C4B5FD"/><circle class="tw" style="animation-delay:-1.6s;animation-duration:2.6s" cx="166" cy="32" r="1.9" fill="#FEF3C7"/><circle class="tw" style="animation-delay:-2.8s;animation-duration:2.9s" cx="829" cy="270" r="1.6" fill="#C4B5FD"/><circle class="tw" style="animation-delay:-2.6s;animation-duration:1.7s" cx="34" cy="171" r="0.7" fill="#FEF3C7"/><circle class="tw" style="animation-delay:-0.3s;animation-duration:3.2s" cx="586" cy="360" r="1.3" fill="#FFFFFF"/><circle class="tw" style="animation-delay:-0.7s;animation-duration:2.1s" cx="614" cy="318" r="0.8" fill="#FEF3C7"/><circle class="tw" style="animation-delay:-2.4s;animation-duration:1.4s" cx="518" cy="34" r="2.0" fill="#FEF3C7"/><circle class="tw" style="animation-delay:-2.7s;animation-duration:2.5s" cx="744" cy="173" r="1.0" fill="#FFFFFF"/><circle class="tw" style="animation-delay:-1.6s;animation-duration:2.0s" cx="907" cy="124" r="1.9" fill="#C4B5FD"/><circle class="tw" style="animation-delay:-1.3s;animation-duration:1.8s" cx="288" cy="39" r="2.0" fill="#FFFFFF"/><circle class="tw" style="animation-delay:-1.4s;animation-duration:1.8s" cx="743" cy="369" r="1.4" fill="#FFFFFF"/><circle class="tw" style="animation-delay:-1.5s;animation-duration:1.9s" cx="840" cy="80" r="1.4" fill="#FEF3C7"/><circle class="tw" style="animation-delay:-2.1s;animation-duration:2.7s" cx="1234" cy="122" r="2.0" fill="#C4B5FD"/><circle class="tw" style="animation-delay:-2.4s;animation-duration:2.3s" cx="435" cy="227" r="1.8" fill="#FFFFFF"/><circle class="tw" style="animation-delay:-2.2s;animation-duration:1.5s" cx="825" cy="332" r="1.3" fill="#FFFFFF"/><circle class="tw" style="animation-delay:-2.3s;animation-duration:3.0s" cx="1123" cy="362" r="1.4" fill="#FFFFFF"/><circle class="tw" style="animation-delay:-2.9s;animation-duration:1.9s" cx="1120" cy="232" r="0.7" fill="#FFFFFF"/><circle class="tw" style="animation-delay:-2.0s;animation-duration:3.3s" cx="921" cy="298" r="1.0" fill="#FEF3C7"/><circle class="tw" style="animation-delay:-0.2s;animation-duration:2.5s" cx="943" cy="337" r="1.7" fill="#FEF3C7"/><circle class="tw" style="animation-delay:-2.7s;animation-duration:1.8s" cx="785" cy="237" r="0.7" fill="#FEF3C7"/><circle class="tw" style="animation-delay:-2.6s;animation-duration:3.1s" cx="314" cy="319" r="1.7" fill="#FFFFFF"/><circle class="glow" cx="220" cy="140" r="100" fill="#FEF3C7" opacity=".2"/><circle cx="220" cy="140" r="64" fill="#FEF9C3"/><circle cx="200" cy="124" r="10" fill="#FDE68A" opacity=".7"/><path d="M-20 640 L1320 640 L1320 900 L-20 900 Z" fill="#14532D"/><g transform="translate(-20 660)"><rect x="0" y="-170" width="470" height="170" rx="16" fill="#166534"/><circle cx="236" cy="-16" r="12" fill="#15803D"/><circle cx="144" cy="-151" r="13" fill="#14532D"/><circle cx="130" cy="-86" r="11" fill="#16A34A"/><circle cx="237" cy="-19" r="13" fill="#16A34A"/><circle cx="259" cy="-129" r="14" fill="#16A34A"/><circle cx="378" cy="-154" r="15" fill="#15803D"/><circle cx="163" cy="-55" r="18" fill="#14532D"/><circle cx="9" cy="-68" r="10" fill="#15803D"/><circle cx="383" cy="-124" r="14" fill="#15803D"/><circle cx="207" cy="-37" r="14" fill="#14532D"/><circle cx="209" cy="-100" r="16" fill="#14532D"/><circle cx="21" cy="-81" r="14" fill="#16A34A"/><circle cx="207" cy="-147" r="10" fill="#16A34A"/><circle cx="347" cy="-133" r="11" fill="#14532D"/><circle cx="30" cy="-128" r="15" fill="#15803D"/><circle cx="88" cy="-145" r="12" fill="#16A34A"/><circle cx="293" cy="-28" r="14" fill="#16A34A"/><circle cx="315" cy="-153" r="13" fill="#14532D"/><circle cx="40" cy="-113" r="10" fill="#15803D"/><circle cx="139" cy="-13" r="13" fill="#14532D"/><circle cx="332" cy="-141" r="13" fill="#14532D"/><circle cx="73" cy="-137" r="14" fill="#16A34A"/><circle cx="250" cy="-97" r="15" fill="#16A34A"/><circle cx="116" cy="-158" r="14" fill="#15803D"/><circle cx="416" cy="-19" r="15" fill="#15803D"/><circle cx="59" cy="-8" r="11" fill="#14532D"/><circle cx="144" cy="-133" r="12" fill="#15803D"/><circle cx="300" cy="-9" r="16" fill="#15803D"/><circle cx="354" cy="-65" r="15" fill="#14532D"/><circle cx="260" cy="-85" r="18" fill="#14532D"/><circle cx="29" cy="-18" r="12" fill="#14532D"/><circle cx="333" cy="-29" r="18" fill="#16A34A"/><circle cx="62" cy="-31" r="10" fill="#15803D"/><circle cx="231" cy="-136" r="16" fill="#15803D"/><circle cx="222" cy="-63" r="14" fill="#16A34A"/><circle cx="239" cy="-61" r="10" fill="#16A34A"/><circle cx="41" cy="-13" r="14" fill="#14532D"/><circle cx="225" cy="-47" r="11" fill="#15803D"/><circle cx="186" cy="-17" r="18" fill="#14532D"/><circle cx="304" cy="-98" r="5" fill="#F43F5E"/><circle cx="304" cy="-98" r="2" fill="#FDE047"/><circle cx="43" cy="-124" r="5" fill="#F43F5E"/><circle cx="43" cy="-124" r="2" fill="#FDE047"/><circle cx="81" cy="-159" r="5" fill="#FFFFFF"/><circle cx="81" cy="-159" r="2" fill="#FDE047"/><circle cx="12" cy="-106" r="5" fill="#FFFFFF"/><circle cx="12" cy="-106" r="2" fill="#FDE047"/><circle cx="128" cy="-111" r="5" fill="#FFFFFF"/><circle cx="128" cy="-111" r="2" fill="#FDE047"/><circle cx="182" cy="-76" r="5" fill="#FB7185"/><circle cx="182" cy="-76" r="2" fill="#FDE047"/><circle cx="461" cy="-26" r="5" fill="#F43F5E"/><circle cx="461" cy="-26" r="2" fill="#FDE047"/><circle cx="161" cy="-27" r="5" fill="#FB7185"/><circle cx="161" cy="-27" r="2" fill="#FDE047"/><circle cx="114" cy="-149" r="5" fill="#FFFFFF"/><circle cx="114" cy="-149" r="2" fill="#FDE047"/><circle cx="39" cy="-112" r="5" fill="#FB7185"/><circle cx="39" cy="-112" r="2" fill="#FDE047"/><circle cx="294" cy="-114" r="5" fill="#F9A8D4"/><circle cx="294" cy="-114" r="2" fill="#FDE047"/><circle cx="331" cy="-134" r="5" fill="#FFFFFF"/><circle cx="331" cy="-134" r="2" fill="#FDE047"/><circle cx="405" cy="-96" r="5" fill="#FFFFFF"/><circle cx="405" cy="-96" r="2" fill="#FDE047"/><circle cx="164" cy="-49" r="5" fill="#F43F5E"/><circle cx="164" cy="-49" r="2" fill="#FDE047"/><circle cx="194" cy="-34" r="5" fill="#FFFFFF"/><circle cx="194" cy="-34" r="2" fill="#FDE047"/><circle cx="184" cy="-55" r="5" fill="#F43F5E"/><circle cx="184" cy="-55" r="2" fill="#FDE047"/><circle cx="374" cy="-154" r="5" fill="#F9A8D4"/><circle cx="374" cy="-154" r="2" fill="#FDE047"/><circle cx="401" cy="-74" r="5" fill="#F43F5E"/><circle cx="401" cy="-74" r="2" fill="#FDE047"/><circle cx="444" cy="-143" r="5" fill="#F43F5E"/><circle cx="444" cy="-143" r="2" fill="#FDE047"/><circle cx="440" cy="-23" r="5" fill="#FB7185"/><circle cx="440" cy="-23" r="2" fill="#FDE047"/><circle cx="207" cy="-81" r="5" fill="#FB7185"/><circle cx="207" cy="-81" r="2" fill="#FDE047"/><circle cx="78" cy="-56" r="5" fill="#F9A8D4"/><circle cx="78" cy="-56" r="2" fill="#FDE047"/><circle cx="207" cy="-45" r="5" fill="#F9A8D4"/><circle cx="207" cy="-45" r="2" fill="#FDE047"/><circle cx="196" cy="-100" r="5" fill="#FFFFFF"/><circle cx="196" cy="-100" r="2" fill="#FDE047"/><circle cx="260" cy="-132" r="5" fill="#FFFFFF"/><circle cx="260" cy="-132" r="2" fill="#FDE047"/><circle cx="297" cy="-66" r="5" fill="#F43F5E"/><circle cx="297" cy="-66" r="2" fill="#FDE047"/></g><g transform="translate(850 660)"><rect x="0" y="-170" width="480" height="170" rx="16" fill="#166534"/><circle cx="432" cy="-78" r="18" fill="#15803D"/><circle cx="38" cy="-78" r="18" fill="#15803D"/><circle cx="73" cy="-92" r="11" fill="#14532D"/><circle cx="218" cy="-9" r="15" fill="#15803D"/><circle cx="26" cy="-45" r="10" fill="#14532D"/><circle cx="441" cy="-89" r="11" fill="#14532D"/><circle cx="332" cy="-97" r="14" fill="#15803D"/><circle cx="416" cy="-145" r="17" fill="#14532D"/><circle cx="420" cy="-81" r="13" fill="#15803D"/><circle cx="403" cy="-35" r="10" fill="#16A34A"/><circle cx="91" cy="-112" r="16" fill="#16A34A"/><circle cx="72" cy="-121" r="10" fill="#16A34A"/><circle cx="154" cy="-148" r="10" fill="#16A34A"/><circle cx="283" cy="-26" r="18" fill="#14532D"/><circle cx="166" cy="-15" r="18" fill="#14532D"/><circle cx="178" cy="-130" r="13" fill="#16A34A"/><circle cx="224" cy="-54" r="15" fill="#14532D"/><circle cx="10" cy="-157" r="10" fill="#16A34A"/><circle cx="124" cy="-151" r="15" fill="#14532D"/><circle cx="177" cy="-87" r="10" fill="#14532D"/><circle cx="310" cy="-64" r="10" fill="#15803D"/><circle cx="134" cy="-147" r="17" fill="#16A34A"/><circle cx="65" cy="-25" r="17" fill="#15803D"/><circle cx="45" cy="-22" r="18" fill="#14532D"/><circle cx="458" cy="-130" r="17" fill="#14532D"/><circle cx="69" cy="-99" r="16" fill="#14532D"/><circle cx="126" cy="-137" r="14" fill="#14532D"/><circle cx="427" cy="-104" r="17" fill="#14532D"/><circle cx="413" cy="-128" r="13" fill="#15803D"/><circle cx="338" cy="-49" r="15" fill="#14532D"/><circle cx="89" cy="-60" r="13" fill="#14532D"/><circle cx="169" cy="-36" r="14" fill="#14532D"/><circle cx="437" cy="-9" r="11" fill="#15803D"/><circle cx="46" cy="-84" r="10" fill="#14532D"/><circle cx="452" cy="-19" r="17" fill="#16A34A"/><circle cx="26" cy="-31" r="11" fill="#15803D"/><circle cx="49" cy="-51" r="16" fill="#14532D"/><circle cx="265" cy="-50" r="15" fill="#15803D"/><circle cx="302" cy="-9" r="12" fill="#14532D"/><circle cx="212" cy="-50" r="13" fill="#16A34A"/><circle cx="104" cy="-119" r="5" fill="#FFFFFF"/><circle cx="104" cy="-119" r="2" fill="#FDE047"/><circle cx="207" cy="-125" r="5" fill="#F9A8D4"/><circle cx="207" cy="-125" r="2" fill="#FDE047"/><circle cx="191" cy="-13" r="5" fill="#F9A8D4"/><circle cx="191" cy="-13" r="2" fill="#FDE047"/><circle cx="155" cy="-86" r="5" fill="#F9A8D4"/><circle cx="155" cy="-86" r="2" fill="#FDE047"/><circle cx="226" cy="-92" r="5" fill="#FB7185"/><circle cx="226" cy="-92" r="2" fill="#FDE047"/><circle cx="279" cy="-72" r="5" fill="#FB7185"/><circle cx="279" cy="-72" r="2" fill="#FDE047"/><circle cx="341" cy="-61" r="5" fill="#F43F5E"/><circle cx="341" cy="-61" r="2" fill="#FDE047"/><circle cx="115" cy="-24" r="5" fill="#FFFFFF"/><circle cx="115" cy="-24" r="2" fill="#FDE047"/><circle cx="394" cy="-77" r="5" fill="#F9A8D4"/><circle cx="394" cy="-77" r="2" fill="#FDE047"/><circle cx="345" cy="-78" r="5" fill="#FFFFFF"/><circle cx="345" cy="-78" r="2" fill="#FDE047"/><circle cx="394" cy="-55" r="5" fill="#F43F5E"/><circle cx="394" cy="-55" r="2" fill="#FDE047"/><circle cx="79" cy="-47" r="5" fill="#F43F5E"/><circle cx="79" cy="-47" r="2" fill="#FDE047"/><circle cx="401" cy="-120" r="5" fill="#F43F5E"/><circle cx="401" cy="-120" r="2" fill="#FDE047"/><circle cx="369" cy="-67" r="5" fill="#F9A8D4"/><circle cx="369" cy="-67" r="2" fill="#FDE047"/><circle cx="130" cy="-129" r="5" fill="#F9A8D4"/><circle cx="130" cy="-129" r="2" fill="#FDE047"/><circle cx="430" cy="-147" r="5" fill="#F9A8D4"/><circle cx="430" cy="-147" r="2" fill="#FDE047"/><circle cx="329" cy="-108" r="5" fill="#FFFFFF"/><circle cx="329" cy="-108" r="2" fill="#FDE047"/><circle cx="379" cy="-41" r="5" fill="#FB7185"/><circle cx="379" cy="-41" r="2" fill="#FDE047"/><circle cx="272" cy="-130" r="5" fill="#F43F5E"/><circle cx="272" cy="-130" r="2" fill="#FDE047"/><circle cx="449" cy="-49" r="5" fill="#FFFFFF"/><circle cx="449" cy="-49" r="2" fill="#FDE047"/><circle cx="436" cy="-66" r="5" fill="#FFFFFF"/><circle cx="436" cy="-66" r="2" fill="#FDE047"/><circle cx="34" cy="-128" r="5" fill="#FFFFFF"/><circle cx="34" cy="-128" r="2" fill="#FDE047"/><circle cx="446" cy="-136" r="5" fill="#F9A8D4"/><circle cx="446" cy="-136" r="2" fill="#FDE047"/><circle cx="31" cy="-146" r="5" fill="#FFFFFF"/><circle cx="31" cy="-146" r="2" fill="#FDE047"/><circle cx="130" cy="-99" r="5" fill="#F9A8D4"/><circle cx="130" cy="-99" r="2" fill="#FDE047"/><circle cx="110" cy="-143" r="5" fill="#F43F5E"/><circle cx="110" cy="-143" r="2" fill="#FDE047"/></g><g transform="translate(650 660)"><path d="M-90 0 L-90 -160 Q0 -260 90 -160 L90 0 L64 0 L64 -150 Q0 -226 -64 -150 L-64 0 Z" fill="#166534"/><circle cx="78" cy="-160" r="7" fill="#F43F5E"/><circle cx="75" cy="-179" r="7" fill="#F43F5E"/><circle cx="68" cy="-196" r="7" fill="#F43F5E"/><circle cx="55" cy="-211" r="7" fill="#FFFFFF"/><circle cx="39" cy="-222" r="7" fill="#F43F5E"/><circle cx="20" cy="-230" r="7" fill="#F9A8D4"/><circle cx="0" cy="-232" r="7" fill="#FFFFFF"/><circle cx="-20" cy="-230" r="7" fill="#F43F5E"/><circle cx="-39" cy="-222" r="7" fill="#F9A8D4"/><circle cx="-55" cy="-211" r="7" fill="#F43F5E"/><circle cx="-68" cy="-196" r="7" fill="#FFFFFF"/><circle cx="-75" cy="-179" r="7" fill="#F43F5E"/><circle cx="-78" cy="-160" r="7" fill="#F43F5E"/><path d="M-64 0 L-64 -150 Q0 -226 64 -150 L64 0 Z" fill="#312E81" opacity=".5"/></g><g transform="translate(470 700)"><rect x="-4" y="-150" width="8" height="150" fill="#1F2937"/><path d="M-16 -150 L16 -150 L10 -178 L-10 -178 Z" fill="#1F2937"/><rect class="glow" x="-10" y="-176" width="20" height="24" fill="#FDE68A"/><circle class="glow" cx="0" cy="-164" r="40" fill="#FDE68A" opacity=".2"/></g><g transform="translate(830 700)"><rect x="-4" y="-150" width="8" height="150" fill="#1F2937"/><path d="M-16 -150 L16 -150 L10 -178 L-10 -178 Z" fill="#1F2937"/><rect class="glow" x="-10" y="-176" width="20" height="24" fill="#FDE68A"/><circle class="glow" cx="0" cy="-164" r="40" fill="#FDE68A" opacity=".2"/></g><path d="M560 900 L600 680 L700 680 L740 900 Z" fill="#A8A29E"/><path d="M580 700 L720 700" stroke="#78716C" stroke-width="2"/><path d="M578 740 L722 740" stroke="#78716C" stroke-width="2"/><path d="M576 780 L724 780" stroke="#78716C" stroke-width="2"/><path d="M574 820 L726 820" stroke="#78716C" stroke-width="2"/><path d="M572 860 L728 860" stroke="#78716C" stroke-width="2"/><g transform="translate(300 820)"><ellipse cx="0" cy="-10" rx="120" ry="24" fill="#94A3B8"/><ellipse cx="0" cy="-16" rx="104" ry="16" fill="#7DD3FC"/><rect x="-12" y="-110" width="24" height="96" fill="#CBD5E1"/><ellipse cx="0" cy="-70" rx="50" ry="10" fill="#94A3B8"/><ellipse cx="0" cy="-74" rx="40" ry="6" fill="#7DD3FC"/><path class="stream" style="animation-delay:-0.0s" d="M0 -110 Q-35.0 -170 -70 -60" stroke="#BAE6FD" stroke-width="4" fill="none" stroke-linecap="round"/><path class="stream" style="animation-delay:-0.15s" d="M0 -110 Q-20.0 -170 -40 -60" stroke="#BAE6FD" stroke-width="4" fill="none" stroke-linecap="round"/><path class="stream" style="animation-delay:-0.3s" d="M0 -110 Q20.0 -170 40 -60" stroke="#BAE6FD" stroke-width="4" fill="none" stroke-linecap="round"/><path class="stream" style="animation-delay:-0.45s" d="M0 -110 Q35.0 -170 70 -60" stroke="#BAE6FD" stroke-width="4" fill="none" stroke-linecap="round"/><path class="stream" d="M0 -110 L0 -150" stroke="#E0F2FE" stroke-width="6" stroke-linecap="round"/><circle class="glow" cx="0" cy="-20" r="80" fill="#A5F3FC" opacity=".15"/></g><g transform="translate(1000 820)"><ellipse cx="0" cy="-10" rx="120" ry="24" fill="#94A3B8"/><ellipse cx="0" cy="-16" rx="104" ry="16" fill="#7DD3FC"/><rect x="-12" y="-110" width="24" height="96" fill="#CBD5E1"/><ellipse cx="0" cy="-70" rx="50" ry="10" fill="#94A3B8"/><ellipse cx="0" cy="-74" rx="40" ry="6" fill="#7DD3FC"/><path class="stream" style="animation-delay:-0.0s" d="M0 -110 Q-35.0 -170 -70 -60" stroke="#BAE6FD" stroke-width="4" fill="none" stroke-linecap="round"/><path class="stream" style="animation-delay:-0.15s" d="M0 -110 Q-20.0 -170 -40 -60" stroke="#BAE6FD" stroke-width="4" fill="none" stroke-linecap="round"/><path class="stream" style="animation-delay:-0.3s" d="M0 -110 Q20.0 -170 40 -60" stroke="#BAE6FD" stroke-width="4" fill="none" stroke-linecap="round"/><path class="stream" style="animation-delay:-0.45s" d="M0 -110 Q35.0 -170 70 -60" stroke="#BAE6FD" stroke-width="4" fill="none" stroke-linecap="round"/><path class="stream" d="M0 -110 L0 -150" stroke="#E0F2FE" stroke-width="6" stroke-linecap="round"/><circle class="glow" cx="0" cy="-20" r="80" fill="#A5F3FC" opacity=".15"/></g><g transform="translate(20 868)"><g class="wav" style="animation-delay:-1.2s"><path d="M0 0 Q-2 -30 0 -50" stroke="#15803D" stroke-width="3" fill="none"/><circle cx="0" cy="-54" r="9" fill="#F43F5E"/><circle cx="0" cy="-54" r="4" fill="#BE123C"/></g></g><g transform="translate(66 876)"><g class="wav" style="animation-delay:-1.3s"><path d="M0 0 Q-2 -30 0 -50" stroke="#15803D" stroke-width="3" fill="none"/><circle cx="0" cy="-54" r="9" fill="#FFFFFF"/><circle cx="0" cy="-54" r="4" fill="#BE123C"/></g></g><g transform="translate(112 886)"><g class="wav" style="animation-delay:-1.4s"><path d="M0 0 Q-2 -30 0 -50" stroke="#15803D" stroke-width="3" fill="none"/><circle cx="0" cy="-54" r="9" fill="#F43F5E"/><circle cx="0" cy="-54" r="4" fill="#BE123C"/></g></g><g transform="translate(158 884)"><g class="wav" style="animation-delay:-1.2s"><path d="M0 0 Q-2 -30 0 -50" stroke="#15803D" stroke-width="3" fill="none"/><circle cx="0" cy="-54" r="9" fill="#FFFFFF"/><circle cx="0" cy="-54" r="4" fill="#BE123C"/></g></g><g transform="translate(204 865)"><g class="wav" style="animation-delay:-2.0s"><path d="M0 0 Q-2 -30 0 -50" stroke="#15803D" stroke-width="3" fill="none"/><circle cx="0" cy="-54" r="9" fill="#FFFFFF"/><circle cx="0" cy="-54" r="4" fill="#BE123C"/></g></g><g transform="translate(250 869)"><g class="wav" style="animation-delay:-1.1s"><path d="M0 0 Q-2 -30 0 -50" stroke="#15803D" stroke-width="3" fill="none"/><circle cx="0" cy="-54" r="9" fill="#FFFFFF"/><circle cx="0" cy="-54" r="4" fill="#BE123C"/></g></g><g transform="translate(296 884)"><g class="wav" style="animation-delay:-0.9s"><path d="M0 0 Q-2 -30 0 -50" stroke="#15803D" stroke-width="3" fill="none"/><circle cx="0" cy="-54" r="9" fill="#F9A8D4"/><circle cx="0" cy="-54" r="4" fill="#BE123C"/></g></g><g transform="translate(342 861)"><g class="wav" style="animation-delay:-0.8s"><path d="M0 0 Q-2 -30 0 -50" stroke="#15803D" stroke-width="3" fill="none"/><circle cx="0" cy="-54" r="9" fill="#FFFFFF"/><circle cx="0" cy="-54" r="4" fill="#BE123C"/></g></g><g transform="translate(388 873)"><g class="wav" style="animation-delay:-0.3s"><path d="M0 0 Q-2 -30 0 -50" stroke="#15803D" stroke-width="3" fill="none"/><circle cx="0" cy="-54" r="9" fill="#FFFFFF"/><circle cx="0" cy="-54" r="4" fill="#BE123C"/></g></g><g transform="translate(434 877)"><g class="wav" style="animation-delay:-1.5s"><path d="M0 0 Q-2 -30 0 -50" stroke="#15803D" stroke-width="3" fill="none"/><circle cx="0" cy="-54" r="9" fill="#F9A8D4"/><circle cx="0" cy="-54" r="4" fill="#BE123C"/></g></g><g transform="translate(480 884)"><g class="wav" style="animation-delay:-2.1s"><path d="M0 0 Q-2 -30 0 -50" stroke="#15803D" stroke-width="3" fill="none"/><circle cx="0" cy="-54" r="9" fill="#F9A8D4"/><circle cx="0" cy="-54" r="4" fill="#BE123C"/></g></g><g transform="translate(526 879)"><g class="wav" style="animation-delay:-2.6s"><path d="M0 0 Q-2 -30 0 -50" stroke="#15803D" stroke-width="3" fill="none"/><circle cx="0" cy="-54" r="9" fill="#FB7185"/><circle cx="0" cy="-54" r="4" fill="#BE123C"/></g></g><g transform="translate(572 870)"><g class="wav" style="animation-delay:-0.8s"><path d="M0 0 Q-2 -30 0 -50" stroke="#15803D" stroke-width="3" fill="none"/><circle cx="0" cy="-54" r="9" fill="#F43F5E"/><circle cx="0" cy="-54" r="4" fill="#BE123C"/></g></g><g transform="translate(618 864)"><g class="wav" style="animation-delay:-2.0s"><path d="M0 0 Q-2 -30 0 -50" stroke="#15803D" stroke-width="3" fill="none"/><circle cx="0" cy="-54" r="9" fill="#F9A8D4"/><circle cx="0" cy="-54" r="4" fill="#BE123C"/></g></g><g transform="translate(664 886)"><g class="wav" style="animation-delay:-2.0s"><path d="M0 0 Q-2 -30 0 -50" stroke="#15803D" stroke-width="3" fill="none"/><circle cx="0" cy="-54" r="9" fill="#FB7185"/><circle cx="0" cy="-54" r="4" fill="#BE123C"/></g></g><g transform="translate(710 871)"><g class="wav" style="animation-delay:-0.6s"><path d="M0 0 Q-2 -30 0 -50" stroke="#15803D" stroke-width="3" fill="none"/><circle cx="0" cy="-54" r="9" fill="#FFFFFF"/><circle cx="0" cy="-54" r="4" fill="#BE123C"/></g></g><g transform="translate(756 874)"><g class="wav" style="animation-delay:-1.2s"><path d="M0 0 Q-2 -30 0 -50" stroke="#15803D" stroke-width="3" fill="none"/><circle cx="0" cy="-54" r="9" fill="#FB7185"/><circle cx="0" cy="-54" r="4" fill="#BE123C"/></g></g><g transform="translate(802 869)"><g class="wav" style="animation-delay:-0.4s"><path d="M0 0 Q-2 -30 0 -50" stroke="#15803D" stroke-width="3" fill="none"/><circle cx="0" cy="-54" r="9" fill="#F43F5E"/><circle cx="0" cy="-54" r="4" fill="#BE123C"/></g></g><g transform="translate(848 869)"><g class="wav" style="animation-delay:-2.7s"><path d="M0 0 Q-2 -30 0 -50" stroke="#15803D" stroke-width="3" fill="none"/><circle cx="0" cy="-54" r="9" fill="#F43F5E"/><circle cx="0" cy="-54" r="4" fill="#BE123C"/></g></g><g transform="translate(894 879)"><g class="wav" style="animation-delay:-2.5s"><path d="M0 0 Q-2 -30 0 -50" stroke="#15803D" stroke-width="3" fill="none"/><circle cx="0" cy="-54" r="9" fill="#FB7185"/><circle cx="0" cy="-54" r="4" fill="#BE123C"/></g></g><g transform="translate(940 875)"><g class="wav" style="animation-delay:-2.5s"><path d="M0 0 Q-2 -30 0 -50" stroke="#15803D" stroke-width="3" fill="none"/><circle cx="0" cy="-54" r="9" fill="#FFFFFF"/><circle cx="0" cy="-54" r="4" fill="#BE123C"/></g></g><g transform="translate(986 863)"><g class="wav" style="animation-delay:-3.0s"><path d="M0 0 Q-2 -30 0 -50" stroke="#15803D" stroke-width="3" fill="none"/><circle cx="0" cy="-54" r="9" fill="#F9A8D4"/><circle cx="0" cy="-54" r="4" fill="#BE123C"/></g></g><g transform="translate(1032 870)"><g class="wav" style="animation-delay:-1.3s"><path d="M0 0 Q-2 -30 0 -50" stroke="#15803D" stroke-width="3" fill="none"/><circle cx="0" cy="-54" r="9" fill="#FFFFFF"/><circle cx="0" cy="-54" r="4" fill="#BE123C"/></g></g><g transform="translate(1078 863)"><g class="wav" style="animation-delay:-0.6s"><path d="M0 0 Q-2 -30 0 -50" stroke="#15803D" stroke-width="3" fill="none"/><circle cx="0" cy="-54" r="9" fill="#F9A8D4"/><circle cx="0" cy="-54" r="4" fill="#BE123C"/></g></g><g transform="translate(1124 880)"><g class="wav" style="animation-delay:-0.5s"><path d="M0 0 Q-2 -30 0 -50" stroke="#15803D" stroke-width="3" fill="none"/><circle cx="0" cy="-54" r="9" fill="#F9A8D4"/><circle cx="0" cy="-54" r="4" fill="#BE123C"/></g></g><g transform="translate(1170 877)"><g class="wav" style="animation-delay:-0.3s"><path d="M0 0 Q-2 -30 0 -50" stroke="#15803D" stroke-width="3" fill="none"/><circle cx="0" cy="-54" r="9" fill="#FB7185"/><circle cx="0" cy="-54" r="4" fill="#BE123C"/></g></g><g transform="translate(1216 887)"><g class="wav" style="animation-delay:-2.2s"><path d="M0 0 Q-2 -30 0 -50" stroke="#15803D" stroke-width="3" fill="none"/><circle cx="0" cy="-54" r="9" fill="#FFFFFF"/><circle cx="0" cy="-54" r="4" fill="#BE123C"/></g></g><g transform="translate(1262 882)"><g class="wav" style="animation-delay:-2.5s"><path d="M0 0 Q-2 -30 0 -50" stroke="#15803D" stroke-width="3" fill="none"/><circle cx="0" cy="-54" r="9" fill="#FFFFFF"/><circle cx="0" cy="-54" r="4" fill="#BE123C"/></g></g></svg><div class="wk" style="bottom:calc((900px - 870px) * max(100vw / 1300px, 100vh / 900px));animation-duration:48s;animation-delay:-0s"><svg viewBox="-44 -40 90 46" style="width:80px"><g class="bb"><path d="M-34 0 Q-36 -32 0 -32 Q26 -30 30 -8 L30 0 Z" fill="#92400E"/><path d="M-36 -17 L-30 -22 L-24 -17 Z" fill="#78350F"/><path d="M-28 -16 L-22 -25 L-16 -16 Z" fill="#78350F"/><path d="M-20 -15 L-14 -28 L-8 -15 Z" fill="#78350F"/><path d="M-12 -14 L-6 -31 L0 -14 Z" fill="#78350F"/><path d="M-4 -14 L2 -33 L8 -14 Z" fill="#78350F"/><path d="M4 -15 L10 -30 L16 -15 Z" fill="#78350F"/><path d="M18 -18 Q40 -14 40 -4 Q30 2 14 0 Z" fill="#FDE68A"/><circle cx="40" cy="-6" r="3" fill="#111827"/><circle class="blink" cx="28" cy="-12" r="2.4" fill="#111827"/><g class="l1"><rect x="-20" y="-4" width="6" height="8" rx="2" fill="#57290D"/></g><g class="l2"><rect x="10" y="-4" width="6" height="8" rx="2" fill="#57290D"/></g></g></svg></div><div class="wk rv" style="bottom:calc((900px - 880px) * max(100vw / 1300px, 100vh / 900px));animation-duration:40s;animation-delay:-14s"><span class="flp"><svg viewBox="-30 -50 60 56" style="width:64px"><g class="hop"><ellipse cx="-2" cy="-14" rx="18" ry="13" fill="#F8FAFC"/><circle cx="-20" cy="-16" r="6" fill="#FFFFFF"/><circle cx="14" cy="-24" r="10" fill="#F8FAFC"/><ellipse cx="10" cy="-40" rx="4" ry="12" fill="#F8FAFC"/><ellipse cx="18" cy="-40" rx="4" ry="12" fill="#F8FAFC"/><ellipse cx="10" cy="-40" rx="2" ry="8" fill="#FBCFE8"/><ellipse cx="18" cy="-40" rx="2" ry="8" fill="#FBCFE8"/><circle cx="18" cy="-26" r="2" fill="#111827"/><circle cx="23" cy="-22" r="1.6" fill="#F472B6"/><ellipse cx="-6" cy="-2" rx="8" ry="4" fill="#F8FAFC"/></g></svg></span></div><div class="wk" style="bottom:calc((900px - 884px) * max(100vw / 1300px, 100vh / 900px));animation-duration:40s;animation-delay:-26s"><svg viewBox="-30 -50 60 56" style="width:50px"><g class="hop"><ellipse cx="-2" cy="-14" rx="18" ry="13" fill="#E7E5E4"/><circle cx="-20" cy="-16" r="6" fill="#FFFFFF"/><circle cx="14" cy="-24" r="10" fill="#E7E5E4"/><ellipse cx="10" cy="-40" rx="4" ry="12" fill="#E7E5E4"/><ellipse cx="18" cy="-40" rx="4" ry="12" fill="#E7E5E4"/><ellipse cx="10" cy="-40" rx="2" ry="8" fill="#FBCFE8"/><ellipse cx="18" cy="-40" rx="2" ry="8" fill="#FBCFE8"/><circle cx="18" cy="-26" r="2" fill="#111827"/><circle cx="23" cy="-22" r="1.6" fill="#F472B6"/><ellipse cx="-6" cy="-2" rx="8" ry="4" fill="#E7E5E4"/></g></svg></div><div class="wk rv" style="bottom:calc((900px - 876px) * max(100vw / 1300px, 100vh / 900px));animation-duration:60s;animation-delay:-36s"><span class="flp"><svg viewBox="-70 -70 150 76" style="width:120px"><ellipse cx="0" cy="4" rx="44" ry="3.5" fill="#000" opacity=".2"/><g class="tl"><path d="M-30 -32 Q-70 -50 -66 -12 Q-56 -28 -28 -24 Z" fill="#EA580C"/><path d="M-62 -30 Q-70 -20 -66 -12 Q-60 -22 -56 -26 Z" fill="#FFF7ED"/></g><g class="l2"><rect x="-24" y="-22" width="8" height="26" rx="3" fill="#9A3412"/></g><g class="l1"><rect x="14" y="-22" width="8" height="26" rx="3" fill="#9A3412"/></g><ellipse cx="-2" cy="-30" rx="32" ry="14" fill="#F97316"/><g class="l1"><rect x="-14" y="-20" width="8" height="24" rx="3" fill="#C2410C"/><rect x="-14" y="0" width="8" height="5" rx="2" fill="#1F2937"/></g><g class="l2"><rect x="22" y="-20" width="8" height="24" rx="3" fill="#C2410C"/><rect x="22" y="0" width="8" height="5" rx="2" fill="#1F2937"/></g><g class="hd"><path d="M26 -42 L32 -64 L42 -46 Z M46 -46 L56 -64 L58 -40 Z" fill="#F97316"/><path d="M30 -46 L33 -58 L38 -48 Z M50 -48 L54 -58 L55 -44 Z" fill="#1F2937"/><path d="M24 -40 Q44 -56 60 -40 L76 -30 Q58 -20 40 -22 Q26 -26 24 -40 Z" fill="#F97316"/><path d="M44 -26 Q60 -22 76 -30 Q60 -18 44 -22 Z" fill="#FFF7ED"/><circle cx="76" cy="-30" r="3.4" fill="#111827"/><ellipse class="blink" cx="46" cy="-38" rx="2.6" ry="3.2" fill="#111827"/></g></svg></span></div><div class="wk" style="bottom:60vh;animation-duration:30s;animation-delay:-0s"><svg viewBox="-30 -36 60 60" style="width:70px"><circle cx="0" cy="0" r="26" fill="#F472B6" opacity=".2"/><g class="bw"><ellipse cx="-12" cy="-6" rx="12" ry="7" fill="#E0F2FE" opacity=".85" transform="rotate(-30 -12 -6)"/><ellipse cx="12" cy="-6" rx="12" ry="7" fill="#E0F2FE" opacity=".85" transform="rotate(30 12 -6)"/></g><path d="M-6 -2 L6 -2 L9 16 L-9 16 Z" fill="#F472B6"/><circle cx="0" cy="-10" r="7" fill="#F5C9A0"/><path d="M-7 -12 Q0 -22 7 -12 Z" fill="#FDE047"/><path d="M8 4 L18 -8" stroke="#FDE047" stroke-width="2"/><circle cx="18" cy="-9" r="3" fill="#FFFFFF"/></svg></div><div class="wk rv" style="bottom:70vh;animation-duration:36s;animation-delay:-12s"><span class="flp"><svg viewBox="-30 -36 60 60" style="width:60px"><circle cx="0" cy="0" r="26" fill="#22D3EE" opacity=".2"/><g class="bw"><ellipse cx="-12" cy="-6" rx="12" ry="7" fill="#E0F2FE" opacity=".85" transform="rotate(-30 -12 -6)"/><ellipse cx="12" cy="-6" rx="12" ry="7" fill="#E0F2FE" opacity=".85" transform="rotate(30 12 -6)"/></g><path d="M-6 -2 L6 -2 L9 16 L-9 16 Z" fill="#22D3EE"/><circle cx="0" cy="-10" r="7" fill="#F5C9A0"/><path d="M-7 -12 Q0 -22 7 -12 Z" fill="#FDE047"/><path d="M8 4 L18 -8" stroke="#FDE047" stroke-width="2"/><circle cx="18" cy="-9" r="3" fill="#FFFFFF"/></svg></span></div><div class="wk" style="bottom:78vh;animation-duration:44s;animation-delay:-24s"><svg viewBox="-30 -36 60 60" style="width:56px"><circle cx="0" cy="0" r="26" fill="#A78BFA" opacity=".2"/><g class="bw"><ellipse cx="-12" cy="-6" rx="12" ry="7" fill="#E0F2FE" opacity=".85" transform="rotate(-30 -12 -6)"/><ellipse cx="12" cy="-6" rx="12" ry="7" fill="#E0F2FE" opacity=".85" transform="rotate(30 12 -6)"/></g><path d="M-6 -2 L6 -2 L9 16 L-9 16 Z" fill="#A78BFA"/><circle cx="0" cy="-10" r="7" fill="#F5C9A0"/><path d="M-7 -12 Q0 -22 7 -12 Z" fill="#FDE047"/><path d="M8 4 L18 -8" stroke="#FDE047" stroke-width="2"/><circle cx="18" cy="-9" r="3" fill="#FFFFFF"/></svg></div><div class="wk rv" style="bottom:52vh;animation-duration:40s;animation-delay:-6s"><span class="flp"><svg viewBox="-30 -36 60 60" style="width:64px"><circle cx="0" cy="0" r="26" fill="#FDE047" opacity=".2"/><g class="bw"><ellipse cx="-12" cy="-6" rx="12" ry="7" fill="#E0F2FE" opacity=".85" transform="rotate(-30 -12 -6)"/><ellipse cx="12" cy="-6" rx="12" ry="7" fill="#E0F2FE" opacity=".85" transform="rotate(30 12 -6)"/></g><path d="M-6 -2 L6 -2 L9 16 L-9 16 Z" fill="#FDE047"/><circle cx="0" cy="-10" r="7" fill="#F5C9A0"/><path d="M-7 -12 Q0 -22 7 -12 Z" fill="#FDE047"/><path d="M8 4 L18 -8" stroke="#FDE047" stroke-width="2"/><circle cx="18" cy="-9" r="3" fill="#FFFFFF"/></svg></span></div><div class="ff" style="left:86%;top:57%;animation-duration:6.8s;animation-delay:-3.3s"><svg viewBox="-8 -8 16 16" style="width:13px"><circle r="7" fill="#FEF08A" opacity=".35"/><circle r="3" fill="#FEF08A"/></svg></div><div class="ff" style="left:34%;top:80%;animation-duration:5.5s;animation-delay:-5.1s"><svg viewBox="-8 -8 16 16" style="width:16px"><circle r="7" fill="#FEF08A" opacity=".35"/><circle r="3" fill="#FEF08A"/></svg></div><div class="ff" style="left:74%;top:39%;animation-duration:5.5s;animation-delay:-5.0s"><svg viewBox="-8 -8 16 16" style="width:10px"><circle r="7" fill="#FEF08A" opacity=".35"/><circle r="3" fill="#FEF08A"/></svg></div><div class="ff" style="left:93%;top:52%;animation-duration:6.8s;animation-delay:-5.5s"><svg viewBox="-8 -8 16 16" style="width:13px"><circle r="7" fill="#FEF08A" opacity=".35"/><circle r="3" fill="#FEF08A"/></svg></div><div class="ff" style="left:73%;top:58%;animation-duration:5.2s;animation-delay:-4.1s"><svg viewBox="-8 -8 16 16" style="width:12px"><circle r="7" fill="#FEF08A" opacity=".35"/><circle r="3" fill="#FEF08A"/></svg></div><div class="ff" style="left:26%;top:57%;animation-duration:3.2s;animation-delay:-2.6s"><svg viewBox="-8 -8 16 16" style="width:12px"><circle r="7" fill="#FEF08A" opacity=".35"/><circle r="3" fill="#FEF08A"/></svg></div><div class="ff" style="left:83%;top:72%;animation-duration:6.0s;animation-delay:-5.5s"><svg viewBox="-8 -8 16 16" style="width:18px"><circle r="7" fill="#FEF08A" opacity=".35"/><circle r="3" fill="#FEF08A"/></svg></div><div class="ff" style="left:53%;top:76%;animation-duration:6.7s;animation-delay:-1.0s"><svg viewBox="-8 -8 16 16" style="width:13px"><circle r="7" fill="#FEF08A" opacity=".35"/><circle r="3" fill="#FEF08A"/></svg></div><div class="ff" style="left:15%;top:44%;animation-duration:4.1s;animation-delay:-2.0s"><svg viewBox="-8 -8 16 16" style="width:13px"><circle r="7" fill="#FEF08A" opacity=".35"/><circle r="3" fill="#FEF08A"/></svg></div><div class="ff" style="left:29%;top:56%;animation-duration:3.2s;animation-delay:-3.7s"><svg viewBox="-8 -8 16 16" style="width:15px"><circle r="7" fill="#FEF08A" opacity=".35"/><circle r="3" fill="#FEF08A"/></svg></div><div class="ff" style="left:34%;top:43%;animation-duration:4.8s;animation-delay:-3.3s"><svg viewBox="-8 -8 16 16" style="width:11px"><circle r="7" fill="#FEF08A" opacity=".35"/><circle r="3" fill="#FEF08A"/></svg></div><div class="ff" style="left:47%;top:42%;animation-duration:4.3s;animation-delay:-4.4s"><svg viewBox="-8 -8 16 16" style="width:14px"><circle r="7" fill="#FEF08A" opacity=".35"/><circle r="3" fill="#FEF08A"/></svg></div><div class="ff" style="left:34%;top:64%;animation-duration:6.2s;animation-delay:-4.3s"><svg viewBox="-8 -8 16 16" style="width:16px"><circle r="7" fill="#FEF08A" opacity=".35"/><circle r="3" fill="#FEF08A"/></svg></div><div class="ff" style="left:11%;top:65%;animation-duration:6.2s;animation-delay:-4.3s"><svg viewBox="-8 -8 16 16" style="width:16px"><circle r="7" fill="#FEF08A" opacity=".35"/><circle r="3" fill="#FEF08A"/></svg></div><div class="ff" style="left:41%;top:36%;animation-duration:5.5s;animation-delay:-2.1s"><svg viewBox="-8 -8 16 16" style="width:15px"><circle r="7" fill="#FEF08A" opacity=".35"/><circle r="3" fill="#FEF08A"/></svg></div><div class="ff" style="left:2%;top:78%;animation-duration:3.0s;animation-delay:-4.3s"><svg viewBox="-8 -8 16 16" style="width:12px"><circle r="7" fill="#FEF08A" opacity=".35"/><circle r="3" fill="#FEF08A"/></svg></div><div class="ff" style="left:81%;top:78%;animation-duration:3.7s;animation-delay:-1.2s"><svg viewBox="-8 -8 16 16" style="width:17px"><circle r="7" fill="#FEF08A" opacity=".35"/><circle r="3" fill="#FEF08A"/></svg></div><div class="ff" style="left:54%;top:31%;animation-duration:6.4s;animation-delay:-0.6s"><svg viewBox="-8 -8 16 16" style="width:10px"><circle r="7" fill="#FEF08A" opacity=".35"/><circle r="3" fill="#FEF08A"/></svg></div><div class="ff" style="left:0%;top:61%;animation-duration:6.8s;animation-delay:-5.5s"><svg viewBox="-8 -8 16 16" style="width:16px"><circle r="7" fill="#FEF08A" opacity=".35"/><circle r="3" fill="#FEF08A"/></svg></div><div class="ff" style="left:37%;top:69%;animation-duration:4.2s;animation-delay:-3.3s"><svg viewBox="-8 -8 16 16" style="width:13px"><circle r="7" fill="#FEF08A" opacity=".35"/><circle r="3" fill="#FEF08A"/></svg></div><div class="ff" style="left:35%;top:47%;animation-duration:5.6s;animation-delay:-0.2s"><svg viewBox="-8 -8 16 16" style="width:18px"><circle r="7" fill="#FEF08A" opacity=".35"/><circle r="3" fill="#FEF08A"/></svg></div><div class="ff" style="left:92%;top:30%;animation-duration:3.9s;animation-delay:-5.0s"><svg viewBox="-8 -8 16 16" style="width:13px"><circle r="7" fill="#FEF08A" opacity=".35"/><circle r="3" fill="#FEF08A"/></svg></div><div class="ff" style="left:45%;top:50%;animation-duration:6.9s;animation-delay:-1.8s"><svg viewBox="-8 -8 16 16" style="width:17px"><circle r="7" fill="#FEF08A" opacity=".35"/><circle r="3" fill="#FEF08A"/></svg></div><div class="ff" style="left:74%;top:46%;animation-duration:3.3s;animation-delay:-2.0s"><svg viewBox="-8 -8 16 16" style="width:15px"><circle r="7" fill="#FEF08A" opacity=".35"/><circle r="3" fill="#FEF08A"/></svg></div><div class="ff" style="left:67%;top:65%;animation-duration:4.8s;animation-delay:-5.5s"><svg viewBox="-8 -8 16 16" style="width:16px"><circle r="7" fill="#FEF08A" opacity=".35"/><circle r="3" fill="#FEF08A"/></svg></div><div class="ff" style="left:59%;top:51%;animation-duration:3.5s;animation-delay:-4.0s"><svg viewBox="-8 -8 16 16" style="width:16px"><circle r="7" fill="#FEF08A" opacity=".35"/><circle r="3" fill="#FEF08A"/></svg></div><div class="ff" style="left:25%;top:37%;animation-duration:6.6s;animation-delay:-5.6s"><svg viewBox="-8 -8 16 16" style="width:15px"><circle r="7" fill="#FEF08A" opacity=".35"/><circle r="3" fill="#FEF08A"/></svg></div><div class="ff" style="left:30%;top:48%;animation-duration:4.5s;animation-delay:-4.6s"><svg viewBox="-8 -8 16 16" style="width:14px"><circle r="7" fill="#FEF08A" opacity=".35"/><circle r="3" fill="#FEF08A"/></svg></div><div class="ff" style="left:2%;top:68%;animation-duration:5.3s;animation-delay:-5.2s"><svg viewBox="-8 -8 16 16" style="width:17px"><circle r="7" fill="#FEF08A" opacity=".35"/><circle r="3" fill="#FEF08A"/></svg></div><div class="ff" style="left:57%;top:78%;animation-duration:6.2s;animation-delay:-0.3s"><svg viewBox="-8 -8 16 16" style="width:11px"><circle r="7" fill="#FEF08A" opacity=".35"/><circle r="3" fill="#FEF08A"/></svg></div><div class="fly" style="left:6%;animation-duration:22s;animation-delay:-0s"><svg viewBox="-20 -16 40 32" style="width:46px"><g class="bw"><path d="M0 0 Q-18 -20 -16 -2 Q-18 12 0 2 Z" fill="#F9A8D4"/><path d="M0 0 Q18 -20 16 -2 Q18 12 0 2 Z" fill="#C4B5FD"/></g><ellipse cx="0" cy="0" rx="2" ry="8" fill="#1F2937"/></svg></div><div class="fly" style="left:92%;animation-duration:26s;animation-delay:-9s"><svg viewBox="-20 -16 40 32" style="width:44px"><g class="bw"><path d="M0 0 Q-18 -20 -16 -2 Q-18 12 0 2 Z" fill="#67E8F9"/><path d="M0 0 Q18 -20 16 -2 Q18 12 0 2 Z" fill="#FDE047"/></g><ellipse cx="0" cy="0" rx="2" ry="8" fill="#1F2937"/></svg></div><div class="fly" style="left:48%;animation-duration:30s;animation-delay:-18s"><svg viewBox="-20 -16 40 32" style="width:40px"><g class="bw"><path d="M0 0 Q-18 -20 -16 -2 Q-18 12 0 2 Z" fill="#FB7185"/><path d="M0 0 Q18 -20 16 -2 Q18 12 0 2 Z" fill="#FDE68A"/></g><ellipse cx="0" cy="0" rx="2" ry="8" fill="#1F2937"/></svg></div></div>
+<div class="hs" id="hs"></div>
+<div class="wrap">
+  <div class="hdr note"><span class="pin"></span>
+    <h1>TEST FOR UNIT 7 · p1 (I · II · III)</h1>
+    <p>🎓 Giáo viên tạo: Ms. Chí Nên &nbsp;·&nbsp; Test I · Phát âm (5) &nbsp;·&nbsp; Test II · Từ khác loại (5) &nbsp;·&nbsp; Test III · Loại chương trình (8) &nbsp;·&nbsp; 18 câu</p>
+  </div>
+  <div class="sb">💗 <b><span id="sc">0</span>/<span id="tt">0</span></b>
+    <div class="tr"><div class="fl" id="fb"></div></div><span id="md">💪</span></div>
+  <div id="app"></div>
+  <div class="sub"><button class="sbtn" onclick="openName()">🎯 NỘP BÀI</button></div>
+</div>
+<div class="ov" id="nOv"><div class="mb note"><span class="pin"></span><h2>✍️ Nhập tên của con</h2>
+  <input id="nIn" placeholder="Ví dụ: Nguyễn Văn A..." maxlength="50" onkeydown="if(event.key==='Enter')showResult()">
+  <div class="em" id="nEr">⚠️ Con chưa nhập tên kìa!</div>
+  <button class="sbtn" style="width:100%;font-size:1.05rem;padding:10px" onclick="showResult()">🚀 Xem kết quả</button></div></div>
+<div class="ov" id="rOv"><div class="mb note"><span class="pin"></span><div class="gr" id="rG"></div>
+  <div class="rs" id="rS"></div><div class="rt" id="rT"></div><img id="rI" alt=""><div class="rm" id="rM"></div>
+  <button class="sbtn" style="width:100%;font-size:1.05rem;padding:10px;background:var(--lilac)" onclick="location.reload()">🔄 Làm lại</button></div></div>
+
+<script>
+/* ══ TIM BAY: 22 trái tim, 5 kiểu hình, 9 màu ══ */
+(function(){
+  const L=document.getElementById('hs');
+  const emo=['💗','💖','💛','💙','💜','🧡','🤍','💚','❤️','💕','💞'];
+  const col=['#FF4D8D','#FF80AB','#FFB300','#7C4DFF','#00BFA5','#FF6E40','#40C4FF','#EC407A','#AB47BC'];
+  for(let i=0;i<22;i++){
+    const h=document.createElement('div');h.className='h';
+    const inner=document.createElement('i');
+    const kind=i%5;
+    if(kind===0||kind===1){                       // trái tim emoji
+      inner.textContent=emo[i%emo.length];
+      inner.style.fontSize=(13+Math.random()*20)+'px';
+    }else{                                        // trái tim vẽ bằng CSS (3 biến thể)
+      const d=document.createElement('div');
+      d.className='ch'+(kind===3?' slim':kind===4?' out':'');
+      d.style.setProperty('--s',(9+Math.random()*11).toFixed(0)+'px');
+      d.style.setProperty('--c',col[i%col.length]);
+      inner.appendChild(d);
+    }
+    h.style.left=(Math.random()*96)+'%';
+    h.style.animationDuration=(13+Math.random()*15)+'s';
+    h.style.animationDelay=(-Math.random()*24)+'s';
+    inner.style.animationDuration=(2.2+Math.random()*2.8)+'s';
+    h.appendChild(inner);L.appendChild(h);
+  }
+})();
+let AC;function ac(){if(!AC)AC=new (window.AudioContext||window.webkitAudioContext)();if(AC.state==='suspended')AC.resume();return AC}
+function ding(){try{const c=ac(),n=c.currentTime;[523,659,784,1047].forEach((f,i)=>{const o=c.createOscillator(),g=c.createGain();
+ o.type='sine';o.frequency.value=f;o.connect(g);g.connect(c.destination);const t=n+i*.09;
+ g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.19,t+.03);g.gain.exponentialRampToValueAtTime(.001,t+.42);
+ o.start(t);o.stop(t+.45)})}catch(e){}}
+function buzz(){try{const c=ac(),n=c.currentTime;[300,235,180].forEach((f,i)=>{const o=c.createOscillator(),g=c.createGain();
+ o.type='square';o.frequency.value=f;o.connect(g);g.connect(c.destination);const t=n+i*.12;
+ g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.11,t+.02);g.gain.exponentialRampToValueAtTime(.001,t+.17);
+ o.start(t);o.stop(t+.19)})}catch(e){}}
+document.addEventListener('click',()=>{try{ac()}catch(e){}},{once:true});
+function confetti(){const c=['#E91E63','#FFC2DC','#B388FF','#12B886','#FFC93C'];
+ for(let i=0;i<32;i++){const d=document.createElement('div');d.className='cf';d.style.background=c[i%c.length];
+  d.style.left=(Math.random()*100)+'vw';d.style.animation='fall '+(1.4+Math.random()*1.3)+'s linear forwards';
+  d.style.animationDelay=(Math.random()*.3)+'s';document.body.appendChild(d);setTimeout(()=>d.remove(),3200)}}
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function norm(s){return (s||'').toLowerCase().replace(/[’'`´]/g,'').replace(/[^a-z0-9\s]/g,' ').replace(/\s+/g,' ').trim()}
+</script>
+
+<script>
+/* ══ DỮ LIỆU ══ */
+const Q=[];
+function mcq(sec,num,q,correct,opts,ex,cls){Q.push({t:'mcq',sec,num,q,correct,opts,ex,cls:cls||''})}
+function fil(sec,num,q,correct,accept,ex,bw,ph){Q.push({t:'fill',sec,num,q,correct,accept,ex,bw:bw||'',ph:ph||'Điền...'})}
+function ord(sec,num,words,correct,accept,ex){Q.push({t:'ord',sec,num,words,correct,accept,ex})}
+function W(w,ty,m){return "<div><span class='w'>"+w+"</span><span class='t'>"+ty+"</span>= <span class='m'>"+m+"</span></div>"}
+function G(w,ty,m){return "<div><span class='g'>"+w+"</span><span class='t'>"+ty+"</span>= <span class='m'>"+m+"</span></div>"}
+function P(w,ipa,m){return "<div><span class='w'>"+w+"</span> <span class='ipa'>"+ipa+"</span> = <span class='m'>"+m+"</span></div>"}
+function EX(k,vn,cells,why,trap){
+ return '<div class="kb">✅ '+k+'</div><div class="vi">💬 <b>Dịch:</b> '+vn+'</div>'+
+  '<div class="sp"><span class="l">① PHÂN TÍCH</span><div class="g2">'+cells+'</div></div>'+
+  '<div class="sp"><span class="l">② TẠI SAO ĐÚNG</span><br><span class="pg">'+why+'</span></div>'+
+  '<div class="sp"><span class="l">③ BẪY / MẸO</span><br><span class="pg">'+trap+'</span></div>'}
+
+/* ═════ TEST I — PHÁT ÂM (5 câu) ═════ */
+function t1(num,label,opts,ans,cells,why,trap){
+  mcq('T1',num,'<b>'+num+'.</b> Từ nào có phần <u>'+label+'</u> phát âm KHÁC với các từ còn lại?',ans,opts,
+   EX('<b>'+ans+'</b>','Chọn từ có phần gạch chân đọc khác 3 từ kia.',cells,why,trap),'c4');
+}
+t1(1,'th',['<u>th</u>eater','<u>th</u>ank','<u>th</u>ere','<u>th</u>irty'],'<u>th</u>ere',
+ P('<u>th</u>eater','/ˈθɪətə(r)/','nhà hát ➔ /θ/')+P('<u>th</u>ank','/θæŋk/','cảm ơn ➔ /θ/')+
+ P('<u>th</u>ere','/ðeə(r)/','ở đó ➔ /ð/')+P('<u>th</u>irty','/ˈθɜːti/','ba mươi ➔ /θ/'),
+ 'theater · thank · thirty là <b>từ nội dung</b> ➔ /θ/; chỉ <b>there</b> là <b>từ chức năng</b> ➔ <b>/ð/</b>.',
+ '<b>Mẹo:</b> “th” đầu <b>từ chức năng</b> (the, this, that, they, there, then, than) ➔ <b>/ð/</b>; '+
+ 'đầu <b>từ nội dung</b> ➔ <b>/θ/</b>.');
+t1(2,'a',['g<u>a</u>me','<u>a</u>nimal','ch<u>a</u>nnel','n<u>a</u>tional'],'g<u>a</u>me',
+ P('g<u>a</u>me','/ɡeɪm/','trò chơi ➔ a = /eɪ/')+P('<u>a</u>nimal','/ˈænɪml/','động vật ➔ a = /æ/')+
+ P('ch<u>a</u>nnel','/ˈtʃænl/','kênh ➔ a = /æ/')+P('n<u>a</u>tional','/ˈnæʃnəl/','quốc gia ➔ a = /æ/'),
+ 'animal · channel · national đều có <b>a = /æ/</b>; chỉ <b>game</b> đọc <b>/eɪ/</b>.',
+ '<b>Quy tắc âm mở:</b> chữ <b>a</b> trong tiếng Anh đọc <b>/eɪ/</b> khi âm tiết mở '+
+ '(game · name · late), và đọc <b>/æ/</b> khi có phụ âm đóng ngay sau (an-i-mal · chan-nel).');
+t1(3,'ch',['wat<u>ch</u>','<u>ch</u>annel','<u>ch</u>ildren','s<u>ch</u>edule'],'s<u>ch</u>edule',
+ P('wat<u>ch</u>','/wɒtʃ/','xem ➔ ch = /tʃ/')+P('<u>ch</u>annel','/ˈtʃænl/','kênh ➔ ch = /tʃ/')+
+ P('<u>ch</u>ildren','/ˈtʃɪldrən/','trẻ em ➔ ch = /tʃ/')+P('s<u>ch</u>edule','/ˈʃedjuːl/','lịch phát sóng ➔ sch = /ʃ/'),
+ 'watch · channel · children đều có <b>ch = /tʃ/</b>; <b>schedule</b> đọc <b>/ʃ/</b>.',
+ '<b>Nhớ 3 cách đọc “ch”:</b> <b>/tʃ/</b> (channel, children) · <b>/ʃ/</b> (schedule, machine, chef) · '+
+ '<b>/k/</b> (school, Christmas, chemistry).');
+t1(4,'o / ow',['pr<u>o</u>gramme','sh<u>ow</u>','p<u>o</u>pular','h<u>o</u>me'],'p<u>o</u>pular',
+ P('pr<u>o</u>gramme','/ˈprəʊɡræm/','chương trình ➔ o = /əʊ/')+P('sh<u>ow</u>','/ʃəʊ/','buổi diễn ➔ ow = /əʊ/')+
+ P('p<u>o</u>pular','/ˈpɒpjələ(r)/','phổ biến ➔ o = /ɒ/')+P('h<u>o</u>me','/həʊm/','nhà ➔ o = /əʊ/'),
+ 'programme · show · home đều có <b>o = /əʊ/</b>; chỉ <b>popular</b> đọc <b>/ɒ/</b>.',
+ '<b>Mẹo:</b> chữ <b>o</b> đọc <b>/əʊ/</b> khi âm tiết mở hoặc có “e” cuối (home · show · programme); '+
+ 'đọc <b>/ɒ/</b> khi bị phụ âm đóng (pop-u-lar · hot · box).');
+t1(5,'ea / ee',['newsr<u>ea</u>der','w<u>ea</u>ther','w<u>ee</u>k','l<u>ea</u>ve'],'w<u>ea</u>ther',
+ P('newsr<u>ea</u>der','/ˈnjuːzriːdə(r)/','người đọc bản tin ➔ ea = /iː/')+P('w<u>ea</u>ther','/ˈweðə(r)/','thời tiết ➔ ea = /e/')+
+ P('w<u>ee</u>k','/wiːk/','tuần ➔ ee = /iː/')+P('l<u>ea</u>ve','/liːv/','rời đi ➔ ea = /iː/'),
+ 'newsreader · week · leave đều đọc <b>/iː/</b> (âm i dài); chỉ <b>weather</b> đọc <b>/e/</b> (âm e ngắn).',
+ '<b>Nhóm “ea” đọc /e/ ngắn cần nhớ riêng:</b> w<b>ea</b>ther · h<b>ea</b>d · br<b>ea</b>d · h<b>ea</b>lthy · '+
+ 'r<b>ea</b>dy. Còn lại “ea” thường đọc <b>/iː/</b>.');
+
+/* ═════ TEST II — TỪ KHÁC LOẠI (5 câu) ═════ */
+function t2(num,opts,ans,cells,why,trap){
+  mcq('T2',num,'<b>'+num+'.</b> Chọn từ KHÁC LOẠI với các từ còn lại:',ans,opts,
+   EX('<b>'+ans+'</b>','Tìm từ không cùng nhóm nghĩa với 3 từ kia.',cells,why,trap),'c4');
+}
+t2(1,['Japan','Iceland','New York','Finland'],'New York',
+ G('New York','n','một THÀNH PHỐ (của Mỹ) ➔ KHÁC LOẠI')+W('Japan','n','Nhật Bản — quốc gia')+
+ W('Iceland','n','Ai-xơ-len — quốc gia')+W('Finland','n','Phần Lan — quốc gia'),
+ 'Japan · Iceland · Finland đều là <b>QUỐC GIA</b>; <b>New York</b> là một <b>THÀNH PHỐ</b>.',
+ '<b>Bẫy chính tả:</b> <b>Ice<u>land</u></b> và <b>Fin<u>land</u></b> có đuôi “-land” nên dễ nghĩ là khác loại. '+
+ 'Nhưng cả hai đều là tên NƯỚC. Tiêu chí phân loại ở đây là <b>nước ↔ thành phố</b>.');
+t2(2,['newsreader','MC','weathergirl','TV schedule'],'TV schedule',
+ G('TV schedule','n','lịch phát sóng ➔ là VẬT/thông tin, KHÁC LOẠI')+W('newsreader','n','người đọc bản tin')+
+ W('MC','n','người dẫn chương trình')+W('weathergirl','n','nữ phát thanh viên thời tiết'),
+ 'newsreader · MC · weathergirl đều chỉ <b>NGƯỜI làm việc trên TV</b>; '+
+ '<b>TV schedule</b> là một <b>danh sách/thông tin</b>, không phải người.',
+ '<b>Mẹo:</b> gặp bài “odd one out” hãy tìm tiêu chí <b>người ↔ vật</b> trước — đây là tiêu chí hay dùng nhất.');
+t2(3,['documentary','channel','cartoon','comedy'],'channel',
+ G('channel','n','KÊNH truyền hình ➔ nơi phát, KHÁC LOẠI')+W('documentary','n','phim tài liệu — loại chương trình')+
+ W('cartoon','n','phim hoạt hình — loại chương trình')+W('comedy','n','chương trình hài — loại chương trình'),
+ 'documentary · cartoon · comedy đều là <b>LOẠI CHƯƠNG TRÌNH</b>; '+
+ '<b>channel</b> là <b>KÊNH</b> — nơi phát các chương trình đó.',
+ 'Quan hệ: nhiều <b>programme</b> (chương trình) được phát trên một <b>channel</b> (kênh). '+
+ 'Hai khái niệm khác cấp độ nên “channel” là từ khác loại.');
+t2(4,['comedian','popular','stupid','national'],'comedian',
+ G('comedian','n','DANH TỪ — diễn viên hài ➔ KHÁC LOẠI')+W('popular','adj','phổ biến — tính từ')+
+ W('stupid','adj','ngốc nghếch — tính từ')+W('national','adj','quốc gia — tính từ'),
+ 'popular · stupid · national đều là <b>TÍNH TỪ</b>; chỉ <b>comedian</b> là <b>DANH TỪ</b> chỉ người.',
+ '<b>Mẹo nhận từ loại qua đuôi:</b> <b>-ian / -er / -or</b> ➔ danh từ chỉ NGƯỜI · '+
+ '<b>-ar / -al / -id / -ous / -ful</b> ➔ TÍNH TỪ.');
+t2(5,['romance','horror film','game show','cartoon'],'game show',
+ G('game show','n','chương trình TRÒ CHƠI (có thí sinh) ➔ KHÁC LOẠI')+W('romance','n','phim tình cảm')+
+ W('horror film','n','phim kinh dị')+W('cartoon','n','phim hoạt hình'),
+ 'romance · horror film · cartoon đều là <b>THỂ LOẠI PHIM</b> (có cốt truyện, diễn viên/nhân vật); '+
+ '<b>game show</b> là <b>chương trình truyền hình thực tế</b> có thí sinh tranh tài, không phải phim.',
+ '<b>Tiêu chí:</b> <b>phim</b> (romance · horror · cartoon) ↔ <b>chương trình truyền hình</b> (game show · talk show · news). '+
+ '<b>TỔNG KẾT TEST II:</b> nước↔thành phố · người↔vật · chương trình↔kênh · tính từ↔danh từ · phim↔gameshow.');
+
+/* ═════ TEST III — LOẠI CHƯƠNG TRÌNH (8 câu) ═════ */
+function t3(num,quote,vn,ans,cells,why,trap){
+  fil('T3',num,'<b>'+num+'.</b><div class="quote">🔊 “'+quote+'”</div>➜ Đây là loại chương trình gì?',
+   ans,[ans],EX('<b>'+ans+'</b>',vn,cells,why,trap),ans,'Điền loại chương trình...');
+}
+t3(1,'Tonight on the show we are talking to Matthew Wright, the actor and writer.',
+ 'Tối nay trong chương trình, chúng ta sẽ trò chuyện với Matthew Wright — diễn viên và nhà văn.',
+ 'chat show',
+ G('chat show','n','chương trình toạ đàm, phỏng vấn khách mời')+W('talk to sb','v','nói chuyện với ai')+
+ W('actor and writer','n','diễn viên và nhà văn ➔ KHÁCH MỜI')+W('= talk show','n','tên gọi khác'),
+ 'Có <b>khách mời</b> và <b>“we are talking to…”</b> (trò chuyện với) ➔ đây là <b>chat show</b>.',
+ '<b>chat show = talk show</b> (chương trình phỏng vấn khách mời). Dấu hiệu: '+
+ '<b>talking to + tên người nổi tiếng</b>.');
+t3(2,'He shoots! He scores! Fantastic goal!',
+ 'Anh ấy sút! Anh ấy ghi điểm! Một bàn thắng tuyệt vời!','sports programme',
+ G('sports programme','n','chương trình thể thao')+W('shoot','v','sút (bóng)')+
+ W('score','v','ghi điểm, ghi bàn')+W('goal','n','bàn thắng'),
+ 'Các từ <b>shoots · scores · goal</b> đều thuộc bóng đá ➔ <b>sports programme</b>.',
+ 'Nhớ điền <b>đủ 2 từ</b> như trong ô: <b>sports programme</b> (có chữ “s” ở “sports”). '+
+ 'Đây là lời <b>bình luận viên</b> đang tường thuật trực tiếp.');
+t3(3,'The African elephant can live for about 70 years.',
+ 'Voi châu Phi có thể sống được khoảng 70 năm.','documentary',
+ G('documentary','n','phim tài liệu')+W('African elephant','n','voi châu Phi')+
+ W('live for','v','sống được (bao lâu)')+W('about','adv','khoảng, chừng'),
+ 'Cung cấp <b>thông tin khoa học thật</b> về loài vật ➔ <b>documentary</b>.',
+ 'Phân biệt với <b>animals programme</b>: cả hai đều nói về động vật, nhưng '+
+ '<b>documentary</b> là từ trong ô nên chọn từ này.');
+t3(4,'Tomorrow will be mostly sunny and slightly cooler than today.',
+ 'Ngày mai trời phần lớn có nắng và mát hơn hôm nay một chút.','weather forecast',
+ G('weather forecast','n','bản tin dự báo thời tiết')+W('mostly sunny','adj','phần lớn có nắng')+
+ W('slightly','adv','hơi, một chút')+W('cooler than','adj','mát hơn (so sánh hơn)'),
+ 'Nói về trời nắng/mát <b>NGÀY MAI</b> ➔ dự báo trước ➔ <b>weather forecast</b>.',
+ 'Dấu hiệu: <b>Tomorrow will be…</b> (thì tương lai) + từ chỉ thời tiết ➔ chắc chắn là dự báo thời tiết.');
+t3(5,"I can't marry you, Bret. I'm already married to Rocky.",
+ 'Em không thể cưới anh, Bret. Em đã kết hôn với Rocky rồi.','romance',
+ G('romance','n','phim tình cảm, phim lãng mạn')+W('marry sb','v','cưới ai')+
+ W('be married to sb','v','đã kết hôn với ai')+W('already','adv','đã, rồi'),
+ 'Lời thoại về <b>chuyện tình cảm, cưới xin</b> ➔ <b>romance</b>.',
+ '<b>Phân biệt:</b> <b>marry sb</b> (cưới ai — không có “with”) ↔ <b>be married to sb</b> (đã cưới ai). '+
+ '<s>marry with sb</s> ✘');
+t3(6,'Are you smart? Try and answer these questions!',
+ 'Bạn có thông minh không? Hãy thử trả lời những câu hỏi này!','game show',
+ G('game show','n','chương trình trò chơi')+W('smart','adj','thông minh')+
+ W('try and V','v','thử làm gì (= try to V)')+W('answer questions','v','trả lời câu hỏi'),
+ 'Mời khán giả <b>trả lời câu hỏi</b> để thi tài ➔ <b>game show</b>.',
+ 'Ví dụ thật: <i>Are you smarter than a 5th grader?</i> — đúng là một game show. '+
+ 'Dấu hiệu: <b>answer questions</b> + thách đố người xem.');
+t3(7,'Watch all your favourites — Mickey Mouse, Tom and Jerry, Donald Duck.',
+ 'Hãy xem tất cả những nhân vật con yêu thích — chuột Mickey, Tom và Jerry, vịt Donald.','cartoon',
+ G('cartoon','n','phim hoạt hình')+W('favourites','n','những thứ/nhân vật yêu thích')+
+ W('Mickey Mouse','n','chuột Mickey')+W('Donald Duck','n','vịt Donald'),
+ 'Toàn bộ là <b>nhân vật hoạt hình</b> ➔ <b>cartoon</b>.',
+ 'Ba tên này là “bộ ba kinh điển” của phim hoạt hình — thấy chúng là chọn <b>cartoon</b> ngay, '+
+ 'không cần đọc thêm.');
+t3(8,'Find out what is happening right now, around the world.',
+ 'Hãy tìm hiểu chuyện gì đang diễn ra ngay lúc này, trên khắp thế giới.','news',
+ G('news','n','bản tin thời sự')+W('find out','phr-v','tìm hiểu, biết được')+
+ W('right now','adv','ngay lúc này')+W('around the world','adv','trên khắp thế giới'),
+ 'Thông tin về việc <b>đang xảy ra ngay lúc này trên thế giới</b> ➔ <b>news</b>.',
+ '<b>Phân biệt news ↔ documentary:</b> <b>news</b> nói chuyện ĐANG diễn ra (right now) · '+
+ '<b>documentary</b> nói về chủ đề/lịch sử đã có sẵn.<br>'+
+ '<b>Lưu ý của cô:</b> đề gốc đánh số nhảy từ 5 sang 7 (thiếu số 6) — cô đã đánh lại liền mạch <b>1–8</b> '+
+ 'cho khớp với 8 từ trong ô và với đáp án.');
+
+/* ══ DỰNG TRANG ══ */
+const TOTAL=Q.length;let answered=0,score=0;
+const done={},maps={},built={};
+function bump(){document.getElementById('fb').style.width=(answered/TOTAL*100)+'%';
+ document.getElementById('sc').textContent=score;
+ const p=answered?score/answered:1;
+ document.getElementById('md').textContent=p>=.9?'🤩':p>=.7?'😃':p>=.5?'🙂':'💪'}
+const APP=document.getElementById('app');let CUR=null;
+function sec(col,pill,title,ins){
+ const d=document.createElement('div');d.className='sec note';
+ d.innerHTML='<span class="pin"></span><div class="st"><span class="pill" style="background:'+col+'">'+pill+
+  '</span><h2>'+title+'</h2></div><div class="si">'+ins+'</div>';
+ APP.appendChild(d);CUR=d}
+function put(h){CUR.insertAdjacentHTML('beforeend',h)}
+function render(id){Q.forEach((m,i)=>{if(m.sec===id)CUR.appendChild(build(m,'g'+i))})}
+function strike(w){document.querySelectorAll('.wb span').forEach(c=>{if(c.dataset.w===w)c.classList.add('used')})}
+
+/* ---- TEST I ---- */
+sec('#B388FF','TEST · I','🔊 Chọn từ có phần gạch chân phát âm khác',
+ 'Chú ý: mỗi câu gạch chân một chữ/cụm chữ khác nhau. (5 câu)');
+put('<div class="th"><h3>📚 Lý thuyết trước Test I — 5 CẶP ÂM CẦN PHÂN BIỆT</h3>'+
+ '<table class="tb"><tr><th>Chữ</th><th>Cách đọc</th><th>Ví dụ</th></tr>'+
+ '<tr><td><b>th</b></td><td><b>/θ/</b> vô thanh (từ nội dung)<br><b>/ð/</b> hữu thanh (từ chức năng, -ther)</td>'+
+ '<td>thank · thirty · theater ➔ /θ/<br><b>there</b> · the · they ➔ /ð/</td></tr>'+
+ '<tr><td><b>a</b></td><td><b>/eɪ/</b> âm tiết mở<br><b>/æ/</b> có phụ âm đóng</td>'+
+ '<td><b>game</b> · name ➔ /eɪ/<br>animal · channel · national ➔ /æ/</td></tr>'+
+ '<tr><td><b>ch</b></td><td><b>/tʃ/</b> thường gặp<br><b>/ʃ/</b> · <b>/k/</b> ngoại lệ</td>'+
+ '<td>channel · children · watch ➔ /tʃ/<br><b>schedule</b> · machine ➔ /ʃ/ · school ➔ /k/</td></tr>'+
+ '<tr><td><b>o</b></td><td><b>/əʊ/</b> âm tiết mở / có “e” cuối<br><b>/ɒ/</b> có phụ âm đóng</td>'+
+ '<td>home · show · programme ➔ /əʊ/<br><b>popular</b> · hot ➔ /ɒ/</td></tr>'+
+ '<tr><td><b>ea / ee</b></td><td><b>/iː/</b> đa số<br><b>/e/</b> một nhóm nhỏ</td>'+
+ '<td>week · leave · newsreader ➔ /iː/<br><b>weather</b> · head · bread · healthy ➔ /e/</td></tr></table>'+
+ '<div class="tip">💡 <b>MẸO ĐẾM 3–1:</b> đề luôn có <b>3 từ giống + 1 từ khác</b>. Chỉ cần chắc 2 từ cùng âm '+
+ 'là suy ra ngay đáp án, không cần đọc hết cả 4 từ.</div>'+
+ '<div class="wn">⚠️ <b>Nhóm “ea” đọc /e/ phải học thuộc:</b> <span class="eg">weather</span>'+
+ '<span class="eg">head</span><span class="eg">bread</span><span class="eg">healthy</span>'+
+ '<span class="eg">ready</span><span class="eg">breakfast</span> — còn lại “ea” đọc <b>/iː/</b>.</div></div>');
+render('T1');
+
+/* ---- TEST II ---- */
+sec('#12B886','TEST · II','🔎 Chọn từ khác loại (odd one out)',
+ 'Tìm tiêu chí phân loại rồi chọn từ không cùng nhóm. (5 câu)');
+put('<div class="th"><h3>📚 Lý thuyết trước Test II — 4 TIÊU CHÍ PHÂN LOẠI THƯỜNG DÙNG</h3>'+
+ '<div class="ru"><b>① NGƯỜI ↔ VẬT / THÔNG TIN</b> ➔ newsreader · MC · weathergirl (người) ↔ '+
+ '<b>TV schedule</b> (danh sách)</div>'+
+ '<div class="ru"><b>② TỪ LOẠI</b> (danh từ ↔ tính từ) ➔ popular · stupid · national (adj) ↔ '+
+ '<b>comedian</b> (n)</div>'+
+ '<div class="ru"><b>③ CẤP ĐỘ KHÁI NIỆM</b> ➔ documentary · cartoon · comedy (chương trình) ↔ '+
+ '<b>channel</b> (kênh phát chương trình)</div>'+
+ '<div class="ru"><b>④ PHẠM VI ĐỊA LÝ / THỂ LOẠI</b> ➔ Japan · Iceland · Finland (nước) ↔ '+
+ '<b>New York</b> (thành phố) · romance · horror film · cartoon (phim) ↔ <b>game show</b> (chương trình TV)</div>'+
+ '<div class="tip">💡 <b>CÁCH LÀM:</b> đừng tìm “từ lạ nhất” mà hãy tìm <b>ĐIỂM CHUNG của 3 từ</b> — '+
+ 'từ còn lại không có điểm chung đó chính là đáp án.<br>'+
+ 'Ví dụ câu 4: popular · stupid · national đều là TÍNH TỪ ➔ điểm chung là từ loại ➔ '+
+ '<b>comedian</b> (danh từ) là đáp án.</div>'+
+ '<div class="wn">⚠️ <b>Bẫy chính tả:</b> câu 1 có <b>Ice<u>land</u></b> và <b>Fin<u>land</u></b> cùng đuôi “-land” '+
+ 'nên dễ tưởng chúng là một nhóm riêng. Nhưng cả hai đều là <b>TÊN NƯỚC</b> — tiêu chí đúng là '+
+ '<b>nước ↔ thành phố</b>.</div></div>');
+render('T2');
+
+/* ---- TEST III ---- */
+sec('#FF8F00','TEST · III','📺 Đây là loại chương trình gì?',
+ 'Đọc lời trích rồi điền loại chương trình. Mỗi từ trong ô dùng ĐÚNG MỘT LẦN. (8 câu)');
+put('<div class="th"><h3>📚 Lý thuyết trước Test III — TỪ MANH MỐI CỦA TỪNG LOẠI</h3>'+
+ '<table class="tb"><tr><th>Loại chương trình</th><th>Từ manh mối trong lời trích</th></tr>'+
+ '<tr><td><b>chat show</b> (toạ đàm)</td><td>talking to + tên người nổi tiếng · khách mời</td></tr>'+
+ '<tr><td><b>sports programme</b></td><td>shoots · scores · goal · match</td></tr>'+
+ '<tr><td><b>documentary</b></td><td>thông tin khoa học thật · elephant can live 70 years</td></tr>'+
+ '<tr><td><b>weather forecast</b></td><td>Tomorrow will be · sunny · cooler</td></tr>'+
+ '<tr><td><b>romance</b></td><td>marry · love · I can’t marry you</td></tr>'+
+ '<tr><td><b>game show</b></td><td>answer these questions · win · Are you smart?</td></tr>'+
+ '<tr><td><b>cartoon</b></td><td>Mickey Mouse · Tom and Jerry · Donald Duck</td></tr>'+
+ '<tr><td><b>news</b></td><td>happening right now · around the world</td></tr></table>'+
+ '<div class="tip">💡 <b>MẸO:</b> mỗi lời trích là một câu <b>đặc trưng</b> của loại chương trình đó. '+
+ 'Chỉ cần bắt được <b>1 từ khoá</b> là ra đáp án — ví dụ thấy “goal” ➔ thể thao, thấy “Tomorrow will be sunny” ➔ '+
+ 'dự báo thời tiết.</div>'+
+ '<div class="wn">⚠️ <b>Cặp dễ lẫn — news ↔ documentary:</b><br>'+
+ '• <b>news</b> = chuyện ĐANG xảy ra <u>ngay lúc này</u> (right now)<br>'+
+ '• <b>documentary</b> = kiến thức/lịch sử về một chủ đề (voi sống 70 năm)<br>'+
+ 'Nhớ điền đủ 2 từ ở <b>sports programme</b> và <b>weather forecast</b>!</div></div>');
+put('<div class="wb"><div class="lb">📺 WORD BOX — 8 loại chương trình</div><div class="cs">'+
+ ['news','documentary','sports programme','weather forecast','cartoon','game show','romance','chat show']
+  .map(w=>'<span data-w="'+w+'">'+w+'</span>').join('')+'</div></div>');
+render('T3');
+
+document.getElementById('tt').textContent=TOTAL;bump();
+
+/* ══ RENDER ══ */
+function build(m,gid){
+ const c=document.createElement('div');c.className='q';c.id='c_'+gid;
+ const h='<span class="qn">'+m.num+'</span>';
+ if(m.t==='mcq'){
+  const so=shuffle(m.opts);maps[gid]=so;
+  c.innerHTML='<div class="qt">'+h+m.q+'</div><div class="og '+(m.cls||'')+'" id="o_'+gid+'">'+
+   so.map((o,i)=>'<button class="ob" onclick="pick(\''+gid+'\','+i+')">'+o+'</button>').join('')+
+   '</div><div class="ex" id="e_'+gid+'">'+m.ex+'</div>';
+ } else if(m.t==='ord'){
+  const so=shuffle(m.words);maps[gid]=so;built[gid]=[];
+  c.innerHTML='<div class="qt">'+h+'Sắp xếp thành câu hỏi hoàn chỉnh:</div>'+
+   '<div class="chips" id="p_'+gid+'">'+
+   so.map((w,i)=>'<button class="cp" data-i="'+i+'" onclick="tap(\''+gid+'\','+i+')">'+w+'</button>').join('')+'</div>'+
+   '<div class="built" id="s_'+gid+'"><span class="ph">Bấm vào các thẻ từ ở trên…</span></div>'+
+   '<div class="acts"><button class="ck" id="b_'+gid+'">Kiểm tra</button>'+
+   '<button class="ck gh" id="r_'+gid+'">✕ Xoá hết</button></div>'+
+   '<div class="ex" id="e_'+gid+'">'+m.ex+'</div>';
+  c.querySelector('#b_'+gid).onclick=()=>chk(gid);
+  c.querySelector('#r_'+gid).onclick=()=>{
+   if(done[gid])return;built[gid]=[];
+   document.querySelectorAll('#p_'+gid+' .cp').forEach(b=>b.classList.remove('gone'));
+   document.getElementById('s_'+gid).innerHTML='<span class="ph">Bấm vào các thẻ từ ở trên…</span>';
+  };
+ } else {
+  c.innerHTML='<div class="qt">'+h+m.q+'</div>'+
+   '<div class="fr"><input class="ti" id="i_'+gid+'" placeholder="'+m.ph+'" autocomplete="off" spellcheck="false">'+
+   '<button class="ck" id="b_'+gid+'">Kiểm tra</button></div><div class="ex" id="e_'+gid+'">'+m.ex+'</div>';
+  const inp=c.querySelector('#i_'+gid),bt=c.querySelector('#b_'+gid);
+  const go=()=>{
+   if(done[gid])return;
+   const v=norm(inp.value);
+   if(!v){inp.classList.add('no');c.classList.add('shk');
+    setTimeout(()=>{inp.classList.remove('no');c.classList.remove('shk')},460);return}
+   done[gid]=true;answered++;
+   const ok=m.accept.map(norm).indexOf(v)>-1;
+   inp.disabled=true;bt.disabled=true;inp.classList.add(ok?'ok':'no');
+   if(m.bw)strike(m.bw);
+   document.getElementById('e_'+gid).classList.add('show');
+   if(ok){score++;ding();confetti()}else{buzz();c.classList.add('shk');setTimeout(()=>c.classList.remove('shk'),460)}
+   bump();
+  };
+  bt.onclick=go;inp.addEventListener('keydown',e=>{if(e.key==='Enter')go()});
+ }
+ return c;
+}
+function tap(gid,i){
+ if(done[gid])return;
+ const b=document.querySelector('#p_'+gid+' .cp[data-i="'+i+'"]');
+ if(!b||b.classList.contains('gone'))return;
+ b.classList.add('gone');built[gid].push(maps[gid][i]);
+ document.getElementById('s_'+gid).textContent=built[gid].join(' ')+' ?';
+}
+function chk(gid){
+ if(done[gid])return;
+ const m=Q[+gid.slice(1)],s=document.getElementById('s_'+gid),c=document.getElementById('c_'+gid);
+ if(!built[gid].length){c.classList.add('shk');setTimeout(()=>c.classList.remove('shk'),460);return}
+ done[gid]=true;answered++;
+ const ok=m.accept.map(norm).indexOf(norm(built[gid].join(' ')))>-1;
+ s.classList.add(ok?'ok':'no');
+ document.getElementById('b_'+gid).disabled=true;document.getElementById('r_'+gid).disabled=true;
+ document.querySelectorAll('#p_'+gid+' .cp').forEach(b=>b.style.pointerEvents='none');
+ document.getElementById('e_'+gid).classList.add('show');
+ if(ok){score++;ding();confetti()}else{buzz();c.classList.add('shk');setTimeout(()=>c.classList.remove('shk'),460)}
+ bump();
+}
+function pick(gid,i){
+ if(done[gid])return;done[gid]=true;answered++;
+ const m=Q[+gid.slice(1)],b=document.getElementById('o_'+gid),c=document.getElementById('c_'+gid);
+ const ok=maps[gid][i]===m.correct;
+ [...b.children].forEach((el,j)=>{el.disabled=true;el.classList.add('dn');
+  if(maps[gid][j]===m.correct)el.classList.add('ok');
+  else if(j===i)el.classList.add('no');else el.classList.add('dim')});
+ document.getElementById('e_'+gid).classList.add('show');
+ if(ok){score++;ding();confetti()}else{buzz();c.classList.add('shk');setTimeout(()=>c.classList.remove('shk'),460)}
+ bump();
+}
+function openName(){document.getElementById('nOv').classList.add('on');setTimeout(()=>document.getElementById('nIn').focus(),180)}
+function showResult(){
+ const inp=document.getElementById('nIn'),er=document.getElementById('nEr'),nm=inp.value.trim();
+ if(!nm){inp.classList.add('er');er.style.display='block';setTimeout(()=>inp.classList.remove('er'),470);return}
+ er.style.display='none';document.getElementById('nOv').classList.remove('on');
+ const pct=score/TOTAL,ten=(pct*10).toFixed(2);
+ let g,msg,gif;
+ if(score===TOTAL){g='🏆 XUẤT SẮC, '+nm+'!';msg='Con đúng TOÀN BỘ '+TOTAL+' câu — Unit 7 quá vững! 🎉';
+  gif='https://media.giphy.com/media/g9582DNuQppxC/giphy.gif';}
+ else if(pct>=.6){g='🌟 GIỎI LẮM, '+nm+'!';msg='Con làm rất tốt rồi. Nhớ quy trình 4 bước sắp xếp câu và mẹo đếm 3–1 nhé!';
+  gif='https://media.giphy.com/media/11sBLVxNs7v6WA/giphy.gif';}
+ else{g='🌱 CỐ LÊN NÀO, '+nm+'!';msg='Đừng buồn! Đọc lại bảng trật tự câu hỏi và bảng phát âm rồi làm lại nhé! 📚';
+  gif='https://media.giphy.com/media/d2lcHJTG5Tscg/giphy.gif';}
+ document.getElementById('rG').textContent=g;
+ document.getElementById('rS').textContent=score+' / '+TOTAL;
+ document.getElementById('rT').textContent='🎓 Quy đổi: '+ten+' / 10 điểm';
+ document.getElementById('rI').src=gif;
+ document.getElementById('rM').textContent=msg;
+ document.getElementById('rOv').classList.add('on');
+ if(pct>=.6){confetti();ding()}
+}
+</script>
+<script>/*scnjs*/
+(function(){
+ const STOP=new Set(['the','a','an','and','or','but','so','because','although','is','are','was','were','do','does','did','you','your','he','she','they','it','we','i','my','his','her','their','our','to','of','in','on','at','for','with','what','who','where','when','why','how','which','that','this','these','those','can','will','not','very','too','also','there','have','has','had','be','me','him','them','its','am']);
+ function clean(t){return String(t).replace(/<(br|\/div|\/p)[^>]*>/gi,' ').replace(/<[^>]+>/g,'').replace(/&rsquo;|&#39;|\u2019/g,"'").replace(/&[a-z]+;/g,' ').trim()}
+ function words(m){if(!m)return[];let ws=[];
+  const parts=m.t==='mcq'?m.opts.map(clean):[clean(m.t==='fix'?(m.corr||m.correct):m.correct)];
+  if(parts.every(p=>p.split(/\s+/).length<=3))ws=parts;
+  else ws=clean(m.correct).toLowerCase().replace(/[^a-z' -]/g,' ').split(/\s+/).filter(w=>w.length>3&&!STOP.has(w)&&w.indexOf("'")<0).slice(0,4);
+  return [...new Set(ws.map(w=>w.toLowerCase().replace(/[^a-z' -]/g,' ').replace(/\s+/g,' ').trim()).filter(w=>w&&w.length<28&&w.split(' ').length<=3))];}
+ function cbHTML(ws){if(!ws.length)return '';return '<div class="cbw">🔊 <b>Tra từ điển Cambridge:</b> bấm vào từng từ để nghe phát âm chuẩn rồi đọc theo thật to nhé!<div class="cbl">'+
+  ws.map(w=>'<a href="https://dictionary.cambridge.org/vi/dictionary/english/'+encodeURIComponent(w.replace(/ /g,'-'))+'" target="_blank" rel="noopener">🔊 '+w+'</a>').join('')+'</div></div>';}
+ function addCB(e){if(!e||e.querySelector('.cbw'))return;const k=+String(e.id).replace('e_g','');if(isNaN(k))return;e.insertAdjacentHTML('beforeend',cbHTML(words(Q[k])))}
+ const mo=new MutationObserver(ms=>ms.forEach(m=>{const e=m.target;if(e.classList&&e.classList.contains('ex')&&e.classList.contains('show'))addCB(e)}));
+ document.querySelectorAll('.ex').forEach(e=>mo.observe(e,{attributes:true,attributeFilter:['class']}));
+ const duck=function(){try{const a=new Audio('https://hoctienganhcungcoMs. Chí Nên.github.io/homework/%E1%BA%A2nh_File%20nghe/Sound/Ti%E1%BA%BFng%20V%E1%BB%8Bt%20k%C3%AAu%20meme%20mp3.mp3');a.volume=.85;a.play().catch(()=>{})}catch(e){}};
+ window.buzz=duck;try{buzz=duck}catch(x){}
+})();</script>
+<script>/*devclean*/(function(){
+var ZW=/[\u00AD\u034F\u061C\u115F\u1160\u17B4\u17B5\u180E\u200B-\u200F\u202A-\u202E\u2060-\u206F\uFEFF]/g,
+    SP=/[\u00A0\u1680\u2000-\u200A\u2028\u2029\u202F\u205F\u3000\t]/g,
+    AP=/[\u2018\u2019\u201A\u201B\u2032\u2035\u02B9\u02BB\u02BC\u02BD\u02C8\u0060\u00B4\uFF07]/g,
+    DQ=/[\u201C\u201D\u201E\u201F\u2033\u2036\u00AB\u00BB\uFF02]/g,
+    DS=/[\u2010\u2011\u2012\u2212\uFE63\uFF0D]/g;
+function clean(v){if(!v)return v;var s=String(v);try{s=s.normalize('NFKC')}catch(e){}
+  return s.replace(ZW,'').replace(SP,' ').replace(AP,"'").replace(DQ,'"').replace(DS,'-').replace(/[\u0300-\u036f]/g,'').replace(/ {2,}/g,' ');}
+window.__devclean=clean;
+function fix(skip){var L=document.querySelectorAll('input:not([type]),input[type=text],input[type=search],textarea');
+  for(var i=0;i<L.length;i++){var el=L[i];if(el===skip||el.readOnly||el.disabled)continue;var v=el.value,c=clean(v);if(c!==v)el.value=c;}}
+['pointerdown','mousedown','touchstart','click','change','focusout'].forEach(function(t){document.addEventListener(t,function(e){fix(t==='focusout'||t==='change'?null:e.target)},true)});
+document.addEventListener('keydown',function(e){if(e.key==='Enter'||e.keyCode===13)fix(null)},true);
+})();</script>
+
+<script>
+// Auto-bypass password lock for MS Chi Nen
+(function() {
+    function unlock() {
+        var pw = document.getElementById('passwordModal') || document.getElementById('lockModal') || document.getElementById('pwModal');
+        if (pw) { pw.style.setProperty('display', 'none', 'important'); pw.style.setProperty('visibility', 'hidden', 'important'); }
+        var main = document.getElementById('mainContent') || document.getElementById('quizContainer');
+        if (main) { main.style.setProperty('display', 'block', 'important'); }
+        if (typeof initQuiz === 'function') { try { initQuiz(); } catch(e){} }
+        if (typeof createUnicorns === 'function') { try { createUnicorns(); } catch(e){} }
+    }
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', unlock);
+    } else {
+        unlock();
+    }
+})();
+</script>
+
+</body>
+</html>
